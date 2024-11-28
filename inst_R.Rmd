@@ -1,0 +1,172 @@
+---
+title: "Instalar R"
+description: "Instalación de software para el curso Biodata: R y RStudio"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
+---
+
+La instalación descrita acá es una instalación completa de R, con los componentes que permiten compilar paquetes con códigos en lenguajes compilados como C o C++, y con la posibilidad de escribir documentos con RMarkdown que permite escribir documentos que integran códigos y resultados de tratamientos en R.
+
+
+# Windows
+
+Para utilizar R en Windows, vamos a instalar 4 herramientas principales:
+
+* **R base**: es el software base y bruto de programación estadística
+* **Rtools**: permite "compilar" los códigos escritos en otros lenguajes de programación, es importante tenerlo si queremos instalar paquetes en versiones de desarrollo (por ejemplo desde github)
+* **MikTeX o tinyTex**: es una distribución de TeX/LaTeX, permite crear archivos de ayuda para las funciones en un paquete R y documentos PDF con el paquete rmarkdown
+* **Rstudio**: es el ambiente de desarrollo que vamos a utilizar durante el curso. Anotar: RStudio contiene un componente util que se llama `pandoc`, que permite traducir documentos entre varios formatos (word, markdown, html, latex/pdf etc.). No requiere una instalación suplementaria (se puede, si quieren!), pero se tiene que mencionar como elemento para instalar también.
+
+
+## R (base y Rtools)
+
+Lo que les aconsejo es:
+
+1. desinstalar R y Rstudio en sus computadores para tener un sistema totalmente limpio.
+1. descargar la ultima versión de R, desde <https://cran.dcc.uchile.cl/bin/windows/>, en el enlace `base`
+1. descargar la ultima versión de Rtools, desde <https://cran.dcc.uchile.cl/bin/windows/>, en el enlace `Rtools`
+1. Instalar los programas descargados, primero R y luego Rtools, siguiendo las instrucciones 
+
+
+## Software complementarios
+
+### Distribución LaTeX
+
+Anotar: podemos manejar el 99% de las actividades de los talleres sin LaTeX. Sin embargo, permite escribir documentos pdf con R, con gráficas, códigos y resultados integrados, ¡así que les aconsejo instalar este programa!
+
+Hay dos soluciones posibles: *MikTeX*, una distribución de LaTeX completa, o *TinyTeX*, una pequeña distribución de LaTeX que está soportada por la comunidad que maneja rmarkdown.
+La solución MikTex es más compleja para instalar y para que RStudio, pandoc y rmarkdown la reconozcan al momento de compilar los códigos LaTeX.
+Sin embargo, si piensan utilizar LaTeX en otros contextos que simplemente en los documentos rmarkdown y los archivos de documentación de funciones R, es la solución más adecuada.
+
+Si eligen la solución MikTex, seguir: <https://miktex.org/howto/install-miktex>
+Tienen que asegurarse que los archivos de ejecución de MikTeX están en el path de Windows (buscar ayuda en google con la palabras "MikTeX rmarkdown path rstudio" puede ser útil). 
+Una prueba rapida en Windows 10 me ha permitido averiguar que todo se debería hacer automaticamente, sin una operación particular.
+
+La solución más simple es utilizar la distribución TinyTeX, que se puede instalar desde el paquete `tinytex` de R.
+Sin embargo, si utilizan esta solución, pueden esperar después de la instalación de RStudio para manejar todo desde RStudio
+
+Después de haber instalado Rstudio, instalar el paquete `tinytex` en Rstudio y seguir las instrucciones en: <https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html>
+
+
+### Rstudio
+
+RStudio es un ambiente de desarrollo, no es obligatorio utilizarlo, pero simplifica mucho el trabajo con R (y otros lenguajes de programación).
+Anotar: hay muchos movimientos alrededor de la nueva empresa de RStudio (posit) y de quarto, es muy posible que en los próximos años, hayan soluciones nuevas para mejorar el ambiente de desarrollo, no duden en seguir las noticias de [Posit](https://posit.co).
+
+Seguir las instrucciones en <https://posit.co/download/rstudio-desktop/> (el instalador exe de la ultima versión para Windows 10/11 debería funcionar)
+
+
+# Mac OS
+## R, compilador para R, LaTeX y RStudio
+
+Vamos a necesitar poder compilar los paquetes de R para obtener las ultimas versiones, seguir: <https://mac.r-project.org/tools/> (sobretodo la primera parte con Xcode y el compilador de fortran)
+
+Parece que la pagina <https://www.reed.edu/data-at-reed/software/R/r_studio.html> es un buen recurso para buscar como instalar R Rstudio y los componentes LaTeX de rmarkdown
+
+<https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-macos-high-sierra-e7b5705c9fd> parece completo tambien!
+
+# Distribuciones de linux: Ubuntu y Linux Mint
+
+
+Según la distribución de linux, los procesos de instalación son muy diferentes, se pueden reportar a la nota en [este documento](./inst_gen.html) para ver cuales son los sistemas operativos (Linux Mint y Ubuntu) y versiones que consideramos acá.
+
+
+
+
+## R
+
+Voy a reproducir los comandos acá, si quieren entender mejor el proceso, referirse a <https://cran.r-project.org/bin/linux/ubuntu/> o <https://es.linux-console.net/?p=14068>.
+Para linux mint, pueden tambien referirse a: <https://linuxcapable.com/how-to-install-r-lang-on-linux-mint/>
+
+
+Existe un repositorio dedicado a los paquetes del CRAN (que maneja R y los paquetes de R) para apt.
+
+
+Prerequisitos:
+
+```bash
+sudo apt update
+sudo apt install software-properties-common dirmngr -y
+```
+
+
+**Cuidado: si ya tienen los repositorios de paquetes instalados en sus maquinas, hacerlo otra vez puede resultar en errores en los updates del sistema, si no saben si los tienen instalados, ¡me pueden contactar, les explicaré como averiguar!**
+
+
+Añadir el CRAN como repositorio de paquetes para apt:
+
+**En ubuntu** *(notar, eso funciona con todas las versiones LTS: 22.04 y 24.04)*:
+
+```bash
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+```
+
+**En Linux Mint 21** *(potencialmente puede ser una solución, aunque imperfecta, en las versiones de ubuntu que no son LTS)*:
+
+```bash
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
+```
+
+
+Hay un proceso de seguridad que necesita integrar llaves en el sistema apt:
+
+```bash
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+```
+
+Ahora pueden instalar R:
+
+```bash
+sudo apt update
+sudo apt install r-base r-base-dev -y
+```
+
+## Rstudio, LaTeX y pandoc
+
+### LaTeX
+
+Rstudio es un ambiente de desarrollo para R, LaTeX permite escribir documentos pdf y los archivos de documentos de las funciones, y pandoc es un sistema de conversión de formatos de documentos (markdown, html, pdf, word etc.)
+
+Para instalar LaTeX en Ubuntu linux, o Linux Mint, la solución más completa es:
+
+```bash
+sudo apt install texlive-full
+```
+
+Si tienen un espacio limitado, pueden utilizar:
+
+```bash
+sudo apt install texlive -y
+```
+
+Si utilizan `texlive` en lugar de `texlive-full`, es posible que no tengan todos los paquetes de LaTeX necesarios, pueden referirse a <https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux>.
+
+Anotar, si prefieren no instalar texlive, existe la alternativa de utilizar `tinytex` para tener una instalación minimalista de los elementos de LaTeX que podrían necesitar para rmarkdown, ver <https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html>
+
+### pandoc
+
+
+Para instalar pandoc:
+
+```bash
+sudo apt install pandoc -y
+```
+
+### Rstudio
+
+RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:
+
+**Para Linux Mint 21 y Ubuntu 22.04 Jammy Jellyfish**:
+
+```bash
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.09.1-494-amd64.deb
+sudo apt install ./rstudio-2023.09.1-494-amd64.deb
+```
+
+Para otras versiones, mirar: <https://posit.co/download/rstudio-desktop/>
+
+

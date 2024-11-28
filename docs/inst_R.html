@@ -88,29 +88,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Talleres Biodata 2024: About this site</title>
+  <title>Talleres Biodata 2024: Instalar R</title>
 
-  <meta property="description" itemprop="description" content="Some additional details about the website"/>
+  <meta property="description" itemprop="description" content="Instalación de software para el curso Biodata: R y RStudio"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Talleres Biodata 2024: About this site"/>
+  <meta property="og:title" content="Talleres Biodata 2024: Instalar R"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the website"/>
+  <meta property="og:description" content="Instalación de software para el curso Biodata: R y RStudio"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Talleres Biodata 2024: About this site"/>
-  <meta property="twitter:description" content="Some additional details about the website"/>
+  <meta property="twitter:title" content="Talleres Biodata 2024: Instalar R"/>
+  <meta property="twitter:description" content="Instalación de software para el curso Biodata: R y RStudio"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]},{"type":"character","attributes":{},"value":["Some additional details about the website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Instalar R"]},{"type":"character","attributes":{},"value":["Instalación de software para el curso Biodata: R y RStudio"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]},{"type":"character","attributes":{},"value":["./biodata2024.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2119,7 +2120,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this site","description":"Some additional details about the website","authors":[]}
+{"title":"Instalar R","description":"Instalación de software para el curso Biodata: R y RStudio","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2152,16 +2153,122 @@ Instalación de software
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this site</h1>
+<h1>Instalar R</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Some additional details about the website</p></p>
+<p>Instalación de software para el curso Biodata: R y RStudio</p>
 </div>
 
 
 <div class="d-article">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#windows" id="toc-windows"><span class="toc-section-number">1</span> Windows</a>
+<ul>
+<li><a href="#r-base-y-rtools" id="toc-r-base-y-rtools"><span class="toc-section-number">1.1</span> R (base y Rtools)</a></li>
+<li><a href="#software-complementarios" id="toc-software-complementarios"><span class="toc-section-number">1.2</span> Software complementarios</a>
+<ul>
+<li><a href="#distribución-latex" id="toc-distribución-latex"><span class="toc-section-number">1.2.1</span> Distribución LaTeX</a></li>
+<li><a href="#rstudio" id="toc-rstudio"><span class="toc-section-number">1.2.2</span> Rstudio</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#mac-os" id="toc-mac-os"><span class="toc-section-number">2</span> Mac OS</a>
+<ul>
+<li><a href="#r-compilador-para-r-latex-y-rstudio" id="toc-r-compilador-para-r-latex-y-rstudio"><span class="toc-section-number">2.1</span> R, compilador para R, LaTeX y RStudio</a></li>
+</ul></li>
+<li><a href="#distribuciones-de-linux-ubuntu-y-linux-mint" id="toc-distribuciones-de-linux-ubuntu-y-linux-mint"><span class="toc-section-number">3</span> Distribuciones de linux: Ubuntu y Linux Mint</a>
+<ul>
+<li><a href="#r" id="toc-r"><span class="toc-section-number">3.1</span> R</a></li>
+<li><a href="#rstudio-latex-y-pandoc" id="toc-rstudio-latex-y-pandoc"><span class="toc-section-number">3.2</span> Rstudio, LaTeX y pandoc</a>
+<ul>
+<li><a href="#latex" id="toc-latex"><span class="toc-section-number">3.2.1</span> LaTeX</a></li>
+<li><a href="#pandoc" id="toc-pandoc"><span class="toc-section-number">3.2.2</span> pandoc</a></li>
+<li><a href="#rstudio-1" id="toc-rstudio-1"><span class="toc-section-number">3.2.3</span> Rstudio</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<p>La instalación descrita acá es una instalación completa de R, con los componentes que permiten compilar paquetes con códigos en lenguajes compilados como C o C++, y con la posibilidad de escribir documentos con RMarkdown que permite escribir documentos que integran códigos y resultados de tratamientos en R.</p>
+<h1 data-number="1" id="windows"><span class="header-section-number">1</span> Windows</h1>
+<p>Para utilizar R en Windows, vamos a instalar 4 herramientas principales:</p>
+<ul>
+<li><strong>R base</strong>: es el software base y bruto de programación estadística</li>
+<li><strong>Rtools</strong>: permite “compilar” los códigos escritos en otros lenguajes de programación, es importante tenerlo si queremos instalar paquetes en versiones de desarrollo (por ejemplo desde github)</li>
+<li><strong>MikTeX o tinyTex</strong>: es una distribución de TeX/LaTeX, permite crear archivos de ayuda para las funciones en un paquete R y documentos PDF con el paquete rmarkdown</li>
+<li><strong>Rstudio</strong>: es el ambiente de desarrollo que vamos a utilizar durante el curso. Anotar: RStudio contiene un componente util que se llama <code>pandoc</code>, que permite traducir documentos entre varios formatos (word, markdown, html, latex/pdf etc.). No requiere una instalación suplementaria (se puede, si quieren!), pero se tiene que mencionar como elemento para instalar también.</li>
+</ul>
+<h2 data-number="1.1" id="r-base-y-rtools"><span class="header-section-number">1.1</span> R (base y Rtools)</h2>
+<p>Lo que les aconsejo es:</p>
+<ol type="1">
+<li>desinstalar R y Rstudio en sus computadores para tener un sistema totalmente limpio.</li>
+<li>descargar la ultima versión de R, desde <a href="https://cran.dcc.uchile.cl/bin/windows/" class="uri">https://cran.dcc.uchile.cl/bin/windows/</a>, en el enlace <code>base</code></li>
+<li>descargar la ultima versión de Rtools, desde <a href="https://cran.dcc.uchile.cl/bin/windows/" class="uri">https://cran.dcc.uchile.cl/bin/windows/</a>, en el enlace <code>Rtools</code></li>
+<li>Instalar los programas descargados, primero R y luego Rtools, siguiendo las instrucciones</li>
+</ol>
+<h2 data-number="1.2" id="software-complementarios"><span class="header-section-number">1.2</span> Software complementarios</h2>
+<h3 data-number="1.2.1" id="distribución-latex"><span class="header-section-number">1.2.1</span> Distribución LaTeX</h3>
+<p>Anotar: podemos manejar el 99% de las actividades de los talleres sin LaTeX. Sin embargo, permite escribir documentos pdf con R, con gráficas, códigos y resultados integrados, ¡así que les aconsejo instalar este programa!</p>
+<p>Hay dos soluciones posibles: <em>MikTeX</em>, una distribución de LaTeX completa, o <em>TinyTeX</em>, una pequeña distribución de LaTeX que está soportada por la comunidad que maneja rmarkdown.
+La solución MikTex es más compleja para instalar y para que RStudio, pandoc y rmarkdown la reconozcan al momento de compilar los códigos LaTeX.
+Sin embargo, si piensan utilizar LaTeX en otros contextos que simplemente en los documentos rmarkdown y los archivos de documentación de funciones R, es la solución más adecuada.</p>
+<p>Si eligen la solución MikTex, seguir: <a href="https://miktex.org/howto/install-miktex" class="uri">https://miktex.org/howto/install-miktex</a>
+Tienen que asegurarse que los archivos de ejecución de MikTeX están en el path de Windows (buscar ayuda en google con la palabras “MikTeX rmarkdown path rstudio” puede ser útil).
+Una prueba rapida en Windows 10 me ha permitido averiguar que todo se debería hacer automaticamente, sin una operación particular.</p>
+<p>La solución más simple es utilizar la distribución TinyTeX, que se puede instalar desde el paquete <code>tinytex</code> de R.
+Sin embargo, si utilizan esta solución, pueden esperar después de la instalación de RStudio para manejar todo desde RStudio</p>
+<p>Después de haber instalado Rstudio, instalar el paquete <code>tinytex</code> en Rstudio y seguir las instrucciones en: <a href="https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html</a></p>
+<h3 data-number="1.2.2" id="rstudio"><span class="header-section-number">1.2.2</span> Rstudio</h3>
+<p>RStudio es un ambiente de desarrollo, no es obligatorio utilizarlo, pero simplifica mucho el trabajo con R (y otros lenguajes de programación).
+Anotar: hay muchos movimientos alrededor de la nueva empresa de RStudio (posit) y de quarto, es muy posible que en los próximos años, hayan soluciones nuevas para mejorar el ambiente de desarrollo, no duden en seguir las noticias de <a href="https://posit.co">Posit</a>.</p>
+<p>Seguir las instrucciones en <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a> (el instalador exe de la ultima versión para Windows 10/11 debería funcionar)</p>
+<h1 data-number="2" id="mac-os"><span class="header-section-number">2</span> Mac OS</h1>
+<h2 data-number="2.1" id="r-compilador-para-r-latex-y-rstudio"><span class="header-section-number">2.1</span> R, compilador para R, LaTeX y RStudio</h2>
+<p>Vamos a necesitar poder compilar los paquetes de R para obtener las ultimas versiones, seguir: <a href="https://mac.r-project.org/tools/" class="uri">https://mac.r-project.org/tools/</a> (sobretodo la primera parte con Xcode y el compilador de fortran)</p>
+<p>Parece que la pagina <a href="https://www.reed.edu/data-at-reed/software/R/r_studio.html" class="uri">https://www.reed.edu/data-at-reed/software/R/r_studio.html</a> es un buen recurso para buscar como instalar R Rstudio y los componentes LaTeX de rmarkdown</p>
+<p><a href="https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-macos-high-sierra-e7b5705c9fd" class="uri">https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-macos-high-sierra-e7b5705c9fd</a> parece completo tambien!</p>
+<h1 data-number="3" id="distribuciones-de-linux-ubuntu-y-linux-mint"><span class="header-section-number">3</span> Distribuciones de linux: Ubuntu y Linux Mint</h1>
+<p>Según la distribución de linux, los procesos de instalación son muy diferentes, se pueden reportar a la nota en <a href="./inst_gen.html">este documento</a> para ver cuales son los sistemas operativos (Linux Mint y Ubuntu) y versiones que consideramos acá.</p>
+<h2 data-number="3.1" id="r"><span class="header-section-number">3.1</span> R</h2>
+<p>Voy a reproducir los comandos acá, si quieren entender mejor el proceso, referirse a <a href="https://cran.r-project.org/bin/linux/ubuntu/" class="uri">https://cran.r-project.org/bin/linux/ubuntu/</a> o <a href="https://es.linux-console.net/?p=14068" class="uri">https://es.linux-console.net/?p=14068</a>.
+Para linux mint, pueden tambien referirse a: <a href="https://linuxcapable.com/how-to-install-r-lang-on-linux-mint/" class="uri">https://linuxcapable.com/how-to-install-r-lang-on-linux-mint/</a></p>
+<p>Existe un repositorio dedicado a los paquetes del CRAN (que maneja R y los paquetes de R) para apt.</p>
+<p>Prerequisitos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install software-properties-common dirmngr <span class="at">-y</span></span></code></pre></div>
+<p><strong>Cuidado: si ya tienen los repositorios de paquetes instalados en sus maquinas, hacerlo otra vez puede resultar en errores en los updates del sistema, si no saben si los tienen instalados, ¡me pueden contactar, les explicaré como averiguar!</strong></p>
+<p>Añadir el CRAN como repositorio de paquetes para apt:</p>
+<p><strong>En ubuntu</strong> <em>(notar, eso funciona con todas las versiones LTS: 22.04 y 24.04)</em>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/&quot;</span></span></code></pre></div>
+<p><strong>En Linux Mint 21</strong> <em>(potencialmente puede ser una solución, aunque imperfecta, en las versiones de ubuntu que no son LTS)</em>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/&quot;</span></span></code></pre></div>
+<p>Hay un proceso de seguridad que necesita integrar llaves en el sistema apt:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span></code></pre></div>
+<p>Ahora pueden instalar R:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install r-base r-base-dev <span class="at">-y</span></span></code></pre></div>
+<h2 data-number="3.2" id="rstudio-latex-y-pandoc"><span class="header-section-number">3.2</span> Rstudio, LaTeX y pandoc</h2>
+<h3 data-number="3.2.1" id="latex"><span class="header-section-number">3.2.1</span> LaTeX</h3>
+<p>Rstudio es un ambiente de desarrollo para R, LaTeX permite escribir documentos pdf y los archivos de documentos de las funciones, y pandoc es un sistema de conversión de formatos de documentos (markdown, html, pdf, word etc.)</p>
+<p>Para instalar LaTeX en Ubuntu linux, o Linux Mint, la solución más completa es:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code></pre></div>
+<p>Si tienen un espacio limitado, pueden utilizar:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive <span class="at">-y</span></span></code></pre></div>
+<p>Si utilizan <code>texlive</code> en lugar de <code>texlive-full</code>, es posible que no tengan todos los paquetes de LaTeX necesarios, pueden referirse a <a href="https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux" class="uri">https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux</a>.</p>
+<p>Anotar, si prefieren no instalar texlive, existe la alternativa de utilizar <code>tinytex</code> para tener una instalación minimalista de los elementos de LaTeX que podrían necesitar para rmarkdown, ver <a href="https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html</a></p>
+<h3 data-number="3.2.2" id="pandoc"><span class="header-section-number">3.2.2</span> pandoc</h3>
+<p>Para instalar pandoc:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pandoc <span class="at">-y</span></span></code></pre></div>
+<h3 data-number="3.2.3" id="rstudio-1"><span class="header-section-number">3.2.3</span> Rstudio</h3>
+<p>RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:</p>
+<p><strong>Para Linux Mint 21 y Ubuntu 22.04 Jammy Jellyfish</strong>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.09.1-494-amd64.deb</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./rstudio-2023.09.1-494-amd64.deb</span></code></pre></div>
+<p>Para otras versiones, mirar: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2173,7 +2280,10 @@ Instalación de software
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

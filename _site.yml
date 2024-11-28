@@ -1,12 +1,18 @@
-name: "biodata2024"
-title: "Biodata 2024"
+name: "Biodata 2024"
+title: "Talleres Biodata 2024"
 description: |
-  Biodata 2024
+  Datos de biodiversidad
 output_dir: "docs"
 navbar:
   right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Instalación de software"
+      menu:
+       - text: "Generalidades"
+         href: inst_gen.html
+       - text: "R y RStudio"
+         href: inst_R.html
+       - text: "SQL"
+         href: inst_SQL.html
+       - text: "Software para datos espaciales"
+         href: inst_espac.html
 output: distill::distill_article

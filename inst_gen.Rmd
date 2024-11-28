@@ -1,0 +1,36 @@
+---
+title: "Instalación de software"
+lang: "es_CL"
+description: "Generalidades"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
+---
+
+
+# Requerimientos de software y talleres
+Según los talleres, es importante que instalen varios software en sus maquínas **antes del día del taller**.
+Así podemos resolver los problemas que pueden tomar un poco de tiempo...
+
+Necesidades de instalación de software para los talleres:
+
+| Taller | R | Rstudio | PostgreSQL | SQLite | Postgis | Qgis |
+|--------|---|---------|------------|--------|---------|------|
+| TALLER 1 - Introducción R y SQL (día 1, 13:30) | X | X | X | X |  |  |
+| TALLER 2 – Estándares (día 1, 16:00) | X | X | X |  |  |  |
+| TALLER 5 –  Taxonomía (día 2, 16:00) | X | X | X |  |  |  |
+| TALLER 6 –  Datos Espaciales (día 3, 14:00) | X | X | X | X | X | X |
+
+# Sistemas operativos 
+
+Personalmente, trabajo con Linux (distribución Gentoo).
+Busqué en internet la información que me parecía más pertinente para los sistemas operativos más utilizado (Windows 10 y 11, MacOS 13, 14 y 15, Linux Ubuntu y Linux Mint).
+Pude probar las instrucciones en Ubuntu y Linux Mint, pero no tengo acceso a maquinas con Windows y/o MacOS...
+
+Para linux voy a enfocarme en los paquetes de Ubuntu y Linux Mint con el gestor de paquetes *apt*, considerando que son las distribuciones por las cuales los usuarios usualmente empiezan en el mundo Linux. 
+Si necesitan ayuda para instalar paquetes en otras distribuciones, no duden en contactarme. 
+La información funciona con las ultimas versiones "LTS" de ubuntu (22.04 Jammy Jellyfish y 24.04 Noble Numbat) y las versiones 21 (Vanessa, Vera, Victoria y Virginia) y 22 (Wilma) de Linux Mint.
+Si tienen otra versión, el principio es el mismo y la mayoría de los comandos de apt funcionan igual, excepto los comandos que se refieren directamente a "Jammy", "Noble" o `lsb_release`.

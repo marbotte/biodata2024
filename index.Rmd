@@ -1,8 +1,10 @@
 ---
-title: "Biodata 2024"
+title: "Curso Biodata 2024"
 description: |
-  Welcome to the website. I hope you enjoy it!
-site: distill::distill_website
+  Gestión de bases de datos de biodiversidad
+site: 
+  distill::distill_website:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -16,3 +18,149 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+
+
+Este sitio web presenta el material para los talleres del simposio *Biodata: Gestión de bases de datos de biodiversidad*, organisado por el Instituto de Ecología & Biodiversidad del 9 al 11 de diciembre de 2024, en la Facultad de Ciencias Naturales y Oceanograficas de la Universidad de Concepción (UdeC).
+
+# Descripción del Simposio
+
+El Simposio “Datos de Biodiversidad” es un evento diseñado para reunir a expertos, académicos, profesionales y estudiantes en el campo de la biodiversidad y la evaluación ambiental. 
+
+El objetivo es promover la transferencia de conocimientos en el campo de la informática de la biodiversidad, desarrollados por el Instituto de Ecología y Biodiversidad (IEB) y diversas instituciones colaboradoras, entre ellas la Facultad de Ciencias Naturales y Oceanográficas de la Universidad de Concepción (FCNO), el Instituto Milenio BASE, el centro CAPES, el Data Observatory de Chile y el Instituto Humboldt de Colombia.
+
+De este modo, el simposio busca promover la utilización de estándares unificados y redes de trabajo efectivas para gestionar de manera sostenible la biodiversidad y sus beneficios para la sociedad. Además, este evento busca mostrar una alternativa viable y prometedora de campo laboral en áreas de biodiversidad a los estudiantes de carreras relacionadas con las Ciencias Naturales y las Ciencias Ambientales.
+
+# Objetivos específicos
+
+* **Reunir a Diversos Actores para Fomentar la Transferencia de Conocimientos**: Reunir a expertos, académicos, profesionales y estudiantes para delinear oportunidades de transferencia de conocimientos, con enfoque en sectores públicos y privados.
+* **Promover el Uso de Estándares Comunes en el Manejo de Datos de Biodiversidad**: Fomentar la adopción de estándares comunes para la gestión de datos de biodiversidad, lo que permitirá alinear las expectativas en torno a la gestión sostenible de la biodiversidad y sus beneficios para la sociedad.
+* **Presentar Nature Tech como una Alternativa Laboral**: Mostrar a los estudiantes las diversas oportunidades y proyecciones laborales en el campo de biodiversidad y aplicación de nuevas tecnologías. Se busca mostrar experiencias que inspiren a los estudiantes y los orienten hacia carreras profesionales de este ámbito.
+
+# Contenido
+
+En este sitio web, encontrarán:
+
+* información y contenidos para los talleres siguientes:
+   + TALLER 1 - Levantando bases de datos de biodiversidad - Introducción al uso de R y SQL para el manejo de datos de biodiversidad. (día 1, 13:30)
+   + TALLER 2 – Levantando bases de datos de biodiversidad - Estándares (día 1, 16:00)
+   + TALLER 5 – Levantando bases de datos de biodiversidad - Taxonomía (día 2, 16:00)
+   + TALLER 6 – Herramientas para la gestión de datos de biodiversidad - Datos Espaciales (día 3, 14:00)
+* información sobre la instalación de software para la participación en esos talleres
+
+
+
+# Programa del simposio
+
+**Día 1**:
+
+| Bloque horario | Actividad | Responsables |
+|----------------|-----------|--------------|
+| 08:30 – 09:00 horas | Registro de participantes | Equipo organizador |
+| 09:00 – 09:15 horas | Libreto – Inicio del Simposio Dia 1 | Dra. Marcela Verdugo |
+| 09:15 – 09:25 horas | Palabras de Bienvenida FCNO | Decana Margarita Marchant |
+| 09:25 – 09:35 horas | Palabras Bienvenida IEB | Dr. Anibal Pauchard |
+| 09:35 – 10:15 horas | BIODATA: desde la investigación al desarrollo | Dr. Pablo Guerrero, Dr. Ricardo Segovia |
+| 10:15 – 11:00 horas | Coffee Break, Networking + Stand Consultoras |  |
+| 11:00 – 11:55 horas | Conferencia Magistral 1: “Emprendiendo en biodiversidad” | Antonio Tironi (Ciencia Ambiental) |
+| 11:55 – 12:00 horas | Cierre jornada inaugural | Dra. Marcela Verdugo |
+| 12:00 – 13:30 horas | Tiempo Libre - Break para almuerzo | |
+| 13:30 – 15:30 horas | TALLER 1 - Levantando bases de datos de biodiversidad - Introducción al uso de R y SQL para el manejo de datos de biodiversidad. | Marius Bottin - Instituto Humboldt |
+| 15:30 – 16:00 horas | Coffee Break y Networking | |
+| 16:00 – 17:30 | TALLER 2 – Levantando bases de datos de biodiversidad - Estándares | Marius Bottin - Instituto Humboldt |
+| 17:30 – 17:45 | CIERRE DIA 1 | |
+
+
+**Día 2**:
+
+| Bloque horario | Actividad | Responsables |
+|----------------|-----------|--------------|
+| 08:30 – 09:00 horas | Registro de participantes | Equipo organizador |
+| 09:00 – 09:10 horas | Libreto – Inicio del Simposio Dia 2 | Dra. Marcela Verdugo |
+| 09:15 – 10:15 horas | Conferencia Magistral 2 “Datos de Biodiversidad a Nivel Global” | Dylan Craven, Data Observatory |
+| 10:15 – 10:45 horas | Coffee Break y Networking | |
+| 10:45 – 12:30 horas | TALLER 3 – Herramientas de la nube para un análisis exploratorio de datos ambientales. | Mauricio Caroca, Data Observatory |
+| 12:30 – 14:00 horas | Tiempo Libre - Break para almuerzo | |
+| 14:00 – 15:30 horas | TALLER 4 –Revisiones Sistemáticas y Análisis Bibliométrico en Biodiversidad: Aplicación de PRISMA y bibliometrix en R | César Gonzalez, Universidad Adolfo Ibañez, centro CAPES |
+| 15:30 – 16:00 horas | Coffee Break y Networking | |
+| 16:00 – 17:30 | TALLER 5 – Levantando bases de datos de biodiversidad - Taxonomía | Marius Bottin - Instituto Humboldt |
+| 17:30 – 17:45 | CIERRE DIA 2 | |
+
+**Día 3**:
+
+| Bloque horario | Actividad | Responsables |
+|----------------|-----------|--------------|
+| 08:30 – 09:00 horas | Registro de participantes | Equipo organizador |
+| 09:00 – 09:10 horas | Libreto – Inicio del Simposio Dia 3 | Dra. Marcela Verdugo |
+| 09:15 – 10:15 horas | Conferencia Magistral 3 “Los Desafíos de Chile para la Gestión de la Biodiversidad” | Leisy Amaya, MMA, GBIF Chile |
+| 10:15 – 10:45 horas | Coffee Break y Networking | |
+| 10:45 – 12:30 horas | Conversatorio: Colaboración Estado-Academia-Empresa para alcanzar objetivos de biodiversidad | Leisy Amaya, Carolina Muñoz (eólico), Ricardo Segovia, Cesar Gonzalez, Modera: Marcela Verdugo |
+| 12:30 – 14:00 horas | Tiempo Libre - Break para almuerzo | | 
+| 14:00 – 16:00 horas | TALLER 6 – Herramientas para la gestión de datos de biodiversidad - Datos Espaciales | Marius Bottin - Instituto Humboldt |
+| 16:00 – 17:30 | Entrega de diplomas y cóctel de cierre | Equipo organizador | 
+
+
+
+
+
+
+<!--
+# Programa
+
+En esta semana, los temas que vamos a trabajar se pueden dividir así: 
+
+1. Presentación introductiva: pensar la gestión de los datos de biodiversidad en el entorno cientifico y social actual
+1. Manejar datos en R: entender como filtrar, seleccionar, manejar datos en R
+1. Manejar datos en SQL: consultas simples y avanzadas en SQL, pensar la estructura de una base de datos, modificar y manejar una base de datos SQL
+1. Expresiones regulares en R y SQL: manejar las cadenas de carácter en las bases de datos 
+1. Estructura de la biodiversidad, estructura de los proyectos de investigación y monitoreo, estructura de los datos: ¿como pensarlos juntos?
+1. Taxonomía: manejar datos taxonómicos en R y SQL
+1. Datos espaciales: manejar datos espaciales en Qgis, R, y SQL
+1. El nuevo modelo de los datos de biodiversidad de Chile (presentación por [Julián Cabezas Peña](https://www.juliancabezas.com/))
+1. Herramientas de hacker para los datos de biodiversidad: Github, paquetes R etc.
+1. Proyecto final: un ejemplo aplicado de gestión de los datos
+
+El plan de tiempo que tenemos es:
+
+| Día | Mañana | Tarde |
+|-----|---------|------------|
+| Lunes | Presentación introductiva, empezar las actividades de R | Actividades en R |
+| Martes | SQL, expresiones regulares | SQL, estructuras de la biodiversidad/proyectos/datos |
+| Miercoles | Taxonomía | Datos espaciales |
+| Jueves | Modelo de datos de biodiversidad en Chile | Modelo de datos de biodiversidad en Chile |
+| Viernes | Herramientas de hackers | Proyecto final |
+
+
+
+# Instalación de los software y paquetes
+
+En el curso, vamos a utilizar lo más posible software libre.
+En las paginas siguientes pueden encontrar los enlaces y instrucciones para instalar los software:
+
+* [Windows](./inst_software_windows.html)
+* [Linux](./inst_software_linux.html)
+* [Mac OS](./inst-software_macOS.html)
+
+[Instalar los paquetes R](./inst_paquetes_R.html) Instalaremos los paquetes R juntos durante el curso, al final del curso pondré todos los paquetes en esta pagina para que puedan volver a instalarlos!
+
+# Presentaciones
+
+* [Presentación introductoria del curso](https://docs.google.com/presentation/d/1l-kktBV9cM-4mRmelO9Q10KaTazcKD3NpXsdHmhPIIQ/edit?usp=sharing)
+* [SQL](https://docs.google.com/presentation/d/1HLSBmr53_AnhHta0ptoaDzR01M9sY8BrGAxDpM1r8zk/edit?usp=sharing)
+
+# Actividades
+
+
+# Datos
+
+Los datos necesarios para los ejercicios y actividades están disponibles en [Google drive](https://drive.google.com/drive/folders/1hnp4NwjEXu4uNVZYKagMY5CNkEX6XNg2?usp=drive_link). Para poder acceder, por favor llenar este [formulario](https://docs.google.com/forms/d/e/1FAIpQLScM2bj_UTcHs4sEzfuQDJAdn-Kxs5vUYs7Y97fLiZBHxps5mA/viewform?usp=sf_link).
+
+# Documentación
+
+# Soluciones de los ejercicios
+
+Si quieren que los ejercicios sean útiles para desarrollar sus capacidades de programación en R y SQL, es mejor enfrentarse a las dificultades y buscar soluciones por sí mismo.
+Sin embargo, es muy probable que no tengamos el tiempo para resolver todos los ejercicios, acá encontrarán las soluciones que propongo yo.
+Anotar: en programación, existen varios caminos para obtener el mismo resultado, no descarten su propia solución por no ser igual a la solución que proponga...
+
+* [Solución de la actividad manejar datos en R](act_R_intro_corr.html)
+-->
