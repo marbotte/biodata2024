@@ -2189,6 +2189,7 @@ Instalación de software
 <li><a href="#rstudio-1" id="toc-rstudio-1"><span class="toc-section-number">3.2.3</span> Rstudio</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#paquetes-r" id="toc-paquetes-r"><span class="toc-section-number">4</span> Paquetes R</a></li>
 </ul>
 </nav>
 </div>
@@ -2242,36 +2243,36 @@ Para linux mint, pueden tambien referirse a: <a href="https://linuxcapable.com/h
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install software-properties-common dirmngr <span class="at">-y</span></span></code></pre></div>
 <p><strong>Cuidado: si ya tienen los repositorios de paquetes instalados en sus maquinas, hacerlo otra vez puede resultar en errores en los updates del sistema, si no saben si los tienen instalados, ¡me pueden contactar, les explicaré como averiguar!</strong></p>
 <p>Añadir el CRAN como repositorio de paquetes para apt:</p>
-<p><strong>En ubuntu</strong> <em>(notar, eso funciona con todas las versiones LTS: 22.04 y 24.04)</em>:</p>
+<p><strong>En ubuntu</strong> <em>(notar, eso funciona con todas las versiones LTS: 20.04, 22.04 y 24.04)</em>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/&quot;</span></span></code></pre></div>
 <p><strong>En Linux Mint 21</strong> <em>(potencialmente puede ser una solución, aunque imperfecta, en las versiones de ubuntu que no son LTS)</em>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/&quot;</span></span></code></pre></div>
+<p><strong>En Linux Mint 22</strong>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu noble-cran40/&quot;</span></span></code></pre></div>
 <p>Hay un proceso de seguridad que necesita integrar llaves en el sistema apt:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span></code></pre></div>
 <p>Ahora pueden instalar R:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install r-base r-base-dev <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install r-base r-base-dev <span class="at">-y</span></span></code></pre></div>
 <h2 data-number="3.2" id="rstudio-latex-y-pandoc"><span class="header-section-number">3.2</span> Rstudio, LaTeX y pandoc</h2>
 <h3 data-number="3.2.1" id="latex"><span class="header-section-number">3.2.1</span> LaTeX</h3>
 <p>Rstudio es un ambiente de desarrollo para R, LaTeX permite escribir documentos pdf y los archivos de documentos de las funciones, y pandoc es un sistema de conversión de formatos de documentos (markdown, html, pdf, word etc.)</p>
 <p>Para instalar LaTeX en Ubuntu linux, o Linux Mint, la solución más completa es:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code></pre></div>
 <p>Si tienen un espacio limitado, pueden utilizar:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive <span class="at">-y</span></span></code></pre></div>
 <p>Si utilizan <code>texlive</code> en lugar de <code>texlive-full</code>, es posible que no tengan todos los paquetes de LaTeX necesarios, pueden referirse a <a href="https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux" class="uri">https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux</a>.</p>
 <p>Anotar, si prefieren no instalar texlive, existe la alternativa de utilizar <code>tinytex</code> para tener una instalación minimalista de los elementos de LaTeX que podrían necesitar para rmarkdown, ver <a href="https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html</a></p>
 <h3 data-number="3.2.2" id="pandoc"><span class="header-section-number">3.2.2</span> pandoc</h3>
 <p>Para instalar pandoc:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pandoc <span class="at">-y</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pandoc <span class="at">-y</span></span></code></pre></div>
 <h3 data-number="3.2.3" id="rstudio-1"><span class="header-section-number">3.2.3</span> Rstudio</h3>
 <p>RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./rstudio-2023.09.1-494-amd64.deb</span></code></pre></div>
-<p>Para otras versiones, mirar: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
-<p><a href="https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb" class="uri">https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb</a>
-# Paquetes R</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb <span class="at">-P</span> /tmp/</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install /tmp/rstudio-2024.09.1-394-amd64.deb</span></code></pre></div>
+<h1 data-number="4" id="paquetes-r"><span class="header-section-number">4</span> Paquetes R</h1>
 <p>No tengo todavía una lista completa de todos los paquetes R que vamos a necesitar, por favor, volver a esa pagina el 6 de Diciembre de 2024 para seguir las instrucciones de instalación de los paquetes.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

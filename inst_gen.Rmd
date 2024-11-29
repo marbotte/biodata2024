@@ -34,3 +34,11 @@ Para linux voy a enfocarme en los paquetes de Ubuntu y Linux Mint con el gestor 
 Si necesitan ayuda para instalar paquetes en otras distribuciones, no duden en contactarme. 
 La información funciona con las ultimas versiones "LTS" de ubuntu (22.04 Jammy Jellyfish y 24.04 Noble Numbat) y las versiones 21 (Vanessa, Vera, Victoria y Virginia) y 22 (Wilma) de Linux Mint.
 Si tienen otra versión, el principio es el mismo y la mayoría de los comandos de apt funcionan igual, excepto los comandos que se refieren directamente a "Jammy", "Noble" o `lsb_release`.
+
+
+Si utilizas linux y no sabes cual es tu versión, puedes buscar la información de sistema en la configuración o abrir un terminal y enviar este comando:
+
+```bash
+cat /etc/os-release
+```
+

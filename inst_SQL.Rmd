@@ -99,7 +99,7 @@ sudo apt update
 sudo apt install dbeaver-ce -y
 ```
 
-Si quieren, pueden instalar una interfaz especifica para PostgreSQL:
+Si quieren, pueden instalar una interfaz especifica para PostgreSQL (ver <https://www.pgadmin.org/>):
 
 ```bash
 sudo apt install pgAdmin4

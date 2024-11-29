@@ -76,8 +76,6 @@ Parece que la pagina <https://www.reed.edu/data-at-reed/software/R/r_studio.html
 Según la distribución de linux, los procesos de instalación son muy diferentes, se pueden reportar a la nota en [este documento](./inst_gen.html) para ver cuales son los sistemas operativos (Linux Mint y Ubuntu) y versiones que consideramos acá.
 
 
-
-
 ## R
 
 Voy a reproducir los comandos acá, si quieren entender mejor el proceso, referirse a <https://cran.r-project.org/bin/linux/ubuntu/> o <https://es.linux-console.net/?p=14068>.
@@ -100,7 +98,7 @@ sudo apt install software-properties-common dirmngr -y
 
 Añadir el CRAN como repositorio de paquetes para apt:
 
-**En ubuntu** *(notar, eso funciona con todas las versiones LTS: 22.04 y 24.04)*:
+**En ubuntu** *(notar, eso funciona con todas las versiones LTS: 20.04, 22.04 y 24.04)*:
 
 ```bash
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
@@ -110,6 +108,11 @@ sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_
 
 ```bash
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
+```
+
+**En Linux Mint 22**:
+```bash
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu noble-cran40/"
 ```
 
 
@@ -162,13 +165,10 @@ sudo apt install pandoc -y
 RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:
 
 ```bash
-wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb
-sudo apt install ./rstudio-2023.09.1-494-amd64.deb
+sudo wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb -P /tmp/
+sudo apt install /tmp/rstudio-2024.09.1-394-amd64.deb
 ```
 
-Para otras versiones, mirar: <https://posit.co/download/rstudio-desktop/>
-
-https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb
 # Paquetes R
 
 No tengo todavía una lista completa de todos los paquetes R que vamos a necesitar, por favor, volver a esa pagina el 6 de Diciembre de 2024 para seguir las instrucciones de instalación de los paquetes.
