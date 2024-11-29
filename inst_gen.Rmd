@@ -17,7 +17,7 @@ Así podemos resolver los problemas que pueden tomar un poco de tiempo...
 
 Necesidades de instalación de software para los talleres:
 
-| Taller | R | Rstudio | PostgreSQL | SQLite | Postgis | Qgis |
+| Taller | [R](./inst_R.html) | [Rstudio](./inst_R.html) | [PostgreSQL](./inst_SQL.html) | [SQLite](./inst_SQL.html) | [Postgis](./inst_.html) | Qgis |
 |--------|---|---------|------------|--------|---------|------|
 | TALLER 1 - Introducción R y SQL (día 1, 13:30) | X | X | X | X |  |  |
 | TALLER 2 – Estándares (día 1, 16:00) | X | X | X |  |  |  |

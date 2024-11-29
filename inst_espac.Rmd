@@ -1,0 +1,8 @@
+
+
+## Qgis
+
+Quantum gis es un sistema de gestión de información geográfica libre.
+
+Lo pueden descargar y instalar desde la pagina: <https://www.qgis.org/es/site/forusers/alldownloads.html>.
+Les aconsejo instalar la versión estable "Lanzamiento de Largo Plazo" ("Long term Release", versión actual: 3.34.13 Prizren LTR).

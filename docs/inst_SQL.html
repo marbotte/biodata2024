@@ -88,30 +88,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Talleres Biodata 2024: Instalar R</title>
+  <title>Talleres Biodata 2024: Instalar software para SQL</title>
 
-  <meta property="description" itemprop="description" content="Instalación de software para el curso Biodata: R y RStudio"/>
+  <meta property="description" itemprop="description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Talleres Biodata 2024: Instalar R"/>
+  <meta property="og:title" content="Talleres Biodata 2024: Instalar software para SQL"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Instalación de software para el curso Biodata: R y RStudio"/>
+  <meta property="og:description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Talleres Biodata 2024: Instalar R"/>
-  <meta property="twitter:description" content="Instalación de software para el curso Biodata: R y RStudio"/>
+  <meta property="twitter:title" content="Talleres Biodata 2024: Instalar software para SQL"/>
+  <meta property="twitter:description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
 
   <!--/radix_placeholder_meta_tags-->
   
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Instalar R"]},{"type":"character","attributes":{},"value":["Instalación de software para el curso Biodata: R y RStudio"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]},{"type":"character","attributes":{},"value":["./biodata2024.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Instalar software para SQL"]},{"type":"character","attributes":{},"value":["Instalación de software para el curso Biodata: Bases de datos SQL"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]},{"type":"character","attributes":{},"value":["./biodata2024.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2120,7 +2120,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Instalar R","description":"Instalación de software para el curso Biodata: R y RStudio","authors":[]}
+{"title":"Instalar software para SQL","description":"Instalación de software para el curso Biodata: Bases de datos SQL","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2153,11 +2153,11 @@ Instalación de software
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Instalar R</h1>
+<h1>Instalar software para SQL</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>Instalación de software para el curso Biodata: R y RStudio</p>
+<p>Instalación de software para el curso Biodata: Bases de datos SQL</p>
 </div>
 
 
@@ -2168,110 +2168,88 @@ Instalación de software
 <ul>
 <li><a href="#windows" id="toc-windows"><span class="toc-section-number">1</span> Windows</a>
 <ul>
-<li><a href="#r-base-y-rtools" id="toc-r-base-y-rtools"><span class="toc-section-number">1.1</span> R (base y Rtools)</a></li>
-<li><a href="#software-complementarios" id="toc-software-complementarios"><span class="toc-section-number">1.2</span> Software complementarios</a>
-<ul>
-<li><a href="#distribución-latex" id="toc-distribución-latex"><span class="toc-section-number">1.2.1</span> Distribución LaTeX</a></li>
-<li><a href="#rstudio" id="toc-rstudio"><span class="toc-section-number">1.2.2</span> Rstudio</a></li>
+<li><a href="#postgresql-y-postgis" id="toc-postgresql-y-postgis"><span class="toc-section-number">1.1</span> PostgreSQL y postgis</a></li>
+<li><a href="#sqlite-no-hay-nada-obligatorio-que-instalar" id="toc-sqlite-no-hay-nada-obligatorio-que-instalar"><span class="toc-section-number">1.2</span> SQLite (no hay nada obligatorio que instalar!)</a></li>
+<li><a href="#interfaces-para-postgresql-y-sqlite" id="toc-interfaces-para-postgresql-y-sqlite"><span class="toc-section-number">1.3</span> Interfaces para PostgreSQL y SQLite</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#mac-os" id="toc-mac-os"><span class="toc-section-number">2</span> Mac OS</a>
+<li><a href="#macos" id="toc-macos"><span class="toc-section-number">2</span> MacOS</a>
 <ul>
-<li><a href="#r-compilador-para-r-latex-y-rstudio" id="toc-r-compilador-para-r-latex-y-rstudio"><span class="toc-section-number">2.1</span> R, compilador para R, LaTeX y RStudio</a></li>
+<li><a href="#postgresql" id="toc-postgresql"><span class="toc-section-number">2.1</span> PostgreSQL</a></li>
+<li><a href="#sqlite" id="toc-sqlite"><span class="toc-section-number">2.2</span> SQLite</a></li>
+<li><a href="#interfaces" id="toc-interfaces"><span class="toc-section-number">2.3</span> Interfaces</a></li>
 </ul></li>
-<li><a href="#distribuciones-de-linux-ubuntu-y-linux-mint" id="toc-distribuciones-de-linux-ubuntu-y-linux-mint"><span class="toc-section-number">3</span> Distribuciones de linux: Ubuntu y Linux Mint</a>
+<li><a href="#linux-mint-y-ubuntu" id="toc-linux-mint-y-ubuntu"><span class="toc-section-number">3</span> Linux Mint y ubuntu</a>
 <ul>
-<li><a href="#r" id="toc-r"><span class="toc-section-number">3.1</span> R</a></li>
-<li><a href="#rstudio-latex-y-pandoc" id="toc-rstudio-latex-y-pandoc"><span class="toc-section-number">3.2</span> Rstudio, LaTeX y pandoc</a>
-<ul>
-<li><a href="#latex" id="toc-latex"><span class="toc-section-number">3.2.1</span> LaTeX</a></li>
-<li><a href="#pandoc" id="toc-pandoc"><span class="toc-section-number">3.2.2</span> pandoc</a></li>
-<li><a href="#rstudio-1" id="toc-rstudio-1"><span class="toc-section-number">3.2.3</span> Rstudio</a></li>
-</ul></li>
+<li><a href="#postgresql-postgis-sqlite-y-spatialite" id="toc-postgresql-postgis-sqlite-y-spatialite"><span class="toc-section-number">3.1</span> PostgreSQL, postgis, SQLite y spatialite</a></li>
+<li><a href="#interfaces-para-sql" id="toc-interfaces-para-sql"><span class="toc-section-number">3.2</span> Interfaces para SQL</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<p>La instalación descrita acá es una instalación completa de R, con los componentes que permiten compilar paquetes con códigos en lenguajes compilados como C o C++, y con la posibilidad de escribir documentos con RMarkdown que permite escribir documentos que integran códigos y resultados de tratamientos en R.</p>
-<p><strong>Anotar: todavía no tengo la lista completa de los paquetes R que vamos a necesitar para las actividades de los talleres, por favor volver a revisar esta pagina para las instrucciones de instalación de los paquetes el 6 de diciembre</strong></p>
+<p>La instalación descrita acá es una instalación de 2 sistemas opensource de gestión de bases de datos relacionales: <code>PostgreSQL</code> (<a href="https://www.postgresql.org/" class="uri">https://www.postgresql.org/</a>) y <code>SQLite</code>(<a href="https://www.sqlite.org/" class="uri">https://www.sqlite.org/</a>).</p>
+<p><code>PostgreSQL</code> es un motor de bases de datos que funciona con un modelo clásico servidor/cliente.
+Es decir que los software que permiten hacer consultas en una base de datos están instalados en el cliente, y se pueden conectar a los servidores para enviar las comandas de consulta.
+Cuando creamos una base de datos local, el sistema considera que se conecta a un servidor “localhost” que corresponde al computador local.
+Por esa razón es importante instalar ambas partes “cliente” y “servidor” para poder trabajar con bases de datos locales y accesibles por internet.</p>
+<p><code>SQLite</code> no funciona con un modelo servidor/cliente. Se trata de construir bases de datos en un archivo local, sin poder conectarse de manera remota a las bases de datos.
+La idea es tener un sistema ligero de manejo de bases de datos y aprovechar el uso del lenguaje <code>SQL</code> de manera local en un computador.</p>
 <h1 data-number="1" id="windows"><span class="header-section-number">1</span> Windows</h1>
-<p>Para utilizar R en Windows, vamos a instalar 4 herramientas principales:</p>
+<h2 data-number="1.1" id="postgresql-y-postgis"><span class="header-section-number">1.1</span> PostgreSQL y postgis</h2>
+<p>Para utilizar PostgreSQL en Windows, vamos a instalar los elementos siguientes:</p>
 <ul>
-<li><strong>R base</strong>: es el software base y bruto de programación estadística</li>
-<li><strong>Rtools</strong>: permite “compilar” los códigos escritos en otros lenguajes de programación, es importante tenerlo si queremos instalar paquetes en versiones de desarrollo (por ejemplo desde github)</li>
-<li><strong>MikTeX o tinyTex</strong>: es una distribución de TeX/LaTeX, permite crear archivos de ayuda para las funciones en un paquete R y documentos PDF con el paquete rmarkdown</li>
-<li><strong>Rstudio</strong>: es el ambiente de desarrollo que vamos a utilizar durante el curso. Anotar: RStudio contiene un componente util que se llama <code>pandoc</code>, que permite traducir documentos entre varios formatos (word, markdown, html, latex/pdf etc.). No requiere una instalación suplementaria (se puede, si quieren!), pero se tiene que mencionar como elemento para instalar también.</li>
+<li>PostgreSQL, el sistema de gestión de base de datos</li>
+<li>Postgis la extensión espacial del sistema PostgreSQL</li>
 </ul>
-<h2 data-number="1.1" id="r-base-y-rtools"><span class="header-section-number">1.1</span> R (base y Rtools)</h2>
-<p>Lo que les aconsejo es:</p>
+<p>Para instalar esos elementos en Windows:</p>
 <ol type="1">
-<li>desinstalar R y Rstudio en sus computadores para tener un sistema totalmente limpio.</li>
-<li>descargar la ultima versión de R, desde <a href="https://cran.dcc.uchile.cl/bin/windows/" class="uri">https://cran.dcc.uchile.cl/bin/windows/</a>, en el enlace <code>base</code></li>
-<li>descargar la ultima versión de Rtools, desde <a href="https://cran.dcc.uchile.cl/bin/windows/" class="uri">https://cran.dcc.uchile.cl/bin/windows/</a>, en el enlace <code>Rtools</code></li>
-<li>Instalar los programas descargados, primero R y luego Rtools, siguiendo las instrucciones</li>
+<li>Descargar PostgreSQL desde la pagina: <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads" class="uri">https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</a>. Les aconsejo instalar la versión 16, si está disponible en su versión de Windows. Desde la versión 11, todas deberían ser suficientes para lo que vayamos a hacer en los talleres…</li>
+<li>Instalarla siguiendo las instrucciones. El archivo de ejecución debería proponer los elementos siguientes:</li>
 </ol>
-<h2 data-number="1.2" id="software-complementarios"><span class="header-section-number">1.2</span> Software complementarios</h2>
-<h3 data-number="1.2.1" id="distribución-latex"><span class="header-section-number">1.2.1</span> Distribución LaTeX</h3>
-<p>Anotar: podemos manejar el 99% de las actividades de los talleres sin LaTeX. Sin embargo, permite escribir documentos pdf con R, con gráficas, códigos y resultados integrados, ¡así que les aconsejo instalar este programa!</p>
-<p>Hay dos soluciones posibles: <em>MikTeX</em>, una distribución de LaTeX completa, o <em>TinyTeX</em>, una pequeña distribución de LaTeX que está soportada por la comunidad que maneja rmarkdown.
-La solución MikTex es más compleja para instalar y para que RStudio, pandoc y rmarkdown la reconozcan al momento de compilar los códigos LaTeX.
-Sin embargo, si piensan utilizar LaTeX en otros contextos que simplemente en los documentos rmarkdown y los archivos de documentación de funciones R, es la solución más adecuada.</p>
-<p>Si eligen la solución MikTex, seguir: <a href="https://miktex.org/howto/install-miktex" class="uri">https://miktex.org/howto/install-miktex</a>
-Tienen que asegurarse que los archivos de ejecución de MikTeX están en el path de Windows (buscar ayuda en google con la palabras “MikTeX rmarkdown path rstudio” puede ser útil).
-Una prueba rapida en Windows 10 me ha permitido averiguar que todo se debería hacer automaticamente, sin una operación particular.</p>
-<p>La solución más simple es utilizar la distribución TinyTeX, que se puede instalar desde el paquete <code>tinytex</code> de R.
-Sin embargo, si utilizan esta solución, pueden esperar después de la instalación de RStudio para manejar todo desde RStudio</p>
-<p>Después de haber instalado Rstudio, instalar el paquete <code>tinytex</code> en Rstudio y seguir las instrucciones en: <a href="https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html</a></p>
-<h3 data-number="1.2.2" id="rstudio"><span class="header-section-number">1.2.2</span> Rstudio</h3>
-<p>RStudio es un ambiente de desarrollo, no es obligatorio utilizarlo, pero simplifica mucho el trabajo con R (y otros lenguajes de programación).
-Anotar: hay muchos movimientos alrededor de la nueva empresa de RStudio (posit) y de quarto, es muy posible que en los próximos años, hayan soluciones nuevas para mejorar el ambiente de desarrollo, no duden en seguir las noticias de <a href="https://posit.co">Posit</a>.</p>
-<p>Seguir las instrucciones en <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a> (el instalador exe de la ultima versión para Windows 10/11 debería funcionar)</p>
-<h1 data-number="2" id="mac-os"><span class="header-section-number">2</span> Mac OS</h1>
-<h2 data-number="2.1" id="r-compilador-para-r-latex-y-rstudio"><span class="header-section-number">2.1</span> R, compilador para R, LaTeX y RStudio</h2>
-<p>Vamos a necesitar poder compilar los paquetes de R para obtener las ultimas versiones, seguir: <a href="https://mac.r-project.org/tools/" class="uri">https://mac.r-project.org/tools/</a> (sobretodo la primera parte con Xcode y el compilador de fortran)</p>
-<p>Parece que la pagina <a href="https://www.reed.edu/data-at-reed/software/R/r_studio.html" class="uri">https://www.reed.edu/data-at-reed/software/R/r_studio.html</a> es un buen recurso para buscar como instalar R Rstudio y los componentes LaTeX de rmarkdown</p>
-<p><a href="https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-macos-high-sierra-e7b5705c9fd" class="uri">https://medium.com/@sorenlind/create-pdf-reports-using-r-r-markdown-latex-and-knitr-on-macos-high-sierra-e7b5705c9fd</a> parece completo tambien!</p>
-<h1 data-number="3" id="distribuciones-de-linux-ubuntu-y-linux-mint"><span class="header-section-number">3</span> Distribuciones de linux: Ubuntu y Linux Mint</h1>
-<p>Según la distribución de linux, los procesos de instalación son muy diferentes, se pueden reportar a la nota en <a href="./inst_gen.html">este documento</a> para ver cuales son los sistemas operativos (Linux Mint y Ubuntu) y versiones que consideramos acá.</p>
-<h2 data-number="3.1" id="r"><span class="header-section-number">3.1</span> R</h2>
-<p>Voy a reproducir los comandos acá, si quieren entender mejor el proceso, referirse a <a href="https://cran.r-project.org/bin/linux/ubuntu/" class="uri">https://cran.r-project.org/bin/linux/ubuntu/</a> o <a href="https://es.linux-console.net/?p=14068" class="uri">https://es.linux-console.net/?p=14068</a>.
-Para linux mint, pueden tambien referirse a: <a href="https://linuxcapable.com/how-to-install-r-lang-on-linux-mint/" class="uri">https://linuxcapable.com/how-to-install-r-lang-on-linux-mint/</a></p>
-<p>Existe un repositorio dedicado a los paquetes del CRAN (que maneja R y los paquetes de R) para apt.</p>
-<p>Prerequisitos:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install software-properties-common dirmngr <span class="at">-y</span></span></code></pre></div>
-<p><strong>Cuidado: si ya tienen los repositorios de paquetes instalados en sus maquinas, hacerlo otra vez puede resultar en errores en los updates del sistema, si no saben si los tienen instalados, ¡me pueden contactar, les explicaré como averiguar!</strong></p>
-<p>Añadir el CRAN como repositorio de paquetes para apt:</p>
-<p><strong>En ubuntu</strong> <em>(notar, eso funciona con todas las versiones LTS: 22.04 y 24.04)</em>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/&quot;</span></span></code></pre></div>
-<p><strong>En Linux Mint 21</strong> <em>(potencialmente puede ser una solución, aunque imperfecta, en las versiones de ubuntu que no son LTS)</em>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">&quot;deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/&quot;</span></span></code></pre></div>
-<p>Hay un proceso de seguridad que necesita integrar llaves en el sistema apt:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="kw">|</span> <span class="fu">sudo</span> tee <span class="at">-a</span> /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc</span></code></pre></div>
-<p>Ahora pueden instalar R:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install r-base r-base-dev <span class="at">-y</span></span></code></pre></div>
-<h2 data-number="3.2" id="rstudio-latex-y-pandoc"><span class="header-section-number">3.2</span> Rstudio, LaTeX y pandoc</h2>
-<h3 data-number="3.2.1" id="latex"><span class="header-section-number">3.2.1</span> LaTeX</h3>
-<p>Rstudio es un ambiente de desarrollo para R, LaTeX permite escribir documentos pdf y los archivos de documentos de las funciones, y pandoc es un sistema de conversión de formatos de documentos (markdown, html, pdf, word etc.)</p>
-<p>Para instalar LaTeX en Ubuntu linux, o Linux Mint, la solución más completa es:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive-full</span></code></pre></div>
-<p>Si tienen un espacio limitado, pueden utilizar:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install texlive <span class="at">-y</span></span></code></pre></div>
-<p>Si utilizan <code>texlive</code> en lugar de <code>texlive-full</code>, es posible que no tengan todos los paquetes de LaTeX necesarios, pueden referirse a <a href="https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux" class="uri">https://linuxconfig.org/how-to-install-latex-on-ubuntu-22-04-jammy-jellyfish-linux</a>.</p>
-<p>Anotar, si prefieren no instalar texlive, existe la alternativa de utilizar <code>tinytex</code> para tener una instalación minimalista de los elementos de LaTeX que podrían necesitar para rmarkdown, ver <a href="https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/install-latex.html</a></p>
-<h3 data-number="3.2.2" id="pandoc"><span class="header-section-number">3.2.2</span> pandoc</h3>
-<p>Para instalar pandoc:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pandoc <span class="at">-y</span></span></code></pre></div>
-<h3 data-number="3.2.3" id="rstudio-1"><span class="header-section-number">3.2.3</span> Rstudio</h3>
-<p>RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install ./rstudio-2023.09.1-494-amd64.deb</span></code></pre></div>
-<p>Para otras versiones, mirar: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
-<p><a href="https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb" class="uri">https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb</a>
-# Paquetes R</p>
-<p>No tengo todavía una lista completa de todos los paquetes R que vamos a necesitar, por favor, volver a esa pagina el 6 de Diciembre de 2024 para seguir las instrucciones de instalación de los paquetes.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<ul>
+<li>PostgreSQL Server: Obligatorio</li>
+<li>pgAdmin4: (facultativo) es un software para poder interactuar directamente con las bases de datos de PostgreSQL. Es una buena interfaz para PostgreSQL, vale la pena instalarlo si tienen el espacio suficiente</li>
+<li>StackBuilder (obligatorio): nos va a permitir instalar postgis después</li>
+<li>Command Line Tools: (facultativo) no estoy seguro que vayamos a utilizar esas herramientas en el curso, pero es relativamente ligero, y siempre es útil, les aconsejo instalarlo</li>
+</ul>
+<ol start="3" type="1">
+<li>Al final de la instalación de PostgreSQL, una nueva ventana va a abrirse con la ejecución de StackBuilder, seleccionar la base local. En “Spatial extensions” seleccionar Postgis y seguir con el proceso de instalación</li>
+</ol>
+<h2 data-number="1.2" id="sqlite-no-hay-nada-obligatorio-que-instalar"><span class="header-section-number">1.2</span> SQLite (no hay nada obligatorio que instalar!)</h2>
+<p>SQLite es un motor de gestión de base de datos muy ligero y muy practico.
+No funciona en un modelo cliente/servidor, las bases de datos SQLite están contenidas en un archivo y se consultan directamente, de manera local.</p>
+<p>La instalación de SQLite en Windows simplemente consiste en descargar unos archivos en un zip y ponerlos en el path de la maquina.
+Este proceso es tan simple que el paquete R que permite interactuar con las bases de datos SQLite contiene un motor SQLite completo.
+Para interactuar con las bases de datos SQLite y sus elementos espaciales en QGIS, no se necesita ninguna instalación tampoco, QGIS contiene de manera nativa todos los elementos utiles.</p>
+<p>Sin embargo, se puede instalar SQLite para interactuar con SQLite sin pasar por R, QGIS ni DBeaver. Si quieren hacerlo, la pagina <a href="https://www.sqlite.org/index.html" class="uri">https://www.sqlite.org/index.html</a> contiene toda la documentación y los enlaces de descarga</p>
+<h2 data-number="1.3" id="interfaces-para-postgresql-y-sqlite"><span class="header-section-number">1.3</span> Interfaces para PostgreSQL y SQLite</h2>
+<p>Existen varios software para interactuar con las bases de datos en SQL.
+Uno de los más fáciles es DBeaver.
+Nos permitirá conectarnos y interactuar con las bases de datos en PostgreSQL y SQLite</p>
+<p>Ir a <a href="https://dbeaver.io/download/" class="uri">https://dbeaver.io/download/</a>, descargar y instalar DBeaver Community edition (versión actual: 24.2.5) para Windows.</p>
+<h1 data-number="2" id="macos"><span class="header-section-number">2</span> MacOS</h1>
+<h2 data-number="2.1" id="postgresql"><span class="header-section-number">2.1</span> PostgreSQL</h2>
+<p>Vamos a necesitar PostgreSQL y postgis (su extensión espacial).</p>
+<p>Parece que la aplicación <a href="https://postgresapp.com/">postgres.app</a> contiene todo lo que necesitamos</p>
+<p>Si quieren otras alternativas de instalación en MacOS, pueden referirse a la pagina : <a href="https://www.postgresql.org/download/macosx/" class="uri">https://www.postgresql.org/download/macosx/</a></p>
+<h2 data-number="2.2" id="sqlite"><span class="header-section-number">2.2</span> SQLite</h2>
+<p>Parece que para instalar spatialite, la extensión espacial de SQLite la mejor solución es brew (<a href="https://medium.com/@carusot42/installing-and-loading-spatialite-on-macos-28bf677f0436" class="uri">https://medium.com/@carusot42/installing-and-loading-spatialite-on-macos-28bf677f0436</a>).</p>
+<p>Ahora bien, no les puedo asegurar que sea util instalarla… En Windows me dí cuenta que no era muy útil porque los software que íbamos a utilizar como interfaz ya tenían encapsulado SQLite y spatiaLite, así que tal vez, lo más practico es que no lo instalen y que miremos si funciona juntos (de todas formas, no es pesado instalar esos programas si los necesitamos)</p>
+<h2 data-number="2.3" id="interfaces"><span class="header-section-number">2.3</span> Interfaces</h2>
+<p>Vamos a utilizar DBeaver, que es disponible como dmg en <a href="https://dbeaver.io/download/" class="uri">https://dbeaver.io/download/</a></p>
+<h1 data-number="3" id="linux-mint-y-ubuntu"><span class="header-section-number">3</span> Linux Mint y ubuntu</h1>
+<h2 data-number="3.1" id="postgresql-postgis-sqlite-y-spatialite"><span class="header-section-number">3.1</span> PostgreSQL, postgis, SQLite y spatialite</h2>
+<p>Para instalar todos los paquetes SQL que vamos a necesitar (eso es valido el 1 de noviembre de 2022):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install postgresql postgresql-contrib postgis postgresql-14-postgis-3 sqlite3 libsqlite3-mod-spatialite <span class="at">-y</span></span></code></pre></div>
+<h2 data-number="3.2" id="interfaces-para-sql"><span class="header-section-number">3.2</span> Interfaces para SQL</h2>
+<p>Vamos a utilizar DBeaver.
+Como para R, tenemos que instalar un repositorio particular para DBeaver:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://dbeaver.io/debs/dbeaver.gpg.key <span class="kw">|</span> <span class="fu">sudo</span> gpg <span class="at">--dearmor</span> <span class="at">-o</span> /etc/apt/trusted.gpg.d/dbeaver.gpg</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb https://dbeaver.io/debs/dbeaver-ce /&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/dbeaver.list</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install dbeaver-ce <span class="at">-y</span></span></code></pre></div>
+<p>Si quieren, pueden instalar una interfaz especifica para PostgreSQL:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pgAdmin4</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

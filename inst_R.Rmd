@@ -11,6 +11,7 @@ bibliography: "./biodata2024.bib"
 
 La instalación descrita acá es una instalación completa de R, con los componentes que permiten compilar paquetes con códigos en lenguajes compilados como C o C++, y con la posibilidad de escribir documentos con RMarkdown que permite escribir documentos que integran códigos y resultados de tratamientos en R.
 
+**Anotar: todavía no tengo la lista completa de los paquetes R que vamos a necesitar para las actividades de los talleres, por favor volver a revisar esta pagina para las instrucciones de instalación de los paquetes el 6 de diciembre**
 
 # Windows
 
@@ -160,13 +161,14 @@ sudo apt install pandoc -y
 
 RStudio no está en los repositorios apt para ubuntu, tienen que descargarlo y instalarlo:
 
-**Para Linux Mint 21 y Ubuntu 22.04 Jammy Jellyfish**:
-
 ```bash
-wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.09.1-494-amd64.deb
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb
 sudo apt install ./rstudio-2023.09.1-494-amd64.deb
 ```
 
 Para otras versiones, mirar: <https://posit.co/download/rstudio-desktop/>
 
+https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.09.1-394-amd64.deb
+# Paquetes R
 
+No tengo todavía una lista completa de todos los paquetes R que vamos a necesitar, por favor, volver a esa pagina el 6 de Diciembre de 2024 para seguir las instrucciones de instalación de los paquetes.
