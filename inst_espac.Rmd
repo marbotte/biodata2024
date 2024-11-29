@@ -1,4 +1,16 @@
+---
+title: "Instalar software para SQL"
+description: "Instalación de software para el curso Biodata: Sistema de Información Geografica"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
+---
 
+
+# Windows
 
 ## Qgis
 
@@ -6,3 +18,22 @@ Quantum gis es un sistema de gestión de información geográfica libre.
 
 Lo pueden descargar y instalar desde la pagina: <https://www.qgis.org/es/site/forusers/alldownloads.html>.
 Les aconsejo instalar la versión estable "Lanzamiento de Largo Plazo" ("Long term Release", versión actual: 3.34.13 Prizren LTR).
+
+# MacOS
+## Qgis
+
+Ir a la pagina <https://www.qgis.org/en/site/forusers/download.html>
+
+Descargar el dmg de la versión ltr en `Long Term Version for Mac OS (3.34 ltr)`, cliquear sobre el archivo y seguir las instrucciones de instalación (no he podido averiguar si funcionaba, por favor contactarme si presenta problemas...).
+
+Una otra opción es seguir las instrucciones en <https://www.qgis.org/resources/installation-guide/#mac-os-x--macos>, para utilizar los macPorts.
+Me parece un poco más avanzado, pero si saben lo que hacen, ¡es posible que sea más adecuado y robusto!
+
+# Linux (Ubuntu y Linux Mint)
+## Qgis
+
+Abrir un terminal y:
+```bash
+sudo apt install qgis python3-qgis
+```
+

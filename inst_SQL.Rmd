@@ -84,7 +84,7 @@ Vamos a utilizar DBeaver, que es disponible como dmg en <https://dbeaver.io/down
 Para instalar todos los paquetes SQL que vamos a necesitar (eso es valido el 1 de noviembre de 2022):
 
 ```bash
-sudo apt install postgresql postgresql-contrib postgis postgresql-14-postgis-3 sqlite3 libsqlite3-mod-spatialite -y
+sudo apt install postgresql postgresql-contrib postgis sqlite3 libsqlite3-mod-spatialite -y
 ```
 
 ## Interfaces para SQL
