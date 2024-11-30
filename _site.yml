@@ -15,4 +15,25 @@ navbar:
          href: inst_SQL.html
        - text: "Software para datos espaciales"
          href: inst_espac.html
+  left:
+    - text: "R y SQL"
+      menu:
+       - text: "Introducción"
+         href: intro_taller_1_R_SQL.html
+       - text: "Actividad 1.1: SQL"
+         href: act_1_1_SQL.html
+       - text: "Actividad 1.2: R"
+         href: act_1_2_R.html
+    - text: "Estándares"
+      menu:
+       - text: "Introducción"
+         href: intro_taller_2_estandares.html
+    - text: "Taxonomía"
+      menu:
+       - text: "Introducción"
+         href: intro_taller_5_taxonomía.html
+    - text: "Datos espaciales"
+      menu:
+       - text: "Introcucción"
+         href: intro_taller_6_datos_espaciales.html
 output: distill::distill_article
