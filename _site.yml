@@ -18,12 +18,28 @@ navbar:
   left:
     - text: "R y SQL"
       menu:
+       - text: "Actividad"
+       - text: "---"
        - text: "Introducción"
          href: intro_taller_1_R_SQL.html
        - text: "Actividad 1.1: SQL"
          href: act_1_1_SQL.html
        - text: "Actividad 1.2: R"
          href: act_1_2_R.html
+       - text: "Documentación SQL"
+       - text: "---"
+       - text: "Consultas simples"
+         href: doc_SQL_simple.html
+       - text: "Documentación R"
+       - text: "---"
+       - text: "Modos y clases"
+         href: doc_R_clases_modos.html
+       - text: "Importar y exportar datos"
+         href: doc_R_import_export.html
+       - text: "Buscar datos y relacionar objetos"
+         href: doc_R_buscarRelacionar.html
+       - text: "Bucles, funciones y estructuras de control"
+         href: doc_R_structuraControl.html
     - text: "Estándares"
       menu:
        - text: "Introducción"

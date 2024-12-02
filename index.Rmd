@@ -1,5 +1,5 @@
 ---
-title: "Curso Biodata 2024"
+title: "Simposio Biodata 2024"
 description: |
   Gestión de bases de datos de biodiversidad
 site: 
