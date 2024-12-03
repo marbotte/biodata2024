@@ -2100,6 +2100,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+  <link href="site_libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
+  <link href="site_libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2276,6 +2278,14 @@ Instalación de software
 </div>
 <div class="layout-chunk" data-layout="l-body">
 
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<a href="https://raw.githubusercontent.com/marbotte/cursoBiodata/master/download/SQL_code/documentation/doc_SQL_simple.sql">
+<button class="btn btn-default"><i class="fa fa-save"></i> Descargar archivos de comandos SQL</button>
+</a>
 </div>
 <p>En este documento voy a mostrar las bases de las consultas SQL en una tabla simple.
 Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostraré también la versión SQLite.</p>
@@ -2672,7 +2682,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> espeletia;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-1">Table 7: </span>Displaying records 1 - 10</caption>
+<caption><span id="tab:unnamed-chunk-3">Table 7: </span>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">rank</th>
@@ -2774,7 +2784,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> espeletia;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table 8: </span>Displaying records 1 - 10</caption>
+<caption><span id="tab:unnamed-chunk-4">Table 8: </span>Displaying records 1 - 10</caption>
 <colgroup>
 <col style="width: 6%" />
 <col style="width: 12%" />
@@ -2896,7 +2906,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <div class="sourceCode" id="cb15"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="st">&#39;¡Viene de mi cerebro, no de una tabla!&#39;</span> <span class="kw">AS</span> <span class="ot">&quot;frase cualquiera&quot;</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-3">Table 9: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-5">Table 9: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">frase cualquiera</th>
@@ -2918,7 +2928,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> (<span class="kw">VALUES</span>(<span class="st">&#39;a&#39;</span>,<span class="dv">1</span>),(<span class="st">&#39;b&#39;</span>,<span class="dv">2</span>),(<span class="st">&#39;c&#39;</span>,<span class="dv">3</span>)) <span class="kw">AS</span> tabla(letra, numero);</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-4">Table 10: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-6">Table 10: </span>3 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">letra</th>
@@ -2950,7 +2960,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> sur_america;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-5">Table 11: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-7">Table 11: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -2981,7 +2991,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> superficie_km2 <span class="op">&lt;</span> <span class="dv">1000000</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-6">Table 12: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-8">Table 12: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3011,7 +3021,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> pais <span class="op">=</span> <span class="st">&#39;Chile&#39;</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-7">Table 13: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-9">Table 13: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3036,7 +3046,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> pais <span class="op">&lt;&gt;</span> <span class="st">&#39;Chile&#39;</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-8">Table 14: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-10">Table 14: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3066,7 +3076,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> pais <span class="kw">IN</span> (<span class="st">&#39;Chile&#39;</span>, <span class="st">&#39;Francia&#39;</span>);</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-9">Table 15: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-11">Table 15: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3097,7 +3107,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> sur_america <span class="kw">AND</span> superficie_km2 <span class="op">&lt;</span> <span class="dv">1000000</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-10">Table 16: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-12">Table 16: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3125,7 +3135,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> superficie_km2 <span class="kw">ASC</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-11">Table 17: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-13">Table 17: </span>3 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3159,7 +3169,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> superficie_km2 <span class="kw">DESC</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-12">Table 18: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-14">Table 18: </span>3 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3195,7 +3205,7 @@ Por defecto, el schema “public” está configurado así, y la tabla “countr
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> sur_america,superficie_km2 <span class="kw">DESC</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-13">Table 19: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-15">Table 19: </span>3 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3235,7 +3245,7 @@ Es una buena practica utilizar <code>LIMIT</code> para probar algunas consultas 
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">2</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-14">Table 20: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-16">Table 20: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">pais</th>
@@ -3267,7 +3277,7 @@ Es una buena practica utilizar <code>LIMIT</code> para probar algunas consultas 
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> countries;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-15">Table 21: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-17">Table 21: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">num_pais</th>
@@ -3290,7 +3300,7 @@ Por esa razon tambien se utiliza seguido el <code>*</code>:</p>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> sur_america;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-16">Table 22: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-18">Table 22: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">count</th>
@@ -3314,7 +3324,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> bogota_chingaza;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-17">Table 23: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-19">Table 23: </span>5 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">unidad_muestreo</th>
@@ -3359,7 +3369,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> unidad_muestreo;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-18">Table 24: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-20">Table 24: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">unidad_muestreo</th>
@@ -3387,7 +3397,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> especie;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-19">Table 25: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-21">Table 25: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">especie</th>
@@ -3423,7 +3433,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> unidad_muestreo;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-20">Table 26: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-22">Table 26: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">unidad_muestreo</th>
@@ -3451,7 +3461,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> unidad_muestreo;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-21">Table 27: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-23">Table 27: </span>2 records</caption>
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 77%" />
@@ -3484,7 +3494,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> especie;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-22">Table 28: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-24">Table 28: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">especie</th>
@@ -3522,7 +3532,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-23">Table 29: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-25">Table 29: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">especie</th>
@@ -3550,7 +3560,7 @@ Tambien es importante saber que cuando utilizamos la clausula <code>GROUP BY</co
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-24">Table 30: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-26">Table 30: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">especie</th>
@@ -3585,7 +3595,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 31: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-27">Table 31: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">unidad_muestreo</th>
@@ -3625,7 +3635,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 32: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-28">Table 32: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">unidad_muestreo</th>
@@ -3665,7 +3675,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-27">Table 33: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-29">Table 33: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">count</th>
@@ -3686,7 +3696,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-28">Table 34: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-30">Table 34: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">count</th>
@@ -3707,7 +3717,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-29">Table 35: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-31">Table 35: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">distinct_array</th>
@@ -3728,7 +3738,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-30">Table 36: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-32">Table 36: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">array_lugar</th>
@@ -3754,7 +3764,7 @@ Anotar que las variables en <code>DISTINCT ON</code> deben ser repetida y en pri
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> countries;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-31">Table 37: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-33">Table 37: </span>3 records</caption>
 <colgroup>
 <col style="width: 12%" />
 <col style="width: 16%" />

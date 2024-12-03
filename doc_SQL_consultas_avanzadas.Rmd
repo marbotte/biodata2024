@@ -22,10 +22,32 @@ sl_biodata1 <- dbConnect(SQLite(),dbname="../Datos/biodata1.sqlite3")
 ```
 
 
+```{r echo=F, message=F,warning=F, purl=FALSE, results='hide', eval=!interactive()}
+fileSQLCommands<-"doc_SQL_consultas_avanzadas.sql"
+file.copy(paste0("./sql_code/",fileSQLCommands),paste0("./download/SQL_code/documentation/",fileSQLCommands),overwrite = T)
+```
+
+
+
+```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
+download_link(
+  link = paste0("https://raw.githubusercontent.com/marbotte/cursoBiodata/master/download/SQL_code/documentation/",fileSQLCommands),
+  button_label = "Descargar archivos de comandos SQL",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = TRUE
+)  
+```
+
+
 En este documento voy a mostrar las bases de las consultas SQL en tablas múltiples con JOIN, así como la utilización de las clausulas WITH y UNION.
 Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostraré tambien la versión SQLite.
 
 Para la demostración, vamos a utilizar 3 tablas simples.
+
+
+
 
 ```{sql connection=pg_biodata1}
 SELECT *

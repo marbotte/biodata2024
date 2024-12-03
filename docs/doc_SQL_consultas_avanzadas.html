@@ -2100,6 +2100,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+  <link href="site_libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
+  <link href="site_libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2241,6 +2243,14 @@ Instalación de software
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<a href="https://raw.githubusercontent.com/marbotte/cursoBiodata/master/download/SQL_code/documentation/doc_SQL_consultas_avanzadas.sql">
+<button class="btn btn-default"><i class="fa fa-save"></i> Descargar archivos de comandos SQL</button>
+</a>
+</div>
 <p>En este documento voy a mostrar las bases de las consultas SQL en tablas múltiples con JOIN, así como la utilización de las clausulas WITH y UNION.
 Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostraré tambien la versión SQLite.</p>
 <p>Para la demostración, vamos a utilizar 3 tablas simples.</p>
@@ -2249,7 +2259,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-1">Table 1: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-3">Table 1: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">nombre</th>
@@ -2287,7 +2297,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> raza</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table 2: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-4">Table 2: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">raza</th>
@@ -2325,7 +2335,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> otro_perro</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-3">Table 3: </span>1 records</caption>
+<caption><span id="tab:unnamed-chunk-5">Table 3: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">nombre</th>
@@ -2354,7 +2364,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-4">Table 4: </span>16 records</caption>
+<caption><span id="tab:unnamed-chunk-6">Table 4: </span>16 records</caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 20%" />
@@ -2515,7 +2525,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> raza r <span class="kw">ON</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-5">Table 5: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-7">Table 5: </span>3 records</caption>
 <colgroup>
 <col style="width: 12%" />
 <col style="width: 21%" />
@@ -2579,7 +2589,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-6">Table 6: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-8">Table 6: </span>3 records</caption>
 <colgroup>
 <col style="width: 12%" />
 <col style="width: 21%" />
@@ -2634,7 +2644,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> raza <span class="kw">USING</span>(raza);</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-7">Table 7: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-9">Table 7: </span>3 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">raza</th>
@@ -2679,7 +2689,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FULL</span> <span class="kw">JOIN</span> raza r <span class="kw">ON</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-8">Table 8: </span>6 records</caption>
+<caption><span id="tab:unnamed-chunk-10">Table 8: </span>6 records</caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 20%" />
@@ -2767,7 +2777,7 @@ Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostr
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> raza r <span class="kw">USING</span> (raza);</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-9">Table 9: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-11">Table 9: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">raza</th>
@@ -2829,7 +2839,7 @@ Así todas las filas aquella tabla que empieza la consulta aparecen en el result
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RIGHT</span> <span class="kw">JOIN</span> raza r <span class="kw">ON</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-10">Table 10: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-12">Table 10: </span>5 records</caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 20%" />
@@ -2911,7 +2921,7 @@ Así todas las filas aquella tabla que empieza la consulta aparecen en el result
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> otro_perro op;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-11">Table 11: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-13">Table 11: </span>5 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">nombre</th>
@@ -2960,7 +2970,7 @@ Permite crear una pseudo-tabla que se puede llamar en otra parte de la consulta.
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> raza <span class="kw">USING</span> (raza);</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-12">Table 12: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-14">Table 12: </span>4 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">raza</th>
@@ -3016,7 +3026,7 @@ Permite crear una pseudo-tabla que se puede llamar en otra parte de la consulta.
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> sexo<span class="op">=</span><span class="st">&#39;macho&#39;</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-13">Table 13: </span>2 records</caption>
+<caption><span id="tab:unnamed-chunk-15">Table 13: </span>2 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">raza</th>
