@@ -7,6 +7,7 @@ output:
     toc: true
     toc_float: true
     fig_caption: true
+    pandoc_args: ["--number-sections"]
 ---
 
 ```{r setup, echo=F, message=F,warning=F, purl=FALSE}
@@ -86,16 +87,102 @@ Anotar: cuando la condición del JOIN es una igualdad entre 2 columnas de 2 tabl
 ```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","join_using"), max.print=NA}
 ```
 
+Una de las ventajas de `USING` es que no se repiten las columnas, incluso cuando usemos `*` para seleccionar las variables. 
 
 ### FULL JOIN (FULL OUTER JOIN)
 
-El FULL OUTER JOIN permite asociar las filas que respetan la condición, pero también muestra las filas que no tienen correspondencia en ambas tablas
+El FULL OUTER JOIN permite asociar las filas que respetan la condición, pero también muestra las filas que no tienen correspondencia en ambas tablas.
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","full_join"), max.print=NA}
+```
 
 
+```{r full_join_venn, echo=FALSE, fig.cap="Diagrama de Venn para el Full Outer Join.", out.extra="class=external"}
+require(sf)
+par(mar=c(1,1,1,1))
+pt1<-st_point(c(-1,0))
+pt2<-st_point(c(1,0))
+cir1<-st_buffer(pt1,1.4)
+cir2<-st_buffer(pt2,1.4)
+plot(c(cir1,cir2),col="red")
+plot(st_intersection(cir1,cir2),col="red",add=T)
+text(pt1[1],pt1[2],"Tabla A")
+text(pt2[1],pt2[2],"Tabla B")
+```
+### LEFT JOIN (LEFT OUTER JOIN)
 
+El `LEFT JOIN` es también un `OUTER JOIN` por qué permite guardar todas las filas de la primera tabla, incluso cuando no hay correspondencia en la segunda tabla. La filas de la segunda tabla que no tienen correspondencia no se muestran.
+
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","left_join"), max.print=NA}
+```
+
+```{r left_join_venn, echo=FALSE, fig.cap="Diagrama de Venn para el Left Outer Join.", out.extra="class=external"}
+require(sf)
+par(mar=c(1,1,1,1))
+pt1<-st_point(c(-1,0))
+pt2<-st_point(c(1,0))
+cir1<-st_buffer(pt1,1.4)
+cir2<-st_buffer(pt2,1.4)
+plot(c(cir1,cir2),col="white")
+plot(cir1,col="red",add=T)
+plot(st_intersection(cir1,cir2),col="red",add=T)
+text(pt1[1],pt1[2],"Tabla A")
+text(pt2[1],pt2[2],"Tabla B")
+```
+
+Anotar: me parece una buena practica usar el LEFT JOIN por defecto. 
+Así todas las filas aquella tabla que empieza  la consulta aparecen en el resultado final.
+¡Les aconsejo tomar esa costumbre para evitar problemas!
+
+
+### RIGHT JOIN (RIGHT OUTER JOIN)
+
+El `RIGHT JOIN` tiene la misma lógica que el LEFT JOIN, pero son las filas de la segunda tabla que se muestran incluso cuando no hay correspondencia.
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","right_join"), max.print=NA}
+```
+
+```{r right_join_venn, echo=FALSE, fig.cap="Diagrama de Venn para el Right Outer Join.", out.extra="class=external"}
+require(sf)
+par(mar=c(1,1,1,1))
+pt1<-st_point(c(-1,0))
+pt2<-st_point(c(1,0))
+cir1<-st_buffer(pt1,1.4)
+cir2<-st_buffer(pt2,1.4)
+plot(c(cir1,cir2),col="white")
+plot(cir2,col="red",add=T)
+plot(st_intersection(cir1,cir2),col="red",add=T)
+text(pt1[1],pt1[2],"Tabla A")
+text(pt2[1],pt2[2],"Tabla B")
+```
 # UNION
 
+UNION permite añadir las filas de una tabla (o de una consulta) a las filas de una primera tabla (o de una primera consulta).
+
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","union"), max.print=NA}
+```
+
+Anotar: `UNION` envia registros unicos cuando hay repeticiones entre la primera y la segunda parte, para guardar esas repeticiones, utilizar `UNION ALL` (les aconsejo acostumbrarse a utilizar `UNION ALL` por defecto).
+
 # WITH
+
+WITH es una herramienta muy potente para construir consultas complejas.
+Permite crear una pseudo-tabla que se puede llamar en otra parte de la consulta.
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","with"), max.print=NA}
+```
+
+Se puede repetir el proceso y utilizar "cadenas" de `WITH`:
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","with2"), max.print=NA}
+```
+
+Anotar: los ejemplos que muestro acá no necesitarían del uso de `WITH`, se podría obtener el mismo resultado sin su uso...
+Es seguido así, pero a veces permite organizar mejor el código y ir desarrollando las consultas por partes.
+
+
 
 
 ```{r closing, echo=F, message=F,warning=F, purl=FALSE, results='hide'}
