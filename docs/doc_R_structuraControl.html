@@ -2137,14 +2137,18 @@ R y SQL
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<hr/>
 <span class="nav-dropdown-header">Actividad</span>
 <hr/>
 <a href="intro_taller_1_R_SQL.html">Introducción</a>
 <a href="act_1_1_SQL.html">Actividad 1.1: SQL</a>
 <a href="act_1_2_R.html">Actividad 1.2: R</a>
+<hr/>
 <span class="nav-dropdown-header">Documentación SQL</span>
 <hr/>
 <a href="doc_SQL_simple.html">Consultas simples</a>
+<a href="doc_SQL_consultas_avanzadas.html">Consultas tablas múltiples</a>
+<hr/>
 <span class="nav-dropdown-header">Documentación R</span>
 <hr/>
 <a href="doc_R_clases_modos.html">Modos y clases</a>
@@ -2275,9 +2279,11 @@ Instalación de software
 <span>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"yo añado"</span>,<span class='va'>add</span>,<span class='st'>"ahora 'res' vale"</span>,<span class='va'>res</span>,<span class='st'>"\n"</span><span class='op'>)</span></span>
 <span><span class='op'>}</span></span></code></pre>
 </div>
-<pre><code>yo añado 3 ahora &#39;res&#39; vale 4 
-yo añado 3 ahora &#39;res&#39; vale 7 
-yo añado 3 ahora &#39;res&#39; vale 10 </code></pre>
+<pre><code>yo añado 1 ahora &#39;res&#39; vale 2 
+yo añado 2 ahora &#39;res&#39; vale 4 
+yo añado 1 ahora &#39;res&#39; vale 5 
+yo añado 3 ahora &#39;res&#39; vale 8 
+yo añado 3 ahora &#39;res&#39; vale 11 </code></pre>
 </div>
 <h1 data-number="2" id="funciones-pply"><span class="header-section-number">2</span> Funciones *PPLY</h1>
 <p>Las funciones de tipo <code>*PPLY</code> permiten aplicar implícitamente una función en una bucle <code>for</code> sobre un objeto.</p>
@@ -2422,7 +2428,7 @@ misViajes$pais: Francia
 <span><span class='fu'>create_list_metaData</span><span class='op'>(</span>tipoOrganismos <span class='op'>=</span> <span class='st'>"Plantas"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>$date
-[1] &quot;2024-12-02&quot;
+[1] &quot;2024-12-03&quot;
 
 $tipoOrganismos
 [1] &quot;Plantas&quot;
@@ -2433,7 +2439,7 @@ $lugar
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>create_list_metaData</span><span class='op'>(</span>date<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span>, tipoOrganismos <span class='op'>=</span> <span class='st'>"Animales"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>$date
-[1] &quot;2024-12-03&quot;
+[1] &quot;2024-12-04&quot;
 
 $tipoOrganismos
 [1] &quot;Animales&quot;

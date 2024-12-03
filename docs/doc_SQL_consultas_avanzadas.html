@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es_CL" xml:lang="es_CL">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
 
 <head>
   <meta charset="utf-8"/>
@@ -98,7 +98,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="og:title" content="Talleres Biodata 2024: Consultas avanzadas en SQL"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="¿Como hacer consultas avanzadas con PostgreSQL y SQLite?"/>
-  <meta property="og:locale" content="es_CL"/>
+  <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Consultas avanzadas en SQL"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["¿Como hacer consultas avanzadas con PostgreSQL y SQLite?"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Consultas avanzadas en SQL"]},{"type":"character","attributes":{},"value":["en_US"]},{"type":"character","attributes":{},"value":["¿Como hacer consultas avanzadas con PostgreSQL y SQLite?"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","fig_caption"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2135,14 +2135,18 @@ R y SQL
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<hr/>
 <span class="nav-dropdown-header">Actividad</span>
 <hr/>
 <a href="intro_taller_1_R_SQL.html">Introducción</a>
 <a href="act_1_1_SQL.html">Actividad 1.1: SQL</a>
 <a href="act_1_2_R.html">Actividad 1.2: R</a>
+<hr/>
 <span class="nav-dropdown-header">Documentación SQL</span>
 <hr/>
 <a href="doc_SQL_simple.html">Consultas simples</a>
+<a href="doc_SQL_consultas_avanzadas.html">Consultas tablas múltiples</a>
+<hr/>
 <span class="nav-dropdown-header">Documentación R</span>
 <hr/>
 <a href="doc_R_clases_modos.html">Modos y clases</a>
@@ -2218,24 +2222,460 @@ Instalación de software
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#join" id="toc-join"><span class="toc-section-number">1</span> JOIN</a></li>
-<li><a href="#union" id="toc-union"><span class="toc-section-number">2</span> UNION</a></li>
-<li><a href="#with" id="toc-with"><span class="toc-section-number">3</span> WITH</a></li>
+<li><a href="#join" id="toc-join">JOIN</a>
+<ul>
+<li><a href="#cross-join" id="toc-cross-join">CROSS JOIN</a></li>
+<li><a href="#inner-y-outer-join" id="toc-inner-y-outer-join">INNER y OUTER JOIN</a>
+<ul>
+<li><a href="#join-inner-join" id="toc-join-inner-join">JOIN (INNER JOIN)</a></li>
+<li><a href="#full-join-full-outer-join" id="toc-full-join-full-outer-join">FULL JOIN (FULL OUTER JOIN)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#union" id="toc-union">UNION</a></li>
+<li><a href="#with" id="toc-with">WITH</a></li>
 </ul>
 </nav>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>En este documento voy a mostrar las bases de las consultas SQL en tablas multiples con JOIN, así como la utilización de las clausulas WITH y UNION.
+<p>En este documento voy a mostrar las bases de las consultas SQL en tablas múltiples con JOIN, así como la utilización de las clausulas WITH y UNION.
 Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostraré tambien la versión SQLite.</p>
-<h1 data-number="1" id="join"><span class="header-section-number">1</span> JOIN</h1>
-<h1 data-number="2" id="union"><span class="header-section-number">2</span> UNION</h1>
-<h1 data-number="3" id="with"><span class="header-section-number">3</span> WITH</h1>
+<p>Para la demostración, vamos a utilizar 3 tablas simples.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">sexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alí</td>
+<td style="text-align: left;">Criollo</td>
+<td style="text-align: left;">macho</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> raza</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 2: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">origen</th>
+<th style="text-align: left;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">Negro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pomerania</td>
+<td style="text-align: left;">Alemania</td>
+<td style="text-align: left;">Crema</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> otro_perro</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 3: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">sexo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nana</td>
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Hembra</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h1 id="join">JOIN</h1>
+<p>Las clausulas <code>JOIN</code> permite asociar tablas.</p>
+<h2 id="cross-join">CROSS JOIN</h2>
+<p>La clausula <code>CROSS JOIN</code> permite asociar todas las filas de una tabla, con todas las filas de otra tabla.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">CROSS</span> <span class="kw">JOIN</span> raza</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-4">Table 4: </span>16 records</caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 20%" />
+<col style="width: 10%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">origen</th>
+<th style="text-align: left;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alí</td>
+<td style="text-align: left;">Criollo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alí</td>
+<td style="text-align: left;">Criollo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alí</td>
+<td style="text-align: left;">Criollo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">Negro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alí</td>
+<td style="text-align: left;">Criollo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Pomerania</td>
+<td style="text-align: left;">Alemania</td>
+<td style="text-align: left;">Crema</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">Negro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Pomerania</td>
+<td style="text-align: left;">Alemania</td>
+<td style="text-align: left;">Crema</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">Negro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Pomerania</td>
+<td style="text-align: left;">Alemania</td>
+<td style="text-align: left;">Crema</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Terranova</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: left;">Negro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Pomerania</td>
+<td style="text-align: left;">Alemania</td>
+<td style="text-align: left;">Crema</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h2 id="inner-y-outer-join">INNER y OUTER JOIN</h2>
+<h3 id="join-inner-join">JOIN (INNER JOIN)</h3>
+<p>La clausula <code>JOIN</code> asocia 2 tablas según una condición lógica y envía únicamente aquellas filas de la tabla asociada para cuales la condición esta <code>TRUE</code>: corresponde a un <code>INNER JOIN</code> (pueden escribir <code>INNER JOIN</code> en lugar de <code>JOIN</code>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro p</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> raza r <span class="kw">ON</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 5: </span>3 records</caption>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 10%" />
+<col style="width: 21%" />
+<col style="width: 12%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">origen</th>
+<th style="text-align: left;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure">
+<img src="doc_SQL_consultas_avanzadas_files/figure-html5/inner_join_venn-1.png" alt="Diagrama de Venn para el Inner Join. Lo que está representado son las filas de las tablas A y B. La intersección representa aquellas filas de las tablas que obtienen `TRUE` en la condición del JOIN" width="624" class=external />
+<p class="caption">
+(#fig:inner_join_venn)Diagrama de Venn para el Inner Join. Lo que está representado son las filas de las tablas A y B. La intersección representa aquellas filas de las tablas que obtienen <code>TRUE</code> en la condición del JOIN
+</p>
+</div>
+</div>
+<p>El <code>JOIN</code> corresponde exactamente a un <code>CROSS JOIN</code> con una clausula <code>WHERE</code> utilizando la misma condición:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro p</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">CROSS</span> <span class="kw">JOIN</span> raza r</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.raza<span class="op">=</span>r.raza;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-6">Table 6: </span>3 records</caption>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 10%" />
+<col style="width: 21%" />
+<col style="width: 12%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">origen</th>
+<th style="text-align: left;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Anotar: cuando la condición del JOIN es una igualdad entre 2 columnas de 2 tablas que tienen el mismo nombre podemos utilizar la clausula USING:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> perro</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> raza <span class="kw">USING</span>(raza);</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 7: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">raza</th>
+<th style="text-align: left;">nombre</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">origen</th>
+<th style="text-align: left;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Border Collie</td>
+<td style="text-align: left;">Pit</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Escocia</td>
+<td style="text-align: left;">Negro y blanco</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Tibet</td>
+<td style="text-align: left;">macho</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gran Pirineo</td>
+<td style="text-align: left;">Roxanne</td>
+<td style="text-align: left;">hembra</td>
+<td style="text-align: left;">Francia</td>
+<td style="text-align: left;">Blanco</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h3 id="full-join-full-outer-join">FULL JOIN (FULL OUTER JOIN)</h3>
+<p>El FULL OUTER JOIN permite asociar las filas que respetan la condición, pero también muestra las filas que no tienen correspondencia en ambas tablas</p>
+<h1 id="union">UNION</h1>
+<h1 id="with">WITH</h1>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

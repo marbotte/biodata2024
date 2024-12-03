@@ -18,6 +18,7 @@ navbar:
   left:
     - text: "R y SQL"
       menu:
+       - text: "---"
        - text: "Actividad"
        - text: "---"
        - text: "Introducción"
@@ -26,10 +27,14 @@ navbar:
          href: act_1_1_SQL.html
        - text: "Actividad 1.2: R"
          href: act_1_2_R.html
+       - text: "---"
        - text: "Documentación SQL"
        - text: "---"
        - text: "Consultas simples"
          href: doc_SQL_simple.html
+       - text: "Consultas tablas múltiples"
+         href: doc_SQL_consultas_avanzadas.html
+       - text: "---"
        - text: "Documentación R"
        - text: "---"
        - text: "Modos y clases"

@@ -1,12 +1,12 @@
 ---
 title: "Consultas avanzadas en SQL"
-lang: "es_CL"
+lang: "en_US"
 description: "¿Como hacer consultas avanzadas con PostgreSQL y SQLite?"
 output:
   distill::distill_article:
     toc: true
     toc_float: true
-    pandoc_args: ["--number-sections"]
+    fig_caption: true
 ---
 
 ```{r setup, echo=F, message=F,warning=F, purl=FALSE}
@@ -21,11 +21,77 @@ sl_biodata1 <- dbConnect(SQLite(),dbname="../Datos/biodata1.sqlite3")
 ```
 
 
-En este documento voy a mostrar las bases de las consultas SQL en tablas multiples con JOIN, así como la utilización de las clausulas WITH y UNION.
+En este documento voy a mostrar las bases de las consultas SQL en tablas múltiples con JOIN, así como la utilización de las clausulas WITH y UNION.
 Voy a utilizar principalmente PostgreSQL, pero cuando existan diferencias, mostraré tambien la versión SQLite.
+
+Para la demostración, vamos a utilizar 3 tablas simples.
+
+```{sql connection=pg_biodata1}
+SELECT *
+FROM perro
+```
+
+```{sql connection=pg_biodata1}
+SELECT *
+FROM raza
+```
+
+```{sql connection=pg_biodata1}
+SELECT *
+FROM otro_perro
+```
 
 
 # JOIN
+
+Las clausulas `JOIN` permite asociar tablas.
+
+## CROSS JOIN
+
+La clausula `CROSS JOIN` permite asociar todas las filas de una tabla, con todas las filas de otra tabla.
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","cross_join"), max.print=NA}
+```
+
+## INNER y OUTER JOIN
+
+### JOIN (INNER JOIN)
+La clausula `JOIN` asocia 2 tablas según una condición lógica y envía únicamente aquellas filas de la tabla asociada para cuales la condición esta `TRUE`: corresponde a un `INNER JOIN` (pueden escribir `INNER JOIN` en lugar de `JOIN`).
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","join1"), max.print=NA}
+```
+
+
+```{r inner_join_venn, echo=FALSE, fig.cap="Diagrama de Venn para el Inner Join. Lo que está representado son las filas de las tablas A y B. La intersección representa aquellas filas de las tablas que obtienen `TRUE` en la condición del JOIN", out.extra="class=external"}
+require(sf)
+par(mar=c(1,1,1,1))
+pt1<-st_point(c(-1,0))
+pt2<-st_point(c(1,0))
+cir1<-st_buffer(pt1,1.4)
+cir2<-st_buffer(pt2,1.4)
+plot(c(cir1,cir2))
+plot(st_intersection(cir1,cir2),col="red",add=T)
+text(pt1[1],pt1[2],"Tabla A")
+text(pt2[1],pt2[2],"Tabla B")
+```
+
+El `JOIN` corresponde exactamente a un `CROSS JOIN` con una clausula `WHERE` utilizando la misma condición:
+
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","cross_join2"), max.print=NA}
+```
+
+Anotar: cuando la condición del JOIN es una igualdad entre 2 columnas de 2 tablas que tienen el mismo nombre podemos utilizar la clausula USING:
+
+```{sql, connection=pg_biodata1,code=extractSQLquery("./sql_code/doc_SQL_consultas_avanzadas.sql","join_using"), max.print=NA}
+```
+
+
+### FULL JOIN (FULL OUTER JOIN)
+
+El FULL OUTER JOIN permite asociar las filas que respetan la condición, pero también muestra las filas que no tienen correspondencia en ambas tablas
+
+
 
 # UNION
 

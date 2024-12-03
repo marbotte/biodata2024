@@ -248,6 +248,6 @@ SELECT *,
         WHEN sur_america AND NOT pais='Chile' THEN 'Pues, '|| pais ||' no está tan lejos...'
         ELSE '¡Estamos en casa!'
     END AS "¿Lejos?"
-FROM countries
+FROM countries;
 -- <case_1 END>
 
