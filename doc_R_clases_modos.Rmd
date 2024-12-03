@@ -26,7 +26,7 @@ file.rename(fileR,paste0("./download/R_code/documentation/",fileR))
 
 ```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
 download_link(
-  link = paste0("https://raw.githubusercontent.com/marbotte/cursoBiodata/master/download/R_code/documentation/",fileR),
+  link = paste0("https://raw.githubusercontent.com/marbotte/biodata2024/master/download/R_code/documentation/",fileR),
   button_label = "Download R script",
   button_type = "default",
   has_icon = TRUE,

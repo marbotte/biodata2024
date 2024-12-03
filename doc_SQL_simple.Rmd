@@ -30,7 +30,7 @@ file.copy(paste0("./sql_code/",fileSQLCommands),paste0("./download/SQL_code/docu
 
 ```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
 download_link(
-  link = paste0("https://raw.githubusercontent.com/marbotte/cursoBiodata/master/download/SQL_code/documentation/",fileSQLCommands),
+  link = paste0("https://raw.githubusercontent.com/marbotte/biodata2024/master/download/SQL_code/documentation/",fileSQLCommands),
   button_label = "Descargar archivos de comandos SQL",
   button_type = "default",
   has_icon = TRUE,
