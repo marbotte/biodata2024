@@ -16,6 +16,10 @@ navbar:
        - text: "Software para datos espaciales"
          href: inst_espac.html
   left:
+    - text: "Antes de empezar"
+      menu:
+        - text: "Connexión, configuración y uso de software"
+          href: doc_config.html
     - text: "R y SQL"
       menu:
        - text: "---"
@@ -30,8 +34,6 @@ navbar:
        - text: "---"
        - text: "Documentación SQL"
        - text: "---"
-       - text: "Conexión a las bases de datos"
-         href: doc_SQL_conexion.html
        - text: "Consultas simples"
          href: doc_SQL_simple.html
        - text: "Consultas tablas múltiples"

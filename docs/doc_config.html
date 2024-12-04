@@ -2130,6 +2130,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="index.html" class="title">Talleres Biodata 2024</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
+Antes de empezar
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="doc_config.html">Connexión, configuración y uso de software</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
 R y SQL
  
 <span class="down-arrow">&#x25BE;</span>
@@ -2144,7 +2154,6 @@ R y SQL
 <hr/>
 <span class="nav-dropdown-header">Documentación SQL</span>
 <hr/>
-<a href="doc_SQL_conexion.html">Conexión a las bases de datos</a>
 <a href="doc_SQL_simple.html">Consultas simples</a>
 <a href="doc_SQL_consultas_avanzadas.html">Consultas tablas múltiples</a>
 <hr/>
@@ -2223,13 +2232,33 @@ Instalación de software
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#postgresql-y-sqlite" id="toc-postgresql-y-sqlite"><span class="toc-section-number">1</span> PostgreSQL y SQLite</a></li>
-<li><a href="#utilizar-dbeaver" id="toc-utilizar-dbeaver"><span class="toc-section-number">2</span> Utilizar DBeaver</a></li>
+<li><a href="#organización-de-las-carpetas-y-descarga-de-archivos" id="toc-organización-de-las-carpetas-y-descarga-de-archivos"><span class="toc-section-number">1</span> Organización de las carpetas y descarga de archivos</a></li>
+<li><a href="#postgresql-y-sqlite" id="toc-postgresql-y-sqlite"><span class="toc-section-number">2</span> PostgreSQL y SQLite</a></li>
+<li><a href="#utilizar-dbeaver" id="toc-utilizar-dbeaver"><span class="toc-section-number">3</span> Utilizar DBeaver</a>
+<ul>
+<li><a href="#crear-una-conexión-con-una-base-de-datos-postgresql" id="toc-crear-una-conexión-con-una-base-de-datos-postgresql"><span class="toc-section-number">3.1</span> Crear una conexión con una base de datos PostgreSQL</a></li>
+<li><a href="#abrir-una-base-de-datos-sqlite-en-dbeaver" id="toc-abrir-una-base-de-datos-sqlite-en-dbeaver"><span class="toc-section-number">3.2</span> Abrir una base de datos SQLite en DBeaver</a></li>
+<li><a href="#consultar-la-base-de-datos-en-dbeaver" id="toc-consultar-la-base-de-datos-en-dbeaver"><span class="toc-section-number">3.3</span> Consultar la base de datos en DBeaver</a></li>
+</ul></li>
+<li><a href="#revisar-o-descubrir-los-lenguajes-antes-de-los-talleres" id="toc-revisar-o-descubrir-los-lenguajes-antes-de-los-talleres"><span class="toc-section-number">4</span> Revisar o descubrir los lenguajes antes de los talleres</a></li>
 </ul>
 </nav>
 </div>
 <p>Antes de poder conectarte a una base de datos, necesitas instalar los programas (<a href="./inst_gen.html">instrucciones acá</a>)</p>
-<h1 data-number="1" id="postgresql-y-sqlite"><span class="header-section-number">1</span> PostgreSQL y SQLite</h1>
+<h1 data-number="1" id="organización-de-las-carpetas-y-descarga-de-archivos"><span class="header-section-number">1</span> Organización de las carpetas y descarga de archivos</h1>
+<p>Les aconsejo:</p>
+<ol type="1">
+<li>crear una carpeta general para el simposio</li>
+<li>crear una carpeta “Datos” y una carpeta por taller en esta carpeta general</li>
+<li>descargar los datos en <a href="https://drive.google.com/drive/folders/1hhUUtx8-aXsG2gluId5wxlIHnrva0EmI?usp=drive_link" class="uri">https://drive.google.com/drive/folders/1hhUUtx8-aXsG2gluId5wxlIHnrva0EmI?usp=drive_link</a> y ponerlos en la carpeta “Datos”</li>
+</ol>
+<p>En cada documento que contiene código y documentación en este sitio web, pueden descargar los comandos, les aconsejo ponerlos en las carpetas que corresponden a cada uno de los talleres.
+Si cuando descargan los comandos, abren directamente en explorador internet, pueden abrir cualquier editor de texto (por ejemplo el bloc de notas de Windows, o RStudio), copiar el contenido en el archivo y guardarlo en la carpeta adecuada, con la extensión que corresponde (<code>.sql</code> para los comandos SQL, <code>.R</code> para los scripts R)</p>
+<figure>
+<img src="Figs/descarga_comandos.png" alt="Ejemplo de Botón de descarga en la pagina de documentación de consultas SQL simples" />
+<figcaption aria-hidden="true">Ejemplo de Botón de descarga en la <a href="./doc_SQL_simple.html">pagina de documentación de consultas SQL simples</a></figcaption>
+</figure>
+<h1 data-number="2" id="postgresql-y-sqlite"><span class="header-section-number">2</span> PostgreSQL y SQLite</h1>
 <p>Los motores que vamos a utilizar son PostgreSQL y SQLite.
 Funcionan de maneras muy diferentes.</p>
 <p>PostgreSQL funciona con un esquéma “servidor/cliente”, es decir que para conectarse, tenemos que dar 4 informaciones principales:</p>
@@ -2241,7 +2270,8 @@ Funcionan de maneras muy diferentes.</p>
 </ul>
 <p>SQLite funciona con un archivo que contiene toda la base de datos.
 Para utilizar SQLite y conectarse a la base de datos, es suficiente descargar este archivo y indicarlo al sistema.</p>
-<h1 data-number="2" id="utilizar-dbeaver"><span class="header-section-number">2</span> Utilizar DBeaver</h1>
+<h1 data-number="3" id="utilizar-dbeaver"><span class="header-section-number">3</span> Utilizar DBeaver</h1>
+<h2 data-number="3.1" id="crear-una-conexión-con-una-base-de-datos-postgresql"><span class="header-section-number">3.1</span> Crear una conexión con una base de datos PostgreSQL</h2>
 <p>Al abrir DBeaver, deberían ver:</p>
 <p><img src="Figs/DBeaver_1.png" />
 <img src="Figs/DBeaver2.png" /></p>
@@ -2257,6 +2287,37 @@ Para utilizar SQLite y conectarse a la base de datos, es suficiente descargar es
 <li>Password: la contraseña que recibieron por correo</li>
 </ul>
 <p>Hacer click en ‘Finish’ y ¡ya están conectado a la base de datos biodata1 del taller!</p>
+<h2 data-number="3.2" id="abrir-una-base-de-datos-sqlite-en-dbeaver"><span class="header-section-number">3.2</span> Abrir una base de datos SQLite en DBeaver</h2>
+<p>El principio es lo mismo que para las bases de datos, en lugar de PostgreSQL, seleccionar SQLite, y indicar el archivo que contiene la base de datos SQLite en sus computadores (por ejemplo el archivo ‘biodata1.sqlite3’ es un archivo que contiene una base de datos SQLite).</p>
+<h2 data-number="3.3" id="consultar-la-base-de-datos-en-dbeaver"><span class="header-section-number">3.3</span> Consultar la base de datos en DBeaver</h2>
+<p>Ahora que tienen la conexión a la base de datos pueden conectar (con un click en la base de datos en el panel a la izquierda de la interfaz de DBeaver).</p>
+<p>Desde acá pueden buscar en google las funcionalidades de DBeaver, pero les voy a explicar como abrir un archivo sql y interactuar con la base de datos:</p>
+<p><img src="Figs/DBeaver_5.png" /></p>
+<p>En DBeaver, hacer un click derecho sobre la base de datos, ir a ‘SQL Editor’ -&gt; ‘Open SQL script’</p>
+<p>Luego ir a ‘File’ -&gt; ‘Save As’ y guardarlo como un archivo en la carpeta que van a utilizar para el taller</p>
+<p>Ahora, pueden escribir comandos en SQL.
+Cuidado, no olvidar que para terminar un comando SQL, tienen que terminar por ‘;’.</p>
+<p>Para ejecutar un comando que han escrito en el archivo SQL, seleccionar el texto y ‘Ctrl + Enter’.</p>
+<p>Pueden tambien abrir una consola en la base de datos que seleccionaron por ir a ‘SQL Editor’ -&gt; ‘Open SQL console’ en lugar de ‘Open SQL script’.</p>
+<p>Así pueden escribir directamente los comandos en la consola o copiar/pegar los comandos en la consola.</p>
+<h1 data-number="4" id="revisar-o-descubrir-los-lenguajes-antes-de-los-talleres"><span class="header-section-number">4</span> Revisar o descubrir los lenguajes antes de los talleres</h1>
+<p>En este sitio, en la parte ‘R y SQL’, les aconsejo mirar las documentación de SQL y R antes de ir a los talleres, les permitirá refrescar y/o descubrir algunas nociones de base sobre esos lenguajes que utilizaremos en los talleres.</p>
+<p>En particular, mirar los documentos siguientes:</p>
+<p>SQL:</p>
+<ul>
+<li><a href="doc_SQL_simple.html">consultas simples</a></li>
+<li><a href="doc_SQL_consultas_avanzadas.html">Consultas tablas múltiples</a></li>
+</ul>
+<p>R:</p>
+<ul>
+<li><a href="doc_R_clases_modos.html">Modos y clases</a></li>
+<li><a href="doc_R_import_export.html">Importar y exportar datos</a></li>
+<li><a href="doc_R_buscarRelacionar.html">Buscar datos y relacionar objetos</a></li>
+</ul>
+<p>Les aconsejo descargar los comandos y integrarlos en DBeaver para SQL, empezar a modificar los comandos y mirar los resultados.</p>
+<p>De la misma manera, abrir los scripts R y jugar con los comandos en RStudio puede ser muy util.</p>
+<p>En los talleres, podremos hablar de los comandos que no entienden, ademas de avanzar en los ejercicios!
+Si ya tienen un poco de practica reciente antes de llegar a los talleres, podría resultar mucho más eficiente!</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
