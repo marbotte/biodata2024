@@ -2289,10 +2289,14 @@ Instalación de software
 <span>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"yo añado"</span>,<span class='va'>add</span>,<span class='st'>"ahora 'res' vale"</span>,<span class='va'>res</span>,<span class='st'>"\n"</span><span class='op'>)</span></span>
 <span><span class='op'>}</span></span></code></pre>
 </div>
-<pre><code>yo añado 3 ahora &#39;res&#39; vale 4 
-yo añado 2 ahora &#39;res&#39; vale 6 
+<pre><code>yo añado 1 ahora &#39;res&#39; vale 2 
+yo añado 1 ahora &#39;res&#39; vale 3 
+yo añado 1 ahora &#39;res&#39; vale 4 
+yo añado 1 ahora &#39;res&#39; vale 5 
+yo añado 1 ahora &#39;res&#39; vale 6 
 yo añado 1 ahora &#39;res&#39; vale 7 
-yo añado 3 ahora &#39;res&#39; vale 10 </code></pre>
+yo añado 2 ahora &#39;res&#39; vale 9 
+yo añado 1 ahora &#39;res&#39; vale 10 </code></pre>
 </div>
 <h1 data-number="2" id="funciones-pply"><span class="header-section-number">2</span> Funciones *PPLY</h1>
 <p>Las funciones de tipo <code>*PPLY</code> permiten aplicar implícitamente una función en una bucle <code>for</code> sobre un objeto.</p>
@@ -2357,15 +2361,15 @@ $Chingaza
 <span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>[[1]]
-[1] 10  3
+[1] 6 3
 
 [[2]]
-[1] 20  1</code></pre>
+[1] 27  1</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>     [,1] [,2]
-[1,]   10   20
+[1,]    6   27
 [2,]    3    1</code></pre>
 </div>
 <h2 data-number="2.3" id="reduce"><span class="header-section-number">2.3</span> Reduce</h2>
@@ -2375,13 +2379,13 @@ Reduce toma una lista y aplica una funcion entre sus elementos para reducir el o
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>totalRowCol</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Reduce</a></span><span class='op'>(</span><span class='va'>`+`</span>,<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 30  4</code></pre>
+<pre><code>[1] 33  4</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>totalRowCol</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Reduce</a></span><span class='op'>(</span><span class='va'>`rbind`</span>,<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>     [,1] [,2]
-init   10    3
-       20    1</code></pre>
+init    6    3
+       27    1</code></pre>
 </div>
 <h2 data-number="2.4" id="tapply"><span class="header-section-number">2.4</span> <code>tapply</code></h2>
 <p><code>tapply</code> permite aplicar una función en un vector en función de grupos definidos en otro vector:</p>

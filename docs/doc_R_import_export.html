@@ -2433,17 +2433,20 @@ Personalmente, utilizo principalmente <code>openxlsx</code> y su función <code>
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ycphs.github.io/openxlsx/index.html'>openxlsx</a></span><span class='op'>)</span></span>
 <span><span class='op'>(</span><span class='va'>programa</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/openxlsx/man/read.xlsx.html'>read.xlsx</a></span><span class='op'>(</span><span class='st'>"../Datos/Curso.xlsx"</span>,sheet<span class='op'>=</span><span class='st'>"programa"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>         Día periodo                actividad
-1      Lunes  mañana            Introdución,R
-2      Lunes   tarde                        R
-3     Martes  mañana                      SQL
-4     Martes   tarde                      SQL
-5  Miercoles  mañana                taxonomía
-6  Miercoles   tarde                 espacial
-7     Jueves  mañana Modelo de datos de Chile
-8     Jueves   tarde Modelo de datos de Chile
-9    Viernes  mañana            Git, paquetes
-10   Viernes   tarde       Construir una base</code></pre>
+<pre><code>        Día periodo
+1     Lunes  mañana
+2     Lunes   tarde
+3    Martes  mañana
+4    Martes   tarde
+5 Miercoles  mañana
+6 Miercoles   tarde
+                                                                                                                       actividad
+1                                                                 Jornada Inaugural, Conferencia “Emprendiendo en biodiversidad”
+2                                                                                       Talleres 1 y 2, “R y SQL” y “Estándares”
+3                                         Conferencia “Datos de biodiversidad a nivel Global” y taller “Herramientas de la nube”
+4                                                                                          Talleres “Bibliometrix” y “Taxonomía”
+5 Conferencia “Los Desafíos de Chile para la Gestión de la Biodiversidad” y conversatorio “Colaboración Estado-Academia-Empresa”
+6                                                                                Taller “Datos Espaciales” y entrega de diplomas</code></pre>
 </div>
 <p>Existen numerosas opciones de lectura (ver ayuda de la función read.xlsx).</p>
 <p>Si queremos más posibilidades de edición, es posible cargar el archivo con la función <code>loadWorkbook</code></p>
@@ -2464,28 +2467,35 @@ Personalmente, utilizo principalmente <code>openxlsx</code> y su función <code>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>estudiantes</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/openxlsx/man/read.xlsx.html'>read.xlsx</a></span><span class='op'>(</span><span class='va'>wbCurso</span>,sheet<span class='op'>=</span><span class='st'>"estudiantes"</span>,colNames<span class='op'>=</span><span class='cn'>F</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>                              X1
-1       Catalina Merino Yunnissi
-2                  Diego Alarcón
-3   Alejandra Jiménez Hernández 
-4  Pamela Victoria Martínez Soto
-5                   juan larrain
-6        Gustavo Torres Mellado 
-7    francisca gonzalez deramond
-8         Victoria Arévalo Rocha
-9       Juan José Ortiz Sandoval
-10                  Karla García
-11                Soledad Kremer
-12         Valentina Perez Tello
-13        javiera vergara vidal 
-14 Francisca gonzalez Contreras 
-15                Diego Gonzalez
-16      Nicolás Ortega González 
-17                  Felipe Durán
-18   Juan Pablo Vicencio Segura 
-19              Amparo Rodríguez
-20     Angelica Villalobo López 
-21               Caterina Vivero</code></pre>
+<pre><code>                                 X1
+1                      Marcelo Soto
+2                    Linette Tralma
+3             Andres Riquelme Ortiz
+4              Ailan Villalón Cueto
+5                    Romina Alarcón
+6                 Guillermo Ramirez
+7                      Aira Faúndez
+8                Nicolás Díaz López
+9               Nataly Glade Vargas
+10                  Edward Martínez
+11              Ximena Barria Muñoz
+12          Nicolás Lavandero López
+13              César Bugueño Silva
+14          Micaela Conejeros Palma
+15            Daniel Valdés Barrera
+16   Fernanda Belén Concha Troncoso
+17    Pablo Ignacio Torrejón Luengo
+18          Gabriela Carrillo Salas
+19           Stefany Farías Salcedo
+20            Fernanda Montero Silv
+21     Natalia Noemí Fierro Vásquez
+22      Maximiliano Rivera Caniualo
+23 Camila Belén Arriagada Rodríguez
+24     Patricio Andrés Medina López
+25             Manuel Robles Silard
+26               Estrella Almonacid
+27              Elizabet Villalobos
+28                    Felipe Méndez</code></pre>
 </div>
 <h2 data-number="4.2" id="escritura"><span class="header-section-number">4.2</span> Escritura</h2>
 <p>Para escribir un archivo xlsx, lo más practico es utilizar la función <code>createWorkbook</code></p>
