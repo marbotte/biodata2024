@@ -30,6 +30,8 @@ navbar:
        - text: "---"
        - text: "Documentación SQL"
        - text: "---"
+       - text: "Conexión a las bases de datos"
+         href: doc_SQL_conexion.html
        - text: "Consultas simples"
          href: doc_SQL_simple.html
        - text: "Consultas tablas múltiples"

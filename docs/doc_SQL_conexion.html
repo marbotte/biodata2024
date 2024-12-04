@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es_CL" xml:lang="es_CL">
 
 <head>
   <meta charset="utf-8"/>
@@ -88,30 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Talleres Biodata 2024: Instalar software para SQL</title>
+  <title>Talleres Biodata 2024: Conectarse a una base SQL</title>
 
-  <meta property="description" itemprop="description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
+  <meta property="description" itemprop="description" content="Como conectarse a una base SQL"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Talleres Biodata 2024: Instalar software para SQL"/>
+  <meta property="og:title" content="Talleres Biodata 2024: Conectarse a una base SQL"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
-  <meta property="og:locale" content="en_US"/>
+  <meta property="og:description" content="Como conectarse a una base SQL"/>
+  <meta property="og:locale" content="es_CL"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Talleres Biodata 2024: Instalar software para SQL"/>
-  <meta property="twitter:description" content="Instalación de software para el curso Biodata: Bases de datos SQL"/>
+  <meta property="twitter:title" content="Talleres Biodata 2024: Conectarse a una base SQL"/>
+  <meta property="twitter:description" content="Como conectarse a una base SQL"/>
 
   <!--/radix_placeholder_meta_tags-->
-  
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Instalar software para SQL"]},{"type":"character","attributes":{},"value":["Instalación de software para el curso Biodata: Bases de datos SQL"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]},{"type":"character","attributes":{},"value":["./biodata2024.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Conectarse a una base SQL"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Como conectarse a una base SQL"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2120,7 +2119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Instalar software para SQL","description":"Instalación de software para el curso Biodata: Bases de datos SQL","authors":[]}
+{"title":"Conectarse a una base SQL","description":"Como conectarse a una base SQL","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2211,11 +2210,11 @@ Instalación de software
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Instalar software para SQL</h1>
+<h1>Conectarse a una base SQL</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>Instalación de software para el curso Biodata: Bases de datos SQL</p>
+<p>Como conectarse a una base SQL</p>
 </div>
 
 
@@ -2224,90 +2223,41 @@ Instalación de software
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#windows" id="toc-windows"><span class="toc-section-number">1</span> Windows</a>
-<ul>
-<li><a href="#postgresql-y-postgis" id="toc-postgresql-y-postgis"><span class="toc-section-number">1.1</span> PostgreSQL y postgis</a></li>
-<li><a href="#sqlite-no-hay-nada-obligatorio-que-instalar" id="toc-sqlite-no-hay-nada-obligatorio-que-instalar"><span class="toc-section-number">1.2</span> SQLite (no hay nada obligatorio que instalar!)</a></li>
-<li><a href="#interfaces-para-postgresql-y-sqlite" id="toc-interfaces-para-postgresql-y-sqlite"><span class="toc-section-number">1.3</span> Interfaces para PostgreSQL y SQLite</a></li>
-</ul></li>
-<li><a href="#macos" id="toc-macos"><span class="toc-section-number">2</span> MacOS</a>
-<ul>
-<li><a href="#postgresql" id="toc-postgresql"><span class="toc-section-number">2.1</span> PostgreSQL</a></li>
-<li><a href="#sqlite" id="toc-sqlite"><span class="toc-section-number">2.2</span> SQLite</a></li>
-<li><a href="#interfaces" id="toc-interfaces"><span class="toc-section-number">2.3</span> Interfaces</a></li>
-</ul></li>
-<li><a href="#linux-mint-y-ubuntu" id="toc-linux-mint-y-ubuntu"><span class="toc-section-number">3</span> Linux Mint y ubuntu</a>
-<ul>
-<li><a href="#postgresql-postgis-sqlite-y-spatialite" id="toc-postgresql-postgis-sqlite-y-spatialite"><span class="toc-section-number">3.1</span> PostgreSQL, postgis, SQLite y spatialite</a></li>
-<li><a href="#interfaces-para-sql" id="toc-interfaces-para-sql"><span class="toc-section-number">3.2</span> Interfaces para SQL</a></li>
-</ul></li>
+<li><a href="#postgresql-y-sqlite" id="toc-postgresql-y-sqlite"><span class="toc-section-number">1</span> PostgreSQL y SQLite</a></li>
+<li><a href="#utilizar-dbeaver" id="toc-utilizar-dbeaver"><span class="toc-section-number">2</span> Utilizar DBeaver</a></li>
 </ul>
 </nav>
 </div>
-<p>La instalación descrita acá es una instalación de 2 sistemas opensource de gestión de bases de datos relacionales: <code>PostgreSQL</code> (<a href="https://www.postgresql.org/" class="uri">https://www.postgresql.org/</a>) y <code>SQLite</code>(<a href="https://www.sqlite.org/" class="uri">https://www.sqlite.org/</a>).</p>
-<p><code>PostgreSQL</code> es un motor de bases de datos que funciona con un modelo clásico servidor/cliente.
-Es decir que los software que permiten hacer consultas en una base de datos están instalados en el cliente, y se pueden conectar a los servidores para enviar las comandas de consulta.
-Cuando creamos una base de datos local, el sistema considera que se conecta a un servidor “localhost” que corresponde al computador local.
-Por esa razón es importante instalar ambas partes “cliente” y “servidor” para poder trabajar con bases de datos locales y accesibles por internet.</p>
-<p><code>SQLite</code> no funciona con un modelo servidor/cliente. Se trata de construir bases de datos en un archivo local, sin poder conectarse de manera remota a las bases de datos.
-La idea es tener un sistema ligero de manejo de bases de datos y aprovechar el uso del lenguaje <code>SQL</code> de manera local en un computador.</p>
-<h1 data-number="1" id="windows"><span class="header-section-number">1</span> Windows</h1>
-<h2 data-number="1.1" id="postgresql-y-postgis"><span class="header-section-number">1.1</span> PostgreSQL y postgis</h2>
-<p>Para utilizar PostgreSQL en Windows, vamos a instalar los elementos siguientes:</p>
+<p>Antes de poder conectarte a una base de datos, necesitas instalar los programas (<a href="./inst_gen.html">instrucciones acá</a>)</p>
+<h1 data-number="1" id="postgresql-y-sqlite"><span class="header-section-number">1</span> PostgreSQL y SQLite</h1>
+<p>Los motores que vamos a utilizar son PostgreSQL y SQLite.
+Funcionan de maneras muy diferentes.</p>
+<p>PostgreSQL funciona con un esquéma “servidor/cliente”, es decir que para conectarse, tenemos que dar 4 informaciones principales:</p>
 <ul>
-<li>PostgreSQL, el sistema de gestión de base de datos</li>
-<li>Postgis la extensión espacial del sistema PostgreSQL</li>
+<li>la dirección del servidor (<code>host</code>): puede ser una dirección IP como la dirección que recibieron por correo, pero puede ser también una URL, o la palabra <code>localhost</code> si la base de datos está en la misma maquina que el cliente (en sus computadores)</li>
+<li>el usuario (<code>user</code>) que van a utilizar para conectarse (en el caso de las bases de datos postgres que vamos a manejar durante los talleres, lo recibieron por correo)</li>
+<li>la contraseña (<code>password</code>) que van a utilizar para conectarse (en el caso de las bases de datos postgres que vamos a manejar durante los talleres, lo recibieron por correo)</li>
+<li>el nombre de la base de datos</li>
 </ul>
-<p>Para instalar esos elementos en Windows:</p>
-<ol type="1">
-<li>Descargar PostgreSQL desde la pagina: <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads" class="uri">https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</a>. Les aconsejo instalar la versión 16, si está disponible en su versión de Windows. Desde la versión 11, todas deberían ser suficientes para lo que vayamos a hacer en los talleres…</li>
-<li>Instalarla siguiendo las instrucciones. El archivo de ejecución debería proponer los elementos siguientes:</li>
-</ol>
+<p>SQLite funciona con un archivo que contiene toda la base de datos.
+Para utilizar SQLite y conectarse a la base de datos, es suficiente descargar este archivo y indicarlo al sistema.</p>
+<h1 data-number="2" id="utilizar-dbeaver"><span class="header-section-number">2</span> Utilizar DBeaver</h1>
+<p>Al abrir DBeaver, deberían ver:</p>
+<p><img src="Figs/DBeaver_1.png" />
+<img src="Figs/DBeaver2.png" /></p>
+<p>Para conectar una nueva base de datos (por ejemplo, vamos a utilizar una base de datos que se llama ‘biodata1’), ir a ‘Database’ -&gt; ‘New Database Connection’</p>
+<p><img src="Figs/DBeaver_3.png" /></p>
+<p>Seleccionar ‘PostgreSQL’</p>
+<p><img src="Figs/DBeaver_4.png" /></p>
+<p>Cambiar los valores en:</p>
 <ul>
-<li>PostgreSQL Server: Obligatorio</li>
-<li>pgAdmin4: (facultativo) es un software para poder interactuar directamente con las bases de datos de PostgreSQL. Es una buena interfaz para PostgreSQL, vale la pena instalarlo si tienen el espacio suficiente</li>
-<li>StackBuilder (obligatorio): nos va a permitir instalar postgis después</li>
-<li>Command Line Tools: (facultativo) no estoy seguro que vayamos a utilizar esas herramientas en el curso, pero es relativamente ligero, y siempre es útil, les aconsejo instalarlo</li>
+<li>host: poner la dirección ip</li>
+<li>Database: biodata1</li>
+<li>Username: el usuario que recibieron por correo</li>
+<li>Password: la contraseña que recibieron por correo</li>
 </ul>
-<ol start="3" type="1">
-<li>Al final de la instalación de PostgreSQL, una nueva ventana va a abrirse con la ejecución de StackBuilder, seleccionar la base local. En “Spatial extensions” seleccionar Postgis y seguir con el proceso de instalación</li>
-</ol>
-<h2 data-number="1.2" id="sqlite-no-hay-nada-obligatorio-que-instalar"><span class="header-section-number">1.2</span> SQLite (no hay nada obligatorio que instalar!)</h2>
-<p>SQLite es un motor de gestión de base de datos muy ligero y muy practico.
-No funciona en un modelo cliente/servidor, las bases de datos SQLite están contenidas en un archivo y se consultan directamente, de manera local.</p>
-<p>La instalación de SQLite en Windows simplemente consiste en descargar unos archivos en un zip y ponerlos en el path de la maquina.
-Este proceso es tan simple que el paquete R que permite interactuar con las bases de datos SQLite contiene un motor SQLite completo.
-Para interactuar con las bases de datos SQLite y sus elementos espaciales en QGIS, no se necesita ninguna instalación tampoco, QGIS contiene de manera nativa todos los elementos utiles.</p>
-<p>Sin embargo, se puede instalar SQLite para interactuar con SQLite sin pasar por R, QGIS ni DBeaver. Si quieren hacerlo, la pagina <a href="https://www.sqlite.org/index.html" class="uri">https://www.sqlite.org/index.html</a> contiene toda la documentación y los enlaces de descarga</p>
-<h2 data-number="1.3" id="interfaces-para-postgresql-y-sqlite"><span class="header-section-number">1.3</span> Interfaces para PostgreSQL y SQLite</h2>
-<p>Existen varios software para interactuar con las bases de datos en SQL.
-Uno de los más fáciles es DBeaver.
-Nos permitirá conectarnos y interactuar con las bases de datos en PostgreSQL y SQLite</p>
-<p>Ir a <a href="https://dbeaver.io/download/" class="uri">https://dbeaver.io/download/</a>, descargar y instalar DBeaver Community edition (versión actual: 24.2.5) para Windows.</p>
-<h1 data-number="2" id="macos"><span class="header-section-number">2</span> MacOS</h1>
-<h2 data-number="2.1" id="postgresql"><span class="header-section-number">2.1</span> PostgreSQL</h2>
-<p>Vamos a necesitar PostgreSQL y postgis (su extensión espacial).</p>
-<p>Parece que la aplicación <a href="https://postgresapp.com/">postgres.app</a> contiene todo lo que necesitamos</p>
-<p>Si quieren otras alternativas de instalación en MacOS, pueden referirse a la pagina : <a href="https://www.postgresql.org/download/macosx/" class="uri">https://www.postgresql.org/download/macosx/</a></p>
-<h2 data-number="2.2" id="sqlite"><span class="header-section-number">2.2</span> SQLite</h2>
-<p>Parece que para instalar spatialite, la extensión espacial de SQLite la mejor solución es brew (<a href="https://medium.com/@carusot42/installing-and-loading-spatialite-on-macos-28bf677f0436" class="uri">https://medium.com/@carusot42/installing-and-loading-spatialite-on-macos-28bf677f0436</a>).</p>
-<p>Ahora bien, no les puedo asegurar que sea util instalarla… En Windows me dí cuenta que no era muy útil porque los software que íbamos a utilizar como interfaz ya tenían encapsulado SQLite y spatiaLite, así que tal vez, lo más practico es que no lo instalen y que miremos si funciona juntos (de todas formas, no es pesado instalar esos programas si los necesitamos)</p>
-<h2 data-number="2.3" id="interfaces"><span class="header-section-number">2.3</span> Interfaces</h2>
-<p>Vamos a utilizar DBeaver, que es disponible como dmg en <a href="https://dbeaver.io/download/" class="uri">https://dbeaver.io/download/</a></p>
-<h1 data-number="3" id="linux-mint-y-ubuntu"><span class="header-section-number">3</span> Linux Mint y ubuntu</h1>
-<h2 data-number="3.1" id="postgresql-postgis-sqlite-y-spatialite"><span class="header-section-number">3.1</span> PostgreSQL, postgis, SQLite y spatialite</h2>
-<p>Para instalar todos los paquetes SQL que vamos a necesitar (eso es valido el 1 de noviembre de 2022):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install postgresql postgresql-contrib postgis sqlite3 libsqlite3-mod-spatialite <span class="at">-y</span></span></code></pre></div>
-<h2 data-number="3.2" id="interfaces-para-sql"><span class="header-section-number">3.2</span> Interfaces para SQL</h2>
-<p>Vamos a utilizar DBeaver.
-Como para R, tenemos que instalar un repositorio particular para DBeaver:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://dbeaver.io/debs/dbeaver.gpg.key <span class="kw">|</span> <span class="fu">sudo</span> gpg <span class="at">--dearmor</span> <span class="at">-o</span> /etc/apt/trusted.gpg.d/dbeaver.gpg</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;deb https://dbeaver.io/debs/dbeaver-ce /&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/dbeaver.list</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install dbeaver-ce <span class="at">-y</span></span></code></pre></div>
-<p>Si quieren, pueden instalar una interfaz especifica para PostgreSQL (ver <a href="https://www.pgadmin.org/" class="uri">https://www.pgadmin.org/</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install pgAdmin4</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Hacer click en ‘Finish’ y ¡ya están conectado a la base de datos biodata1 del taller!</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2319,10 +2269,7 @@ Como para R, tenemos que instalar un repositorio particular para DBeaver:</p>
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom">
-<h3 id="references">References</h3>
-<div id="references-listing"></div>
-</div>
+<div class="appendix-bottom"></div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->
