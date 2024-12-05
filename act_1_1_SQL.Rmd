@@ -1,0 +1,51 @@
+---
+title: "Actividad 1.1: Escarabajos y eventos de muestreo"
+lang: "es_CL"
+description: "Utilizar nociones basicas de SQL para tareas clasicas de ciencia de la biodiversidad."
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+---
+
+```{r echo=F, message=F,warning=F, purl=FALSE}
+library(knitr)
+library(kableExtra)
+library(downloadthis)
+```
+
+```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
+download_link(
+  link = paste0("https://raw.githubusercontent.com/marbotte/biodata2024/master/docs/download//actividades/taller_R_SQL/act_1_1_SQL.pdf"),
+  button_label = "Download R script",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = TRUE
+)  
+```
+
+# Generalidades
+
+En esta actividad, vamos a explorar una base de datos extraída de un proyecto de estudio de biodiversidad en el municipio de [Puerto Wilches](https://es.wikipedia.org/wiki/Puerto_Wilches), Santander.
+El Instituto Alexander von Humboldt fue contratado, en el marco de un proyecto de explotación petrolífera por fracking, para evaluar la "linea base de biodiversidad".
+En esta actividad, nos vamos a enfocar en la recolección de escarabajos por 2 protocolos de muestreo diferentes.
+El juego de datos en formato Darwin Core se puede encontrar en la pagina de Ceiba (el catálogo de datos biológicos del instituto Alexander von Humboldt): <http://i2d.humboldt.org.co/ceiba/resource.do?r=escarabajos_anh_2021>
+
+La base de datos se llama "esca_simple" (disponible con la información de conexión que recibieron por correo), [una version sqlite de la base de datos](https://drive.google.com/file/d/1dz5m4ezvpAjEmtZrd0YpvE1SflHSXdkW/view?usp=drive_link) está disponible en la carpeta compartida de google drive para el simposio (anotar: eso les permitirá seguir utilizando el archivo cuando el servidor de bases de datos del simposio ya no estará disponible).
+
+
+
+# Ejercicio
+
+Calcular el numero y extraer los nombres de los taxones para cada evento. Antes de proponer una solución, explorar el juego de datos y determinar cual es la forma más adecuada de presentar esos resultados.
+
+Para guiar el proceso, imagino que podrían seguir esas etapas:
+
+1. Exploración de las tablas y variables de la base de datos, determinar como vamos a presentar los resultados
+1. Averiguar si todo los eventos de la tabla de eventos están en la tabla de registros
+1. Hacer un calculo simplificado y una extracción simple desde la tabla de registros
+1. Hacer los cálculos finales en función de la organización decidida de la etapa 1
+
+

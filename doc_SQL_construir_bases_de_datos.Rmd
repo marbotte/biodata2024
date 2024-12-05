@@ -1,5 +1,5 @@
 ---
-title: "Connectar R con SQL"
+title: "Construir base de datos SQL"
 lang: "en_US"
 description: "¿Como hacer consultas avanzadas con PostgreSQL y SQLite?"
 output:
@@ -9,8 +9,6 @@ output:
     fig_caption: true
     pandoc_args: ["--number-sections"]
 ---
-
-
 
 ```{r setup, echo=F, message=F,warning=F, purl=FALSE}
 library(knitr)
