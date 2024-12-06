@@ -1,4 +1,55 @@
+---
+title: "Estándares para los datos de biodiversidad"
+lang: "es_CL"
+description: "Explorar los estándares EML y Darwin Core"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+---
 
+# Generalidades
+
+El estándar Darwin Core [@Wieczorek2012] es el estándar principal para los datos de biodiversidad.
+Está usualmente asociado con metadatos que siguen el estándar *Ecological Metadata Language* [EML, @Jones2019].
+
+En particular, la plataforma internacional de información sobre biodiversidad GBIF (<https:www.gbif.org>) utiliza esos estándares.
+Los equipos asociados a GBIF desarrollo también una herramienta opensource de manejo y publicación de juegos de datos de biodiversidad que se llama "Integrated Publishing Toolkit" (IPT: <https://www.gbif.org/ipt>, alojado en GitHub: <https://github.com/gbif/ipt>).
+
+En Colombia, el Sistema de Información Biologica (SiB-Colombia, <https://biodiversidad.co/>) es la red nacional de datos abierto sobre biodiversidad.
+Es una entidad independiente, pero está actualmente manejada contractualmente por investigadores del Instituto Alexander von Humboldt.
+El SiB Colombia maneja tambien un nodo GBIF, que provee varios plataformas IPT para publicar datos en la plataforma GBIF.
+Así, el SiB Colombia provee documentación y apoyo para la publicación de juegos de datos con las normas EML y Darwin Core (<https://biodiversidad.co/recursos/estandarizacion/>).
+
+
+<!--
+https://gbifchile.mma.gob.cl/
+https://gbif-chile.mma.gob.cl/ipt
+-->
+
+
+# Ejercicios
+
+## Exploración de los estándares y plantillas
+
+Explorar la documentación en <https://biodiversidad.co/recursos/estandarizacion/>, en particular las plantillas en <https://biodiversidad.co/recursos/plantillas-dwc/>.
+
+## Buscar juegos de datos
+
+Buscar juegos de datos en Darwin Core en:
+
+* <http://i2d.humboldt.org.co/ceiba/>
+* <https://www.gbif.org/>
+* <https://gbif-chile.mma.gob.cl/ipt>
+
+La idea es poder explorar las fuentes de datos para Sur-America, pero también entender las posibilidades que aportan las normas Darwin Core y EML en términos de publicación y uso de datos de biodiversidad.
+
+Durante sus búsquedas, intentan buscar un juego de datos parecido a un juego de datos que utilizan en sus actividades academicas y/o profesionales.
+Permite entender cual es el uso de los estándares que podrían tener para publicar/compartir datos de biodiversidad en sus actividades.
+
+## Utilizar un juego de datos Darwin Core
 
 
 La idea es :
