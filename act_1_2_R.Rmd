@@ -1,0 +1,37 @@
+---
+title: "Actividad 1.1: Escarabajos y análisis"
+lang: "es_CL"
+description: "Utilizar nociones basicas de R para tareas clasicas de ciencia de la biodiversidad."
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+---
+```{r echo=F, message=F,warning=F, purl=FALSE}
+library(knitr)
+library(kableExtra)
+library(downloadthis)
+```
+
+```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
+download_link(
+  link = paste0("https://raw.githubusercontent.com/marbotte/biodata2024/master/docs/download//actividades/taller_R_SQL/act_1_2_R.pdf"),
+  button_label = "Descargar las instrucciones en pdf",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = TRUE
+)  
+```
+# Ejercicio
+
+Utilizar lo que hicimos en SQL en la [actividad 1.1](act_1_1_SQL.Rmd) para crear una tabla de abundancia de los escarabajos recolectados con el protocolo de trampa de excrementos.
+
+Las etapas para lograr crear la matriz son:
+
+* conectarse a la base de datos desde R (función `dbConnect` del paquete `RPostgreSQL`, o del paquete `RSQLite` si utilizan la base de datos en SQLite)
+* crear la consulta SQL que permite descargar los datos del protocolo de trampa de excrementos (datos necesarios: cd_event o event_id, abundancia, taxon_name)
+* recuperar los datos en R (función `dbGetQuery`)
+* crear el esqueleto de la matriz
+* poner los datos en la matriz

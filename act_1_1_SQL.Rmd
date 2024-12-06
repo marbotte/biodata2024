@@ -18,7 +18,7 @@ library(downloadthis)
 ```{r echo=F, message=F,warning=F, purl=FALSE, eval=!interactive()}
 download_link(
   link = paste0("https://raw.githubusercontent.com/marbotte/biodata2024/master/docs/download//actividades/taller_R_SQL/act_1_1_SQL.pdf"),
-  button_label = "Download R script",
+  button_label = "Descargar las instrucciones en pdf",
   button_type = "default",
   has_icon = TRUE,
   icon = "fa fa-save",
