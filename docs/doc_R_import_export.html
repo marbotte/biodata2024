@@ -2147,10 +2147,11 @@ R y SQL
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<a href="https://docs.google.com/presentation/d/1q0X60VRCAIJG-NjIKe1hPIw2uxlk_w1_/edit?usp=sharing&amp;ouid=116883851522713757892&amp;rtpof=true&amp;sd=true">Introducción: Marius Bottin y Instituto Humboldt</a>
 <hr/>
 <span class="nav-dropdown-header">Actividad</span>
 <hr/>
-<a href="intro_taller_1_R_SQL.html">Introducción</a>
+<a href="https://docs.google.com/presentation/d/18plX_FYs_ZnBU39r26qxVQkoRkw0cNedyKuEcXFhhGE/edit?usp=sharing">Introducción</a>
 <a href="act_1_1_SQL.html">Actividad 1.1: SQL</a>
 <a href="act_1_2_R.html">Actividad 1.2: R</a>
 <hr/>
@@ -2175,6 +2176,7 @@ Estándares
 </button>
 <div class="nav-dropdown-content">
 <a href="intro_taller_2_estandares.html">Introducción</a>
+<span class="nav-dropdown-header">Actividad: Explorar Darwin Core y Ecological Metadata Language</span>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2185,6 +2187,7 @@ Taxonomía
 </button>
 <div class="nav-dropdown-content">
 <a href="intro_taller_5_taxonomía.html">Introducción</a>
+<a href="act_5_taxonomia.html">Actividad: manejar la taxonomía en los datos de biodiversidad</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2195,6 +2198,7 @@ Datos espaciales
 </button>
 <div class="nav-dropdown-content">
 <a href="intro_taller_6_datos_espaciales.html">Introcucción</a>
+<a href="act_6_espacial.html">Actividad: datos espaciales</a>
 </div>
 </div>
 </div>
@@ -2301,34 +2305,46 @@ Acá miraremos algunos, como los archivos de texto (csv, txt), los applicaciones
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code> [1] &quot;_site.yml&quot;                      
- [2] &quot;about.html&quot;                     
- [3] &quot;about.Rmd&quot;                      
- [4] &quot;biodata2024.bib&quot;                
- [5] &quot;biodata2024.Rproj&quot;              
- [6] &quot;doc_config.html&quot;                
- [7] &quot;doc_config.Rmd&quot;                 
- [8] &quot;doc_R_buscarRelacionar.html&quot;    
- [9] &quot;doc_R_buscarRelacionar.Rmd&quot;     
-[10] &quot;doc_R_clases_modos.html&quot;        
-[11] &quot;doc_R_clases_modos.Rmd&quot;         
-[12] &quot;doc_R_import_export.Rmd&quot;        
-[13] &quot;doc_R_structuraControl.Rmd&quot;     
-[14] &quot;doc_SQL_consultas_avanzadas.Rmd&quot;
-[15] &quot;doc_SQL_crear_bases.Rmd&quot;        
-[16] &quot;doc_SQL_modificar_bases.Rmd&quot;    
-[17] &quot;doc_SQL_simple.Rmd&quot;             
-[18] &quot;docs&quot;                           
-[19] &quot;download&quot;                       
-[20] &quot;Figs&quot;                           
-[21] &quot;index.Rmd&quot;                      
-[22] &quot;inst_espac.Rmd&quot;                 
-[23] &quot;inst_gen.Rmd&quot;                   
-[24] &quot;inst_R.Rmd&quot;                     
-[25] &quot;inst_SQL.Rmd&quot;                   
-[26] &quot;r_func&quot;                         
-[27] &quot;site_libs&quot;                      
-[28] &quot;sql_code&quot;                       </code></pre>
+<pre><code> [1] &quot;_site.yml&quot;                           
+ [2] &quot;about.html&quot;                          
+ [3] &quot;about.Rmd&quot;                           
+ [4] &quot;act_1_1_SQL.html&quot;                    
+ [5] &quot;act_1_1_SQL.Rmd&quot;                     
+ [6] &quot;act_1_2_R.html&quot;                      
+ [7] &quot;act_1_2_R.Rmd&quot;                       
+ [8] &quot;act_2_estandares.html&quot;               
+ [9] &quot;act_2_estandares.Rmd&quot;                
+[10] &quot;act_5_taxonomia.html&quot;                
+[11] &quot;act_5_taxonomia.Rmd&quot;                 
+[12] &quot;act_6_espacial.html&quot;                 
+[13] &quot;act_6_espacial.Rmd&quot;                  
+[14] &quot;biodata2024.bib&quot;                     
+[15] &quot;biodata2024.Rproj&quot;                   
+[16] &quot;doc_config.html&quot;                     
+[17] &quot;doc_config.Rmd&quot;                      
+[18] &quot;doc_R_buscarRelacionar.html&quot;         
+[19] &quot;doc_R_buscarRelacionar.Rmd&quot;          
+[20] &quot;doc_R_clases_modos.html&quot;             
+[21] &quot;doc_R_clases_modos.Rmd&quot;              
+[22] &quot;doc_R_import_export.Rmd&quot;             
+[23] &quot;doc_R_structuraControl.Rmd&quot;          
+[24] &quot;doc_SQL_conexion.Rmd&quot;                
+[25] &quot;doc_SQL_connectar_R_SQL.Rmd&quot;         
+[26] &quot;doc_SQL_construir_bases_de_datos.Rmd&quot;
+[27] &quot;doc_SQL_consultas_avanzadas.Rmd&quot;     
+[28] &quot;doc_SQL_simple.Rmd&quot;                  
+[29] &quot;docs&quot;                                
+[30] &quot;download&quot;                            
+[31] &quot;Figs&quot;                                
+[32] &quot;index.Rmd&quot;                           
+[33] &quot;inst_espac.Rmd&quot;                      
+[34] &quot;inst_gen.Rmd&quot;                        
+[35] &quot;inst_R.Rmd&quot;                          
+[36] &quot;inst_SQL.Rmd&quot;                        
+[37] &quot;intro_taller_1_R_SQL.Rmd&quot;            
+[38] &quot;r_func&quot;                              
+[39] &quot;site_libs&quot;                           
+[40] &quot;sql_code&quot;                            </code></pre>
 </div>
 <h2 data-number="1.2" id="caminos-de-las-carpetas"><span class="header-section-number">1.2</span> “Caminos” de las carpetas</h2>
 <p>Los “caminos” o “direcciones” de las carpetas están codificados como cadenas de carácter en R, siguen las normas de direcciones de los sistemas UNIX:</p>
@@ -2495,7 +2511,8 @@ Personalmente, utilizo principalmente <code>openxlsx</code> y su función <code>
 25             Manuel Robles Silard
 26               Estrella Almonacid
 27              Elizabet Villalobos
-28                    Felipe Méndez</code></pre>
+28                    Felipe Méndez
+29                      Alonso Jara</code></pre>
 </div>
 <h2 data-number="4.2" id="escritura"><span class="header-section-number">4.2</span> Escritura</h2>
 <p>Para escribir un archivo xlsx, lo más practico es utilizar la función <code>createWorkbook</code></p>

@@ -46,10 +46,23 @@ Buscar juegos de datos en Darwin Core en:
 
 La idea es poder explorar las fuentes de datos para Sur-America, pero también entender las posibilidades que aportan las normas Darwin Core y EML en términos de publicación y uso de datos de biodiversidad.
 
-Durante sus búsquedas, intentan buscar un juego de datos parecido a un juego de datos que utilizan en sus actividades academicas y/o profesionales.
+Durante sus búsquedas, intentan buscar un juego de datos parecido a un juego de datos que utilizan en sus actividades académicas y/o profesionales.
 Permite entender cual es el uso de los estándares que podrían tener para publicar/compartir datos de biodiversidad en sus actividades.
 
 ## Utilizar un juego de datos Darwin Core
+
+El juego de datos [Programa de fotomonitoreo de objetos de conservación y amenazas en el Sistema Nacional de Áreas Protegidas (SNAP)](https://drive.google.com/file/d/1wDeW3YQSN2DbAalMG1pZxO7WoaTUwJdk/view?usp=drive_link) (en Gbif: <https://www.gbif.org/es/dataset/9f7ed5a4-f73a-4d74-b0be-cef5bd700a37>) es un juego de datos chileno en formato Darwin Core.
+
+* Crear un código R lo más generalista posible para:
+  + calcular la riqueza de las regiones ("stateProvince")
+  + calcular la representación taxonómica (nivel clase del juego de datos (class)
+  + elegir una o dos otras preguntas que les interesan
+* presentar los resultados en una tabla que integra algunos elementos del archivo EML:
+  + 
+  
+
+##  
+
 
 
 La idea es :

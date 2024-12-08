@@ -22,11 +22,13 @@ navbar:
           href: doc_config.html
     - text: "R y SQL"
       menu:
+       - text: "Introducción: Marius Bottin y Instituto Humboldt"
+         href: https://docs.google.com/presentation/d/1q0X60VRCAIJG-NjIKe1hPIw2uxlk_w1_/edit?usp=sharing&ouid=116883851522713757892&rtpof=true&sd=true
        - text: "---"
        - text: "Actividad"
        - text: "---"
        - text: "Introducción"
-         href: intro_taller_1_R_SQL.html
+         href: https://docs.google.com/presentation/d/18plX_FYs_ZnBU39r26qxVQkoRkw0cNedyKuEcXFhhGE/edit?usp=sharing
        - text: "Actividad 1.1: SQL"
          href: act_1_1_SQL.html
        - text: "Actividad 1.2: R"
