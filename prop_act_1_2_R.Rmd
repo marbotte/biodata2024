@@ -1,0 +1,32 @@
+---
+title: "Propuesta de respuesta para la actividad sobre R"
+lang: "es_CL"
+description: "Explorar los estándares EML y Darwin Core"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+---
+
+
+# Paquetes
+
+Para conectarse con R a las bases de datos en SQL vamos a utilizar los paquetes `RSQLite` y `RPostgreSQL`.
+
+```{r}
+library(RSQLite)
+library(RPostgreSQL)
+```
+
+# Conexión
+
+Para conectarse a una base de datos, podemos utilizar el comando `dbConnect`
+
+Para PostgreSQL
+
+```r
+dbConnect(PostgreSQL(),dbname="esca_simple",)
+```
+
