@@ -60,7 +60,9 @@ navbar:
        - text: "Introducción"
          href: intro_taller_2_estandares.html
        - text: "Actividad: Explorar Darwin Core y Ecological Metadata Language"
-         hred: act_2_estandares.html
+         href: act_2_estandares.html
+       - text: "propuesta de solucion actividad 2"
+         href: prop_act_2_estandares.html
     - text: "Taxonomía"
       menu:
        - text: "Introducción"

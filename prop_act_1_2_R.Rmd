@@ -92,8 +92,10 @@ for(i in 1:nrow(tab_abund))
 }
 ```
 
+reemplazar los "NA" en la matriz por 0
 
 ```{r}
 
 ```
+
 
