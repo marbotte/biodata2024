@@ -1,0 +1,127 @@
+---
+title: "Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core"
+lang: "es_CL"
+description: "Explorar los estándares EML y Darwin Core"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+---
+
+
+# Cargar los paquetes
+
+Para cargar los paquetes que nos van a servir en este ejercicio, utilizamos los comandos siguientes:
+
+```{r}
+library(EML)
+```
+
+# Leer el archivo comprimido
+
+En mi caso, los archivos de datos están en una carpeta Datos, en la misma carpeta que la carpeta de scripts R.
+
+Para ver lo que contiene la carpeta de datos, utilizamos:
+
+```{r}
+dir("../Datos")
+```
+
+Los datos que nos interesan están en el archivo "dwca-fotomonitoreo_conaf_2021-v1.9.zip".
+
+Vamos a crear una carpeta temporaria (que vamos a suprimir después de haber leído los datos en el archivo comprimido).
+Esto nos permitirá automatizar el proceso más tarde con R.
+
+```{r}
+if(!dir.exists("../Datos/tmp"))
+{dir.create("../Datos/tmp")}
+```
+
+Miramos la lista de los archivos en el archivo zip:
+
+```{r}
+unzip("../Datos/dwca-fotomonitoreo_conaf_2021-v1.9.zip",list = T)
+```
+
+Extracción de los archivos occurrence.txt y eml.xml en la carpeta tmp:
+
+```{r}
+unzip("../Datos/dwca-fotomonitoreo_conaf_2021-v1.9.zip",files = c("occurrence.txt","eml.xml"), exdir = "../Datos/tmp", overwrite = T)
+```
+
+Averiguar si los archivos aparecieron en la carpeta indicada:
+
+```{r}
+dir("../Datos/tmp")
+```
+
+# Leer el archivo de occurrencia
+
+Leer el archivo occurrence.txt y ponerlo en una tabla de R:
+
+```{r}
+occurrences<-read.csv("../Datos/tmp/occurrence.txt",sep="\t")
+dim(occurrences)
+colnames(occurrences)
+```
+Las 10 primeras especies son:
+
+```{r}
+unique(occurrences$scientificName)[1:10]
+```
+
+Las regiones de occurrencias son:
+
+```{r}
+unique(occurrences$stateProvince)
+```
+
+Para calcular el numero de especies por region:
+
+```{r}
+(riqu_region<-tapply(occurrences$scientificName,occurrences$stateProvince,function(x)length(unique(x))))
+```
+
+Representar los numeros obtenidos:
+
+```{r}
+par(mar=c(14,6,1,1))
+barplot(riqu_region,las=2)
+```
+
+Contar los individuos por clase
+
+```{r}
+ind_por_clase<-table(occurrences$class)
+```
+
+```{r}
+barplot(ind_por_clase)
+```
+
+
+
+# Leer el archivo de metadatos
+
+```{r}
+eml_info<-read_eml("../Datos/tmp/eml.xml")
+```
+
+¡El objeto eml_info es un objeto complejo!
+Se trata de la transformación de un archivo eml en una lista de R.
+
+Pueden explorar el objeto con:
+
+```r
+str(eml_info)
+```
+
+Sin entrar demasiado en los detalles (¡excepto si quieren!), vamos a extraer el titulo del dataset y el primer creador del dataset con los comandos siguientes:
+
+```{r}
+(titulo<-eml_info$dataset$title$title)
+(creador1<-eml_info$dataset$creator$individualName$surName)
+```
+

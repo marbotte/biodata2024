@@ -88,29 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Talleres Biodata 2024: Bucles y estructuras de control en R</title>
+  <title>Talleres Biodata 2024: Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core</title>
 
-  <meta property="description" itemprop="description" content="Bucles `for` y `while`, funciones de tipo `*PPLY` y funciones"/>
+  <meta property="description" itemprop="description" content="Explorar los estándares EML y Darwin Core"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Talleres Biodata 2024: Bucles y estructuras de control en R"/>
+  <meta property="og:title" content="Talleres Biodata 2024: Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Bucles `for` y `while`, funciones de tipo `*PPLY` y funciones"/>
+  <meta property="og:description" content="Explorar los estándares EML y Darwin Core"/>
   <meta property="og:locale" content="es_CL"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Talleres Biodata 2024: Bucles y estructuras de control en R"/>
-  <meta property="twitter:description" content="Bucles `for` y `while`, funciones de tipo `*PPLY` y funciones"/>
+  <meta property="twitter:title" content="Talleres Biodata 2024: Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core"/>
+  <meta property="twitter:description" content="Explorar los estándares EML y Darwin Core"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Bucles y estructuras de control en R"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Bucles `for` y `while`, funciones de tipo `*PPLY` y funciones"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Explorar los estándares EML y Darwin Core"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","fig_caption","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2100,8 +2100,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
-  <link href="site_libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
-  <link href="site_libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2121,7 +2119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Bucles y estructuras de control en R","description":"Bucles `for` y `while`, funciones de tipo `*PPLY` y funciones","authors":[]}
+{"title":"Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core","description":"Explorar los estándares EML y Darwin Core","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2225,11 +2223,11 @@ Instalación de software
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Bucles y estructuras de control en R</h1>
+<h1>Propuesta de respuesta para el ejercicio sobre la explotación de datos en formato Darwin Core</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>Bucles <code>for</code> y <code>while</code>, funciones de tipo <code>*PPLY</code> y funciones</p>
+<p>Explorar los estándares EML y Darwin Core</p>
 </div>
 
 
@@ -2238,250 +2236,228 @@ Instalación de software
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#bucles-en-r" id="toc-bucles-en-r"><span class="toc-section-number">1</span> Bucles en R</a></li>
-<li><a href="#funciones-pply" id="toc-funciones-pply"><span class="toc-section-number">2</span> Funciones *PPLY</a>
-<ul>
-<li><a href="#apply" id="toc-apply"><span class="toc-section-number">2.1</span> <code>apply</code></a></li>
-<li><a href="#lapply-y-sapply" id="toc-lapply-y-sapply"><span class="toc-section-number">2.2</span> <code>lapply</code> y <code>sapply</code></a></li>
-<li><a href="#reduce" id="toc-reduce"><span class="toc-section-number">2.3</span> Reduce</a></li>
-<li><a href="#tapply" id="toc-tapply"><span class="toc-section-number">2.4</span> <code>tapply</code></a></li>
-<li><a href="#by" id="toc-by"><span class="toc-section-number">2.5</span> <code>by</code></a></li>
-</ul></li>
-<li><a href="#crear-funciones" id="toc-crear-funciones"><span class="toc-section-number">3</span> Crear funciones</a></li>
+<li><a href="#cargar-los-paquetes" id="toc-cargar-los-paquetes"><span class="toc-section-number">1</span> Cargar los paquetes</a></li>
+<li><a href="#leer-el-archivo-comprimido" id="toc-leer-el-archivo-comprimido"><span class="toc-section-number">2</span> Leer el archivo comprimido</a></li>
+<li><a href="#leer-el-archivo-de-occurrencia" id="toc-leer-el-archivo-de-occurrencia"><span class="toc-section-number">3</span> Leer el archivo de occurrencia</a></li>
+<li><a href="#leer-el-archivo-de-metadatos" id="toc-leer-el-archivo-de-metadatos"><span class="toc-section-number">4</span> Leer el archivo de metadatos</a></li>
 </ul>
 </nav>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<a href="https://raw.githubusercontent.com/marbotte/biodata2024/master/download/R_code/documentation/doc_R_structuraControl.R">
-<button class="btn btn-default"><i class="fa fa-save"></i> Download R script</button>
-</a>
-</div>
-<h1 data-number="1" id="bucles-en-r"><span class="header-section-number">1</span> Bucles en R</h1>
-<p>Las bucles permiten repetir operaciones y cambiar algunos valores en el proceso.</p>
-<p>El tipo de bucle más utilizado es <code>for</code>:</p>
+<h1 data-number="1" id="cargar-los-paquetes"><span class="header-section-number">1</span> Cargar los paquetes</h1>
+<p>Para cargar los paquetes que nos van a servir en este ejercicio, utilizamos los comandos siguientes:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span><span class='op'>{</span></span>
-<span>  <span class='kw'>if</span><span class='op'>(</span><span class='va'>i</span><span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span><span class='fl'>2</span> <span class='op'>==</span><span class='fl'>0</span><span class='op'>)</span><span class='op'>{</span><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='va'>i</span>,<span class='st'>"es un número par\n"</span><span class='op'>)</span><span class='op'>}</span><span class='kw'>else</span><span class='op'>{</span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>i</span><span class='op'>)</span><span class='op'>}</span></span>
-<span><span class='op'>}</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/EML/'>EML</a></span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] 1
-2 es un número par
-[1] 3
-4 es un número par
-[1] 5
-6 es un número par
-[1] 7
-8 es un número par
-[1] 9
-10 es un número par</code></pre>
 </div>
-<p>Tambien se puede utilizar <code>while</code> (principalmente útil cuando no se puede determinar el numero de operaciones, porque depende de lo que van a hacer las operaciones).</p>
+<h1 data-number="2" id="leer-el-archivo-comprimido"><span class="header-section-number">2</span> Leer el archivo comprimido</h1>
+<p>En mi caso, los archivos de datos están en una carpeta Datos, en la misma carpeta que la carpeta de scripts R.</p>
+<p>Para ver lo que contiene la carpeta de datos, utilizamos:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>res</span><span class='op'>&lt;-</span><span class='fl'>1</span></span>
-<span><span class='kw'>while</span><span class='op'>(</span><span class='va'>res</span><span class='op'>&lt;</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>{</span></span>
-<span>  <span class='va'>add</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>)</span></span>
-<span>  <span class='va'>res</span><span class='op'>&lt;-</span><span class='va'>res</span><span class='op'>+</span><span class='va'>add</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"yo añado"</span>,<span class='va'>add</span>,<span class='st'>"ahora 'res' vale"</span>,<span class='va'>res</span>,<span class='st'>"\n"</span><span class='op'>)</span></span>
-<span><span class='op'>}</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span><span class='op'>(</span><span class='st'>"../Datos"</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>yo añado 3 ahora &#39;res&#39; vale 4 
-yo añado 2 ahora &#39;res&#39; vale 6 
-yo añado 2 ahora &#39;res&#39; vale 8 
-yo añado 2 ahora &#39;res&#39; vale 10 </code></pre>
+<pre><code> [1] &quot;biodata_old.pgdump&quot;                    
+ [2] &quot;biodata1.pgdump&quot;                       
+ [3] &quot;biodata1.sqlite3&quot;                      
+ [4] &quot;bog_chinga.csv&quot;                        
+ [5] &quot;bog_chinga.RData&quot;                      
+ [6] &quot;Comunas&quot;                               
+ [7] &quot;Comunas.zip&quot;                           
+ [8] &quot;Curso.xlsx&quot;                            
+ [9] &quot;dwca-fotomonitoreo_conaf_2021-v1.9&quot;    
+[10] &quot;dwca-fotomonitoreo_conaf_2021-v1.9.zip&quot;
+[11] &quot;esca_simple.sqlite&quot;                    
+[12] &quot;tmp&quot;                                   </code></pre>
 </div>
-<h1 data-number="2" id="funciones-pply"><span class="header-section-number">2</span> Funciones *PPLY</h1>
-<p>Las funciones de tipo <code>*PPLY</code> permiten aplicar implícitamente una función en una bucle <code>for</code> sobre un objeto.</p>
-<h2 data-number="2.1" id="apply"><span class="header-section-number">2.1</span> <code>apply</code></h2>
-<p><code>apply</code> aplica una función sobre una dimensión de un array (1 significa por fila, 2 por columna)</p>
+<p>Los datos que nos interesan están en el archivo “dwca-fotomonitoreo_conaf_2021-v1.9.zip”.</p>
+<p>Vamos a crear una carpeta temporaria (que vamos a suprimir después de haber leído los datos en el archivo comprimido).
+Esto nos permitirá automatizar el proceso más tarde con R.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"../Datos/bog_chinga.RData"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.exists</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='op'>{</span><span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp"</span><span class='op'>)</span><span class='op'>}</span></span></code></pre>
 </div>
-<pre><code>[1] &quot;df_bog_chinga&quot;  &quot;mat_bog_chinga&quot;</code></pre>
+</div>
+<p>Miramos la lista de los archivos en el archivo zip:</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mat_bog_chinga</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/unzip.html'>unzip</a></span><span class='op'>(</span><span class='st'>"../Datos/dwca-fotomonitoreo_conaf_2021-v1.9.zip"</span>,list <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>         Canis lupus Felis catus Tramarctos ornatus
-Bogotá          3000        1000                  0
-Chingaza         100           0                 50
-         Odocoileus viginianus
-Bogotá                       0
-Chingaza                   200</code></pre>
+<pre><code>            Name    Length                Date
+1 occurrence.txt 633952771 2024-10-08 16:46:00
+2        eml.xml     21421 2024-10-08 16:46:00
+3       meta.xml      4424 2024-10-08 16:46:00</code></pre>
+</div>
+<p>Extracción de los archivos occurrence.txt y eml.xml en la carpeta tmp:</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>mat_bog_chinga</span>,<span class='fl'>1</span>,<span class='va'>mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/unzip.html'>unzip</a></span><span class='op'>(</span><span class='st'>"../Datos/dwca-fotomonitoreo_conaf_2021-v1.9.zip"</span>,files <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"occurrence.txt"</span>,<span class='st'>"eml.xml"</span><span class='op'>)</span>, exdir <span class='op'>=</span> <span class='st'>"../Datos/tmp"</span>, overwrite <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>  Bogotá Chingaza 
-  1000.0     87.5 </code></pre>
+</div>
+<p>Averiguar si los archivos aparecieron en la carpeta indicada:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp"</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;eml.xml&quot;        &quot;occurrence.txt&quot;</code></pre>
+</div>
+<h1 data-number="3" id="leer-el-archivo-de-occurrencia"><span class="header-section-number">3</span> Leer el archivo de occurrencia</h1>
+<p>Leer el archivo occurrence.txt y ponerlo en una tabla de R:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>occurrences</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp/occurrence.txt"</span>,sep<span class='op'>=</span><span class='st'>"\t"</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 612187     57</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;id&quot;                            &quot;type&quot;                         
+ [3] &quot;modified&quot;                      &quot;language&quot;                     
+ [5] &quot;license&quot;                       &quot;rightsHolder&quot;                 
+ [7] &quot;bibliographicCitation&quot;         &quot;institutionID&quot;                
+ [9] &quot;collectionID&quot;                  &quot;institutionCode&quot;              
+[11] &quot;collectionCode&quot;                &quot;ownerInstitutionCode&quot;         
+[13] &quot;basisOfRecord&quot;                 &quot;occurrenceID&quot;                 
+[15] &quot;individualCount&quot;               &quot;sex&quot;                          
+[17] &quot;lifeStage&quot;                     &quot;reproductiveCondition&quot;        
+[19] &quot;establishmentMeans&quot;            &quot;degreeOfEstablishment&quot;        
+[21] &quot;occurrenceStatus&quot;              &quot;occurrenceRemarks&quot;            
+[23] &quot;eventID&quot;                       &quot;eventDate&quot;                    
+[25] &quot;eventTime&quot;                     &quot;startDayOfYear&quot;               
+[27] &quot;endDayOfYear&quot;                  &quot;year&quot;                         
+[29] &quot;month&quot;                         &quot;day&quot;                          
+[31] &quot;locationID&quot;                    &quot;continent&quot;                    
+[33] &quot;country&quot;                       &quot;countryCode&quot;                  
+[35] &quot;stateProvince&quot;                 &quot;locality&quot;                     
+[37] &quot;decimalLatitude&quot;               &quot;decimalLongitude&quot;             
+[39] &quot;geodeticDatum&quot;                 &quot;coordinateUncertaintyInMeters&quot;
+[41] &quot;verbatimCoordinateSystem&quot;      &quot;verbatimSRS&quot;                  
+[43] &quot;scientificName&quot;                &quot;originalNameUsage&quot;            
+[45] &quot;kingdom&quot;                       &quot;phylum&quot;                       
+[47] &quot;class&quot;                         &quot;order&quot;                        
+[49] &quot;family&quot;                        &quot;genus&quot;                        
+[51] &quot;specificEpithet&quot;               &quot;infraspecificEpithet&quot;         
+[53] &quot;taxonRank&quot;                     &quot;verbatimTaxonRank&quot;            
+[55] &quot;scientificNameAuthorship&quot;      &quot;vernacularName&quot;               
+[57] &quot;taxonomicStatus&quot;              </code></pre>
+</div>
+<p>Las 10 primeras especies son:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>$</span><span class='va'>scientificName</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Ovis aries Linnaeus, 1758&quot;              
+ [2] &quot;Oryctolagus cuniculus (Linnaeus, 1758)&quot; 
+ [3] &quot;Lepus europaeus Pallas, 1778&quot;           
+ [4] &quot;Bos taurus Linnaeus, 1758&quot;              
+ [5] &quot;Scelorchilus rubecula (Kittlitz, 1830)&quot; 
+ [6] &quot;Pteroptochos tarnii (King, 1831)&quot;       
+ [7] &quot;Turdus falcklandii Quoy &amp; Gaimard, 1824&quot;
+ [8] &quot;Neovison vison (Schreber, 1777)&quot;        
+ [9] &quot;Leopardus guigna (Molina, 1782)&quot;        
+[10] &quot;Pudu puda (Molina, 1782)&quot;               </code></pre>
+</div>
+<p>Las regiones de occurrencias son:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>$</span><span class='va'>stateProvince</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Región de Tarapacá&quot;                                 
+ [2] &quot;Región de Magallanes y de la Antártica Chilena&quot;     
+ [3] &quot;Región de Los Ríos&quot;                                 
+ [4] &quot;Región de Valparaíso&quot;                               
+ [5] &quot;Región de Aysén del General Carlos Ibáñez del Campo&quot;
+ [6] &quot;Región de Los Lagos&quot;                                
+ [7] &quot;Región de Coquimbo&quot;                                 
+ [8] &quot;Región de Atacama&quot;                                  
+ [9] &quot;&quot;                                                   
+[10] &quot;Región Metropolitana de Santiago&quot;                   
+[11] &quot;Región del Maule&quot;                                   
+[12] &quot;Región de Ñuble&quot;                                    
+[13] &quot;Región del Biobío&quot;                                  
+[14] &quot;Región de La Araucanía&quot;                             
+[15] &quot;Región del Libertador General Bernardo O&#39;Higgins&quot;   </code></pre>
+</div>
+<p>Para calcular el numero de especies por region:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>riqu_region</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/tapply.html'>tapply</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>$</span><span class='va'>scientificName</span>,<span class='va'>occurrences</span><span class='op'>$</span><span class='va'>stateProvince</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>                                                    
+                                                  9 
+                                  Región de Atacama 
+                                                 12 
+Región de Aysén del General Carlos Ibáñez del Campo 
+                                                 43 
+                                 Región de Coquimbo 
+                                                 13 
+                             Región de La Araucanía 
+                                                 16 
+                                Región de Los Lagos 
+                                                 24 
+                                 Región de Los Ríos 
+                                                 30 
+     Región de Magallanes y de la Antártica Chilena 
+                                                 59 
+                                    Región de Ñuble 
+                                                 11 
+                                 Región de Tarapacá 
+                                                 41 
+                               Región de Valparaíso 
+                                                 16 
+                                  Región del Biobío 
+                                                 35 
+   Región del Libertador General Bernardo O&#39;Higgins 
+                                                 15 
+                                   Región del Maule 
+                                                 17 
+                   Región Metropolitana de Santiago 
+                                                 12 </code></pre>
+</div>
+<p>Representar los numeros obtenidos:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mar<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>14</span>,<span class='fl'>6</span>,<span class='fl'>1</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>riqu_region</span>,las<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="prop_act_2_estandares_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>Contar los individuos por clase</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ind_por_clase</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>occurrences</span><span class='op'>$</span><span class='va'>class</span><span class='op'>)</span></span></code></pre>
+</div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>mat_bog_chinga</span>,<span class='fl'>2</span>,<span class='va'>mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='va'>ind_por_clase</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>          Canis lupus           Felis catus    Tramarctos ornatus 
-                 1550                   500                    25 
-Odocoileus viginianus 
-                  100 </code></pre>
+<p><img src="prop_act_2_estandares_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
-<p>Cuando simplify está verdadero y que los objetos de resultados tienen las mismas dimensiones, <code>apply</code> intenta simplificar los objetos en vectores o arrays, cuando no se puede, o simplify es falso, entonces, envia una lista:</p>
+<h1 data-number="4" id="leer-el-archivo-de-metadatos"><span class="header-section-number">4</span> Leer el archivo de metadatos</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>mat_bog_chinga</span>,<span class='fl'>1</span>,<span class='va'>mean</span>,simplify <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>eml_info</span><span class='op'>&lt;-</span><span class='fu'><a href='https://docs.ropensci.org/EML/reference/read_eml.html'>read_eml</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp/eml.xml"</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>$Bogotá
-[1] 1000
-
-$Chingaza
-[1] 87.5</code></pre>
 </div>
-<p>Las funciones se pueden definir directamente en la función apply, y los argumentos de las funciones se pueden poner en los argumentos de apply (las demás funciones de tipo <code>*PPLY</code> tambien lo aceptan:</p>
+<p>¡El objeto eml_info es un objeto complejo!
+Se trata de la transformación de un archivo eml en una lista de R.</p>
+<p>Pueden explorar el objeto con:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(eml_info)</span></code></pre></div>
+<p>Sin entrar demasiado en los detalles (¡excepto si quieren!), vamos a extraer el titulo del dataset y el primer creador del dataset con los comandos siguientes:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>mat_bog_chinga</span>,<span class='fl'>1</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>a</span><span class='op'>)</span><span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/which.min.html'>which.max</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>,a<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>mat_bog_chinga</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>titulo</span><span class='op'>&lt;-</span><span class='va'>eml_info</span><span class='op'>$</span><span class='va'>dataset</span><span class='op'>$</span><span class='va'>title</span><span class='op'>$</span><span class='va'>title</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>                 Bogotá                Chingaza 
-          &quot;CANIS LUPUS&quot; &quot;ODOCOILEUS VIGINIANUS&quot; </code></pre>
-</div>
-<h2 data-number="2.2" id="lapply-y-sapply"><span class="header-section-number">2.2</span> <code>lapply</code> y <code>sapply</code></h2>
-<p>lapply y sapply aplican la función a todos los elementos de un vector (y entonces a todos los elemetos de una lista).
-<code>sapply</code> simplifica el resultado si es posible</p>
-<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] &quot;Programa de fotomonitoreo de objetos de conservación y amenazas en el Sistema Nacional de Áreas Protegidas (SNAP)&quot;</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://ycphs.github.io/openxlsx/index.html'>openxlsx</a></span><span class='op'>)</span></span>
-<span><span class='va'>cursoWB</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/openxlsx/man/loadWorkbook.html'>loadWorkbook</a></span><span class='op'>(</span><span class='st'>"../Datos/Curso.xlsx"</span><span class='op'>)</span></span>
-<span><span class='va'>contenidoPestañas</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>cursoWB</span><span class='op'>)</span>, <span class='va'>read.xlsx</span>, xlsxFile <span class='op'>=</span> <span class='va'>cursoWB</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>creador1</span><span class='op'>&lt;-</span><span class='va'>eml_info</span><span class='op'>$</span><span class='va'>dataset</span><span class='op'>$</span><span class='va'>creator</span><span class='op'>$</span><span class='va'>individualName</span><span class='op'>$</span><span class='va'>surName</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[[1]]
-[1] 6 3
-
-[[2]]
-[1] 28  1</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span></span></code></pre>
+<pre><code>[1] &quot;Corporación Nacional Forestal&quot;</code></pre>
 </div>
-<pre><code>     [,1] [,2]
-[1,]    6   28
-[2,]    3    1</code></pre>
-</div>
-<h2 data-number="2.3" id="reduce"><span class="header-section-number">2.3</span> Reduce</h2>
-<p>En asociación con <code>lapply</code>, <code>Reduce</code> puede ser muy util para simplificar el resultado de manera diferente.
-Reduce toma una lista y aplica una funcion entre sus elementos para reducir el objeto</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>totalRowCol</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Reduce</a></span><span class='op'>(</span><span class='va'>`+`</span>,<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] 34  4</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>totalRowCol</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/funprog.html'>Reduce</a></span><span class='op'>(</span><span class='va'>`rbind`</span>,<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>contenidoPestañas</span>,<span class='va'>dim</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>     [,1] [,2]
-init    6    3
-       28    1</code></pre>
-</div>
-<h2 data-number="2.4" id="tapply"><span class="header-section-number">2.4</span> <code>tapply</code></h2>
-<p><code>tapply</code> permite aplicar una función en un vector en función de grupos definidos en otro vector:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>valores</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] 1 2 3 4 5</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>grupos</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"A"</span>,<span class='fl'>3</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"B"</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] A A A B B
-Levels: A B</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/tapply.html'>tapply</a></span><span class='op'>(</span><span class='va'>valores</span>,<span class='va'>grupos</span>,<span class='va'>sum</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>A B 
-6 9 </code></pre>
-</div>
-<h2 data-number="2.5" id="by"><span class="header-section-number">2.5</span> <code>by</code></h2>
-<p><code>by</code> es el equivalente de tapply para aplicar una función a una tabla según un vector de grupos:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>misViajes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>pais<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Francia"</span>,<span class='st'>"Colombia"</span>,<span class='st'>"Colombia"</span>,<span class='st'>"Chile"</span><span class='op'>)</span>,</span>
-<span>                        año<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2021</span>,<span class='fl'>2003</span>,<span class='fl'>2004</span>,<span class='fl'>2023</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>      pais  año
-1  Francia 2021
-2 Colombia 2003
-3 Colombia 2004
-4    Chile 2023</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/by.html'>by</a></span><span class='op'>(</span><span class='va'>misViajes</span>,<span class='va'>misViajes</span><span class='op'>$</span><span class='va'>pais</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,<span class='st'>"viajes:"</span>,<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>año</span>,sep<span class='op'>=</span><span class='st'>""</span>,collapse<span class='op'>=</span><span class='st'>", "</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>misViajes$pais: Chile
-[1] &quot;1 viajes: 2023&quot;
----------------------------------------------------- 
-misViajes$pais: Colombia
-[1] &quot;2 viajes: 2003, 2004&quot;
----------------------------------------------------- 
-misViajes$pais: Francia
-[1] &quot;1 viajes: 2021&quot;</code></pre>
-</div>
-<h1 data-number="3" id="crear-funciones"><span class="header-section-number">3</span> Crear funciones</h1>
-<p>En R, se pueden definir funciones utilizando <code>function</code></p>
-<p>Los argumentos se definen en las paréntesis, y pueden tener valor por defecto:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>create_list_metaData</span><span class='op'>&lt;-</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>date</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,<span class='va'>tipoOrganismos</span>,<span class='va'>lugar</span><span class='op'>=</span><span class='st'>"Concepción, Chile"</span><span class='op'>)</span></span>
-<span><span class='op'>{</span></span>
-<span>  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>date<span class='op'>=</span><span class='va'>date</span>,tipoOrganismos<span class='op'>=</span><span class='va'>tipoOrganismos</span>,lugar<span class='op'>=</span><span class='va'>lugar</span><span class='op'>)</span><span class='op'>)</span></span>
-<span><span class='op'>}</span></span>
-<span><span class='fu'>create_list_metaData</span><span class='op'>(</span>tipoOrganismos <span class='op'>=</span> <span class='st'>"Plantas"</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>$date
-[1] &quot;2024-12-08&quot;
-
-$tipoOrganismos
-[1] &quot;Plantas&quot;
-
-$lugar
-[1] &quot;Concepción, Chile&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>create_list_metaData</span><span class='op'>(</span>date<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span>, tipoOrganismos <span class='op'>=</span> <span class='st'>"Animales"</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>$date
-[1] &quot;2024-12-09&quot;
-
-$tipoOrganismos
-[1] &quot;Animales&quot;
-
-$lugar
-[1] &quot;Concepción, Chile&quot;</code></pre>
-</div>
-<p>Una posibilidad interesante en las funciones es utilizar el argumento “…” para pasar argumentos no definidos a otra función.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>max_mas1</span><span class='op'>&lt;-</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>...</span><span class='op'>)</span></span>
-<span><span class='op'>{</span></span>
-<span>  <span class='va'>a</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>...</span><span class='op'>)</span></span>
-<span>  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>)</span></span>
-<span><span class='op'>}</span></span>
-<span></span>
-<span><span class='fu'>max_mas1</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>,<span class='fl'>7</span>,<span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] 10</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>max_mas1</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>,<span class='fl'>7</span>,<span class='fl'>9</span>,<span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] NA</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>max_mas1</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>,<span class='fl'>7</span>,<span class='fl'>9</span>,<span class='cn'>NA</span><span class='op'>)</span>,na.rm<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code>[1] 10</code></pre>
-</div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -86,6 +86,28 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+      margin-bottom: 0em;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
 
   <!--radix_placeholder_meta_tags-->
   <title>Talleres Biodata 2024: Estándares para los datos de biodiversidad</title>
@@ -107,10 +129,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="twitter:description" content="Explorar los estándares EML y Darwin Core"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Ecological metadata language version 2.2.0;citation_publisher=KNB Data Repository;citation_doi=10.5063/f11834t2;citation_author=Matthew Jones;citation_author=Margaret O’Brien;citation_author=Bryce Mecum;citation_author=Carl Boettiger;citation_author=Mark Schildhauer;citation_author=Mitchell Maier;citation_author=Timothy Whiteaker;citation_author=Stevan Earl;citation_author=Steven Chong"/>
+  <meta name="citation_reference" content="citation_title=Darwin core: An evolving community-developed biodiversity data standard;citation_publisher=Public Library of Science;citation_volume=7;citation_doi=10.1371/journal.pone.0029715;citation_author=John Wieczorek;citation_author=David Bloom;citation_author=Robert Guralnick;citation_author=Stan Blum;citation_author=Markus Döring;citation_author=Renato Giovanni;citation_author=Tim Robertson;citation_author=David Vieglais"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Estándares para los datos de biodiversidad"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Explorar los estándares EML y Darwin Core"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","fig_caption","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Estándares para los datos de biodiversidad"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Explorar los estándares EML y Darwin Core"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","fig_caption","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]},{"type":"character","attributes":{},"value":["./biodata2024.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2242,24 +2267,20 @@ Instalación de software
 <li><a href="#exploración-de-los-estándares-y-plantillas" id="toc-exploración-de-los-estándares-y-plantillas"><span class="toc-section-number">2.1</span> Exploración de los estándares y plantillas</a></li>
 <li><a href="#buscar-juegos-de-datos" id="toc-buscar-juegos-de-datos"><span class="toc-section-number">2.2</span> Buscar juegos de datos</a></li>
 <li><a href="#utilizar-un-juego-de-datos-darwin-core" id="toc-utilizar-un-juego-de-datos-darwin-core"><span class="toc-section-number">2.3</span> Utilizar un juego de datos Darwin Core</a></li>
-<li><a href="#section" id="toc-section"><span class="toc-section-number">2.4</span> </a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <h1 data-number="1" id="generalidades"><span class="header-section-number">1</span> Generalidades</h1>
-<p>El estándar Darwin Core <span class="citation" data-cites="Wieczorek2012">[@Wieczorek2012]</span> es el estándar principal para los datos de biodiversidad.
-Está usualmente asociado con metadatos que siguen el estándar <em>Ecological Metadata Language</em> <span class="citation" data-cites="Jones2019">[EML, @Jones2019]</span>.</p>
+<p>El estándar Darwin Core <span class="citation" data-cites="Wieczorek2012">(<a href="#ref-Wieczorek2012" role="doc-biblioref">Wieczorek et al. 2012</a>)</span> es el estándar principal para los datos de biodiversidad.
+Está usualmente asociado con metadatos que siguen el estándar <em>Ecological Metadata Language</em> <span class="citation" data-cites="Jones2019">(EML, <a href="#ref-Jones2019" role="doc-biblioref">Jones et al. 2019</a>)</span>.</p>
 <p>En particular, la plataforma internacional de información sobre biodiversidad GBIF (<a href="https:www.gbif.org" class="uri">https:www.gbif.org</a>) utiliza esos estándares.
 Los equipos asociados a GBIF desarrollo también una herramienta opensource de manejo y publicación de juegos de datos de biodiversidad que se llama “Integrated Publishing Toolkit” (IPT: <a href="https://www.gbif.org/ipt" class="uri">https://www.gbif.org/ipt</a>, alojado en GitHub: <a href="https://github.com/gbif/ipt" class="uri">https://github.com/gbif/ipt</a>).</p>
 <p>En Colombia, el Sistema de Información Biologica (SiB-Colombia, <a href="https://biodiversidad.co/" class="uri">https://biodiversidad.co/</a>) es la red nacional de datos abierto sobre biodiversidad.
 Es una entidad independiente, pero está actualmente manejada contractualmente por investigadores del Instituto Alexander von Humboldt.
 El SiB Colombia maneja tambien un nodo GBIF, que provee varios plataformas IPT para publicar datos en la plataforma GBIF.
 Así, el SiB Colombia provee documentación y apoyo para la publicación de juegos de datos con las normas EML y Darwin Core (<a href="https://biodiversidad.co/recursos/estandarizacion/" class="uri">https://biodiversidad.co/recursos/estandarizacion/</a>).</p>
-<!--
-https://gbifchile.mma.gob.cl/
-https://gbif-chile.mma.gob.cl/ipt
--->
+<p>Para Chile, pueden encontrar información del nodo GBIF en <a href="https://gbifchile.mma.gob.cl/" class="uri">https://gbifchile.mma.gob.cl/</a></p>
 <h1 data-number="2" id="ejercicios"><span class="header-section-number">2</span> Ejercicios</h1>
 <h2 data-number="2.1" id="exploración-de-los-estándares-y-plantillas"><span class="header-section-number">2.1</span> Exploración de los estándares y plantillas</h2>
 <p>Explorar la documentación en <a href="https://biodiversidad.co/recursos/estandarizacion/" class="uri">https://biodiversidad.co/recursos/estandarizacion/</a>, en particular las plantillas en <a href="https://biodiversidad.co/recursos/plantillas-dwc/" class="uri">https://biodiversidad.co/recursos/plantillas-dwc/</a>.</p>
@@ -2284,17 +2305,31 @@ Permite entender cual es el uso de los estándares que podrían tener para publi
 </ul></li>
 <li>presentar los resultados en una tabla que integra algunos elementos del archivo EML:
 <ul>
-<li></li>
+<li>Titulo del recurso</li>
+<li>Persona responsable</li>
 </ul></li>
 </ul>
-<h2 data-number="2.4" id="section"><span class="header-section-number">2.4</span> </h2>
-<p>La idea es :</p>
-<ul>
-<li>explorar las fuentes de documentación de Darwin Core y EML</li>
-<li>abrir un archivo DarwinCore, hacer un tratamiento, ver si aplica en otro archivo</li>
-<li>(¿crear un archivo Darwin Core?)</li>
-</ul>
+<!--
+##  
+
+
+
+La idea es :
+
+* explorar las fuentes de documentación de Darwin Core y EML
+* abrir un archivo DarwinCore, hacer un tratamiento, ver si aplica en otro archivo
+* (¿crear un archivo Darwin Core?)
+
+-->
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Jones2019" class="csl-entry" role="listitem">
+Jones, Matthew, Margaret O’Brien, Bryce Mecum, Carl Boettiger, Mark Schildhauer, Mitchell Maier, Timothy Whiteaker, Stevan Earl, y Steven Chong. 2019. <span>“Ecological Metadata Language version 2.2.0”</span>. <a href="https://doi.org/10.5063/f11834t2">https://doi.org/10.5063/f11834t2</a>.
+</div>
+<div id="ref-Wieczorek2012" class="csl-entry" role="listitem">
+Wieczorek, John, David Bloom, Robert Guralnick, Stan Blum, Markus Döring, Renato Giovanni, Tim Robertson, y David Vieglais. 2012. <span>“Darwin Core: An Evolving Community-Developed Biodiversity Data Standard”</span>. <em>PLOS ONE</em> 7 (1): 1–8. <a href="https://doi.org/10.1371/journal.pone.0029715">https://doi.org/10.1371/journal.pone.0029715</a>.
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2306,7 +2341,10 @@ Permite entender cual es el uso de los estándares que podrían tener para publi
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

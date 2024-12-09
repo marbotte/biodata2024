@@ -27,7 +27,7 @@ download_link(
 ```
 # Ejercicio
 
-Utilizar lo que hicimos en SQL en la [actividad 1.1](act_1_1_SQL.Rmd) para crear una tabla de abundancia de los escarabajos recolectados con el protocolo de trampa de excrementos.
+Utilizar lo que hicimos en SQL en la [actividad 1.1](act_1_1_SQL.Rmd) para crear una tabla de abundancia de los escarabajos recolectados con el protocolo de trampa de excrementos. Luego, utilizar análisis para describir los patrones de diversidad (por ejemplo NMDS).
 
 Las etapas para lograr crear la matriz son:
 
@@ -36,3 +36,5 @@ Las etapas para lograr crear la matriz son:
 * recuperar los datos en R (función `dbGetQuery`)
 * crear el esqueleto de la matriz
 * poner los datos en la matriz
+
+Para hacer la nmds, mirar la documentación del paquete `vegan`.

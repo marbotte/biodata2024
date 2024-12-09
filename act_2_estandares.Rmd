@@ -8,6 +8,7 @@ output:
     toc_float: true
     fig_caption: true
     pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
 ---
 
 # Generalidades
@@ -23,11 +24,7 @@ Es una entidad independiente, pero está actualmente manejada contractualmente p
 El SiB Colombia maneja tambien un nodo GBIF, que provee varios plataformas IPT para publicar datos en la plataforma GBIF.
 Así, el SiB Colombia provee documentación y apoyo para la publicación de juegos de datos con las normas EML y Darwin Core (<https://biodiversidad.co/recursos/estandarizacion/>).
 
-
-<!--
-https://gbifchile.mma.gob.cl/
-https://gbif-chile.mma.gob.cl/ipt
--->
+Para Chile, pueden encontrar información del nodo GBIF en <https://gbifchile.mma.gob.cl/>
 
 
 # Ejercicios
@@ -58,9 +55,10 @@ El juego de datos [Programa de fotomonitoreo de objetos de conservación y amena
   + calcular la representación taxonómica (nivel clase del juego de datos (class)
   + elegir una o dos otras preguntas que les interesan
 * presentar los resultados en una tabla que integra algunos elementos del archivo EML:
-  + 
+  + Titulo del recurso
+  + Persona responsable
   
-
+<!--
 ##  
 
 
@@ -70,3 +68,5 @@ La idea es :
 * explorar las fuentes de documentación de Darwin Core y EML
 * abrir un archivo DarwinCore, hacer un tratamiento, ver si aplica en otro archivo
 * (¿crear un archivo Darwin Core?)
+
+-->
