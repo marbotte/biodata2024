@@ -125,3 +125,10 @@ Sin entrar demasiado en los detalles (¡excepto si quieren!), vamos a extraer el
 (creador1<-eml_info$dataset$creator$individualName$surName)
 ```
 
+
+# Suprimir la carpeta temporaria
+
+```{r}
+unlink("../Datos/tmp/",recursive=T)
+```
+

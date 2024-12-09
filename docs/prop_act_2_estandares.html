@@ -2151,7 +2151,9 @@ R y SQL
 <hr/>
 <a href="https://docs.google.com/presentation/d/18plX_FYs_ZnBU39r26qxVQkoRkw0cNedyKuEcXFhhGE/edit?usp=sharing">Introducción</a>
 <a href="act_1_1_SQL.html">Actividad 1.1: SQL</a>
+<a href="prop_act_1_1_SQL.html">Propuesta de solución actividad 1.1</a>
 <a href="act_1_2_R.html">Actividad 1.2: R</a>
+<a href="prop_act_1_1_SQL.html">Propuesta de solución actividad 1.2</a>
 <hr/>
 <span class="nav-dropdown-header">Documentación SQL</span>
 <hr/>
@@ -2240,6 +2242,7 @@ Instalación de software
 <li><a href="#leer-el-archivo-comprimido" id="toc-leer-el-archivo-comprimido"><span class="toc-section-number">2</span> Leer el archivo comprimido</a></li>
 <li><a href="#leer-el-archivo-de-occurrencia" id="toc-leer-el-archivo-de-occurrencia"><span class="toc-section-number">3</span> Leer el archivo de occurrencia</a></li>
 <li><a href="#leer-el-archivo-de-metadatos" id="toc-leer-el-archivo-de-metadatos"><span class="toc-section-number">4</span> Leer el archivo de metadatos</a></li>
+<li><a href="#suprimir-la-carpeta-temporaria" id="toc-suprimir-la-carpeta-temporaria"><span class="toc-section-number">5</span> Suprimir la carpeta temporaria</a></li>
 </ul>
 </nav>
 </div>
@@ -2257,18 +2260,14 @@ Instalación de software
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span><span class='op'>(</span><span class='st'>"../Datos"</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code> [1] &quot;biodata_old.pgdump&quot;                    
- [2] &quot;biodata1.pgdump&quot;                       
- [3] &quot;biodata1.sqlite3&quot;                      
- [4] &quot;bog_chinga.csv&quot;                        
- [5] &quot;bog_chinga.RData&quot;                      
- [6] &quot;Comunas&quot;                               
- [7] &quot;Comunas.zip&quot;                           
- [8] &quot;Curso.xlsx&quot;                            
- [9] &quot;dwca-fotomonitoreo_conaf_2021-v1.9&quot;    
-[10] &quot;dwca-fotomonitoreo_conaf_2021-v1.9.zip&quot;
-[11] &quot;esca_simple.sqlite&quot;                    
-[12] &quot;tmp&quot;                                   </code></pre>
+<pre><code>[1] &quot;biodata1.pgdump&quot;                       
+[2] &quot;biodata1.sqlite3&quot;                      
+[3] &quot;bog_chinga.csv&quot;                        
+[4] &quot;bog_chinga.RData&quot;                      
+[5] &quot;Curso.xlsx&quot;                            
+[6] &quot;dwca-fotomonitoreo_conaf_2021-v1.9.zip&quot;
+[7] &quot;esca_simple.sqlite&quot;                    
+[8] &quot;tmp&quot;                                   </code></pre>
 </div>
 <p>Los datos que nos interesan están en el archivo “dwca-fotomonitoreo_conaf_2021-v1.9.zip”.</p>
 <p>Vamos a crear una carpeta temporaria (que vamos a suprimir después de haber leído los datos en el archivo comprimido).
@@ -2456,6 +2455,12 @@ Se trata de la transformación de un archivo eml en una lista de R.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>(</span><span class='va'>creador1</span><span class='op'>&lt;-</span><span class='va'>eml_info</span><span class='op'>$</span><span class='va'>dataset</span><span class='op'>$</span><span class='va'>creator</span><span class='op'>$</span><span class='va'>individualName</span><span class='op'>$</span><span class='va'>surName</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>[1] &quot;Corporación Nacional Forestal&quot;</code></pre>
+</div>
+<h1 data-number="5" id="suprimir-la-carpeta-temporaria"><span class="header-section-number">5</span> Suprimir la carpeta temporaria</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp/"</span>,recursive<span class='op'>=</span><span class='cn'>T</span><span class='op'>)</span></span></code></pre>
+</div>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

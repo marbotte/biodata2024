@@ -31,8 +31,12 @@ navbar:
          href: https://docs.google.com/presentation/d/18plX_FYs_ZnBU39r26qxVQkoRkw0cNedyKuEcXFhhGE/edit?usp=sharing
        - text: "Actividad 1.1: SQL"
          href: act_1_1_SQL.html
+       - text: "Propuesta de solución actividad 1.1"
+         href: prop_act_1_1_SQL.html
        - text: "Actividad 1.2: R"
          href: act_1_2_R.html
+       - text: "Propuesta de solución actividad 1.2"
+         href: prop_act_1_1_SQL.html
        - text: "---"
        - text: "Documentación SQL"
        - text: "---"

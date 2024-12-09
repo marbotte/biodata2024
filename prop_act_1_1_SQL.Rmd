@@ -1,0 +1,116 @@
+---
+title: "Propuesta de respuesta para la actividad sobre SQL"
+lang: "es_CL"
+description: "Explorar los estándares EML y Darwin Core"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+---
+```{r echo=F, message=F,warning=F,results='hide'}
+require(RPostgreSQL)
+require(RSQLite)
+sl_esca<-dbConnect(SQLite(),dbname="../Datos/esca_simple.sqlite")
+pg_esca<-dbConnect(PostgreSQL(),dbname="esca_simple")
+```
+
+
+# Averiguar si los eventos corresponden en las 2 tablas
+
+```{sql connection=pg_esca}
+SELECT cd_event
+FROM esca_event
+WHERE cd_event NOT IN (SELECT cd_event FROM esca_registros);
+```
+
+El resultado muestra que varios cd_event no están en la tabla de registros, por qué no se recolectaron escarabajos durante esos eventos de muestreo.
+
+¿Cuantos son?
+
+```{sql connection=pg_esca}
+SELECT count(*)
+FROM esca_event
+WHERE cd_event NOT IN (SELECT cd_event FROM esca_registros);
+```
+
+Así que debemos hacer un `JOIN` entre las tablas que permite tener los eventos sin registros!
+
+# Extracción simple de las riqueza y de las especies en cada evento
+
+```{sql connection=pg_esca}
+SELECT cd_event,taxon_name
+FROM esca_registros;
+```
+
+Contar taxones:
+
+```{sql connection=pg_esca}
+SELECT cd_event,count(DISTINCT taxon_name)
+FROM esca_registros
+GROUP BY cd_event;
+```
+
+Lista de taxones:
+
+
+```{sql connection=pg_esca}
+SELECT cd_event,ARRAY_AGG(DISTINCT taxon_name)
+FROM esca_registros
+GROUP BY cd_event;
+```
+
+# Utilizando las 2 tablas
+
+```{sql connection=pg_esca}
+SELECT r.cd_event,protocol,COUNT(DISTINCT taxon_name)
+FROM esca_registros r
+RIGHT JOIN esca_event e ON r.cd_event=e.cd_event
+GROUP BY r.cd_event,e.protocol;
+```
+
+Una tabla por el protocolo de captura manual:
+
+
+```{sql connection=pg_esca}
+SELECT r.cd_event,protocol,COUNT(DISTINCT taxon_name)
+FROM esca_registros r
+RIGHT JOIN esca_event e ON r.cd_event=e.cd_event
+WHERE protocol='Captura manual de insectos'
+GROUP BY r.cd_event,e.protocol;
+```
+
+
+Tabla de conteo para el protocolo de trampa de excrementos:
+
+```{sql connection=pg_esca}
+SELECT r.cd_event,protocol,COUNT(DISTINCT taxon_name)
+FROM esca_registros r
+RIGHT JOIN esca_event e ON r.cd_event=e.cd_event
+WHERE protocol='Trampa de excrementos humanos'
+GROUP BY r.cd_event,e.protocol;
+```
+
+
+Ahora las listas de especies: captura manual
+
+
+```{sql connection=pg_esca}
+SELECT r.cd_event,protocol,COUNT(DISTINCT taxon_name) num_tax, ARRAY_AGG(DISTINCT taxon_name) list_tax
+FROM esca_registros r
+RIGHT JOIN esca_event e ON r.cd_event=e.cd_event
+WHERE protocol='Captura manual de insectos'
+GROUP BY r.cd_event,e.protocol;
+```
+
+
+Tabla de conteo para el protocolo de trampa de excrementos:
+
+```{sql connection=pg_esca}
+SELECT r.cd_event,protocol,COUNT(DISTINCT taxon_name) num_tax, ARRAY_AGG(DISTINCT taxon_name) list_tax
+FROM esca_registros r
+RIGHT JOIN esca_event e ON r.cd_event=e.cd_event
+WHERE protocol='Trampa de excrementos humanos'
+GROUP BY r.cd_event,e.protocol;
+```
