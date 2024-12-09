@@ -58,7 +58,7 @@ navbar:
     - text: "Estándares"
       menu:
        - text: "Introducción"
-         href: intro_taller_2_estandares.html
+         href: https://docs.google.com/presentation/d/1fMp8PnBGWLQrFQEBt1VFVJAJGTdCViTSpWEcO8xd8BQ/edit?usp=drive_link
        - text: "Actividad: Explorar Darwin Core y Ecological Metadata Language"
          href: act_2_estandares.html
        - text: "propuesta de solucion actividad 2"
