@@ -24,9 +24,76 @@ library(RPostgreSQL)
 
 Para conectarse a una base de datos, podemos utilizar el comando `dbConnect`
 
-Para PostgreSQL
+Para PostgreSQL:
+
+```{r  echo=F, message=F,warning=F,results='hide'}
+pg_biodata1<-dbConnect(PostgreSQL(),dbname="esca_simple")
+```
 
 ```r
-dbConnect(PostgreSQL(),dbname="esca_simple",)
+pg_biodata1<-dbConnect(PostgreSQL(),dbname="esca_simple",user="******", password="*******")
+```
+
+Para SQLite:
+
+```{r}
+sl_biodata1<-dbConnect(SQLite(),dbname="../Datos/biodata1.sqlite3")
+```
+
+# Consulta y descarga de los datos
+
+La consulta que vamos a utilizar en SQL es:
+
+```sql
+SELECT cd_event,taxon_name,qt_int
+FROM esca_event e
+LEFT JOIN esca_registros r USING (cd_event)
+WHERE protocol='Trampa de excrementos humanos';
+```
+
+
+Para enviarla a la base de datos y recuperar la tabla de resultados, utilizamos la función `dbGetQuery`.
+
+```{r}
+tab_abund<-dbGetQuery(pg_biodata1,
+"SELECT cd_event,taxon_name,qt_int
+FROM esca_event e
+LEFT JOIN esca_registros r USING (cd_event)
+WHERE protocol='Trampa de excrementos humanos'
+")
+```
+
+
+# Crear la matriz
+
+Para crear la matriz (vacía) tenemos que calcular el numero de eventos (filas) y taxones (columnas).
+
+```{r}
+(numFila<-length(unique(tab_abund$cd_event)))
+(numCol<-length(unique(tab_abund$taxon_name)))
+```
+
+La matriz se crea con la función `matrix`:
+
+```{r}
+mat_abund<-matrix(data=NA, nrow=numFila, ncol=numCol)
+colnames(mat_abund)<-unique(tab_abund$taxon_name)
+rownames(mat_abund)<-unique(tab_abund$cd_event)
+```
+
+Después llenamos la matriz en función de los nombres que encontramos en cd_event y taxon_name
+
+```{r}
+for(i in 1:nrow(tab_abund))
+{
+  nc<-which(colnames(mat_abund)==tab_abund$taxon_name[i])
+  nf<-which(rownames(mat_abund)==as.character(tab_abund$cd_event[i]))
+  mat_abund[nf,nc]<-tab_abund$qt_int[i]
+}
+```
+
+
+```{r}
+
 ```
 
