@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es_CL" xml:lang="es_CL">
 
 <head>
   <meta charset="utf-8"/>
@@ -88,26 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Talleres Biodata 2024: Untitled</title>
+  <title>Talleres Biodata 2024: Actividad 5: Taxonomía</title>
 
+  <meta property="description" itemprop="description" content="Manejar datos taxonomicos con R y SQL"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Talleres Biodata 2024: Untitled"/>
+  <meta property="og:title" content="Talleres Biodata 2024: Actividad 5: Taxonomía"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:locale" content="en_US"/>
+  <meta property="og:description" content="Manejar datos taxonomicos con R y SQL"/>
+  <meta property="og:locale" content="es_CL"/>
   <meta property="og:site_name" content="Talleres Biodata 2024"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Talleres Biodata 2024: Untitled"/>
+  <meta property="twitter:title" content="Talleres Biodata 2024: Actividad 5: Taxonomía"/>
+  <meta property="twitter:description" content="Manejar datos taxonomicos con R y SQL"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{},"value":[]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","lang","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Actividad 5: Taxonomía"]},{"type":"character","attributes":{},"value":["es_CL"]},{"type":"character","attributes":{},"value":["Manejar datos taxonomicos con R y SQL"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","pandoc_args"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["--number-sections"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2116,7 +2119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","authors":[]}
+{"title":"Actividad 5: Taxonomía","description":"Manejar datos taxonomicos con R y SQL","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2223,16 +2226,38 @@ Instalación de software
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>act_5_taxonomia.knit</h1>
+<h1>Actividad 5: Taxonomía</h1>
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p>Manejar datos taxonomicos con R y SQL</p>
 </div>
 
 
 <div class="d-article">
-<p>recordar <code>taxize</code></p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#ejercicio-1" id="toc-ejercicio-1"><span class="toc-section-number">1</span> Ejercicio 1</a></li>
+<li><a href="#ejercicio-2" id="toc-ejercicio-2"><span class="toc-section-number">2</span> Ejercicio 2</a></li>
+<li><a href="#ejercicio-3" id="toc-ejercicio-3"><span class="toc-section-number">3</span> Ejercicio 3</a></li>
+</ul>
+</nav>
+</div>
+<h1 data-number="1" id="ejercicio-1"><span class="header-section-number">1</span> Ejercicio 1</h1>
+<p>En la base de datos “biodata1”, hay una table que se llama espeletia y que contiene varias especies de frailejones de Colombia.</p>
+<ol type="1">
+<li>hacer una consulta SQL para obtener los nombres (concatenar campos)</li>
+<li>buscar los nombres en bases taxonómicas con la función <code>get_ids_</code> del paquete <code>taxize</code></li>
+<li>determinar cuales taxones son sinonimos</li>
+<li>explorar la función classification del paquete <code>taxize</code></li>
+</ol>
+<h1 data-number="2" id="ejercicio-2"><span class="header-section-number">2</span> Ejercicio 2</h1>
+<p>En bases de datos SQL, existe 1 regla importante de organización de los datos: intentar no repetir datos.</p>
+<p>Imaginar una forma de almacenar taxonomías sin repetir datos (es decir evitar la repetición de la familia para 2 especies que pertenecen al mismo genero, por ejemplo).</p>
+<h1 data-number="3" id="ejercicio-3"><span class="header-section-number">3</span> Ejercicio 3</h1>
+<p>Explorar la base de datos “puerto_wilches” y hacer consultas utilizando el sistema taxonómico.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

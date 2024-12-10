@@ -1,3 +1,29 @@
+---
+title: "Actividad 5: Taxonomía"
+lang: "es_CL"
+description: "Manejar datos taxonomicos con R y SQL"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    pandoc_args: ["--number-sections"]
+---
 
+# Ejercicio 1
 
-recordar `taxize`
+En la base de datos "biodata1", hay una table que se llama espeletia y que contiene varias especies de frailejones de Colombia.
+
+1. hacer una consulta SQL para obtener los nombres (concatenar campos)
+1. buscar los nombres en bases taxonómicas con la función `get_ids_` del paquete `taxize`
+1. determinar cuales taxones son sinonimos
+1. explorar la función classification del paquete `taxize`
+
+# Ejercicio 2
+
+En bases de datos SQL, existe 1 regla importante de organización de los datos: intentar no repetir datos.
+
+Imaginar una forma de almacenar taxonomías sin repetir datos (es decir evitar la repetición de la familia para 2 especies que pertenecen al mismo genero, por ejemplo).
+
+# Ejercicio 3
+
+Explorar la base de datos "puerto_wilches" y hacer consultas utilizando el sistema taxonómico.
