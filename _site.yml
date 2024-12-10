@@ -65,14 +65,10 @@ navbar:
          href: prop_act_2_estandares.html
     - text: "Taxonomía"
       menu:
-       - text: "Introducción"
-         href: intro_taller_5_taxonomía.html
        - text: "Actividad: manejar la taxonomía en los datos de biodiversidad"
          href: act_5_taxonomia.html
     - text: "Datos espaciales"
       menu:
-       - text: "Introcucción"
-         href: intro_taller_6_datos_espaciales.html
        - text: "Actividad: datos espaciales"
          href: act_6_espacial.html
 output: distill::distill_article
