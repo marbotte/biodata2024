@@ -1,0 +1,419 @@
+---
+title: "Taxonomía"
+lang: "es_CL"
+description: "Explorar los estándares EML y Darwin Core"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
+---
+
+# Ejercicio 1: tratamiento de nombres de taxones en SQL, busqueda en taxize
+
+En el taller tuvimos dificultades para instalar el paquete `taxize`.
+Parece que el paquete fue sacado del CRAN.
+No entiendo realmente porque, pero podría tener algo que ver con el desarrollo de una nueva forma de publicar los paquetes de R que se llama [r-universe](https://r-universe.dev/search).
+Es relativamente nuevo, pero vale la pena seguir las noticias de r-universe para adaptar la forma de instalar los paquetes...
+Mientras estaba buscando información, me dí cuenta de la existencia de un otro paquete que tiene muchas ventajas: `taxizedb`.
+Lastimosamente, no me había enterado de este nuevo paquete, antes del taller.
+Entonces, lo que voy a hacer es presentarles las soluciones con el paquete `taxize`, para que tienen una explicación de lo que hicimos en el taller en Concepción, sin embargo, les presentaré en este documento una solución mucho más interesante con los paquetes `taxizedb` y/o `taxadb`.
+
+## Instalación de taxize
+
+### Generalidades para la instalación de paquetes en casos problematicos
+
+Para cada paquete y/o su(s) dependencias(s) problematica(s), seguir las etapas siguientes, hasta que una de ellas funcione:
+
+1. Intentar instalar desde CRAN con la interfaz de Rstudio o la función install.package
+1. Intentar instalar desde github:
+   + buscar en github y anotar la pareja "usuario/paquete" que sirve de identificador para github, por ejemplo para taxize es `ropensci/taxize``
+   + utilizar los comandos `library(devtools)` y `install_github("usuario/paquete")`
+1. Descargar manualmente las fuentes y instalar los paquete por seleccionar `Install from`: `Package Archive file` en la herramienta de institucional de GitHub.
+   + si la instalación en github no funcionó por un error de la API de GitHub de tipo "API rate limit excess", descargar el codigo fuente del paquete en github desde:
+      + https://github.com/*usuario*/*paquete*/archive/master.tar.gz
+      + https://github.com/*usuario*/*paquete*/archive/main.tar.gz
+   + si, definitivamente, las versiones de los paquetes en GitHub no les funcionan, ir a: https://cran.r-project.org/web/packages/*paquete*/index.html, acá, buscar "Package source", o "*paquete* archive" para descargar las versiones anteriores del paquete
+
+### Instalación concreta
+
+La forma más simple de instalar los paquetes (es lo que hace la interfaz de instalación en RStudio) 
+
+```r
+install.packages("taxize")
+```
+
+Si les funciona, ¡genial!
+  
+Si tienen dificultades con la instalación de taxize:
+  
+```r
+library(devtools)
+# Si tienen problemas con bold:
+devtools::install_github("ropensci/bold")
+devtools::install_github("ropensci/taxize")
+```
+
+Si todavía no les funciona, seguir las instrucciones en el parafo anterior.
+
+## Preparación: carga de paquetes y conexión a la base de datos
+
+Cargar los paquetes:
+
+```{r}
+library(RPostgres)
+library(taxize)
+```
+
+Conexion a biodata1:
+
+```r
+pg_biodata1<-dbConnect(Postgres(),dbname="biodata1",host="54.94.221.113",user="******",password="*****")
+```
+
+```{r echo=F}
+pg_biodata1<-dbConnect(Postgres(),dbname="biodata1")
+```
+
+Anotar: si no se pueden conectar a la base de datos en postgres (biodata paga para tener esta base de datos en Amazon y entonces, no la van a guardar por siempre allá), pueden utilizar:
+
+```r
+sl_biodata1<-dbConnect(SQLite(),dbname="../Datos/biodata1.sqlite")
+```
+
+En este caso, cambiar pg_biodata1 por sl_biodata1 en los codigos siguientes.
+
+## La tabla espeletia
+
+La 20 primeras filas de la tabla espeletia son:
+
+```{sql, connection=pg_biodata1, max.print=20}
+SELECT *
+FROM espeletia
+```
+
+
+
+Cuales son los rangos taxonómicos que encontramos en la tabla "espeletia" de la base de datos "biodata1"
+
+```{r}
+unique(dbReadTable(pg_biodata1,"espeletia")$rank)
+```
+
+
+Como lo pueden ver, la información taxonomica (el nombre completo de los taxones) está repartido entre varias columnas, que nos toca juntar.
+
+### Obtener los nombres completos
+
+El problema es que las columnas que nos permiten hacer la concatenación dependen del rango de las especies.
+Para hacer eso en SQL y recuperar los nombres completos vamos a utilizar (ver [documentación](doc_SQL_simple.html#utilizar)):
+
+```{sql connection=pg_biodata1}
+SELECT 
+  CASE
+    WHEN "rank"='SP' THEN genus || spec_epith
+    WHEN "rank"='GN' THEN genus
+    WHEN "rank"='SSP' THEN genus || spec_epith || subsp
+    WHEN "rank"='VAR' THEN genus || spec_epith || var
+    WHEN "rank"='FORM' THEN genus || spec_epith || form
+  END AS name
+FROM espeletia
+```
+
+Ahora utilizamos esa consulta a SQL desde la conexión que creamos en R.
+Anotar que utilizamos *\"* en nuestra función `dbGetQuery` por qué la consulta entera está entre comillas en la función.
+
+```{r}
+espeletia_name<-dbGetQuery(pg_biodata1,
+"SELECT 
+  CASE
+    WHEN \"rank\"='SP' THEN genus || spec_epith
+    WHEN \"rank\"='GN' THEN genus
+    WHEN \"rank\"='SSP' THEN genus || spec_epith || subsp
+    WHEN \"rank\"='VAR' THEN genus || spec_epith || var
+    WHEN \"rank\"='FORM' THEN genus || spec_epith || form
+  END AS name
+FROM espeletia
+")$name
+```
+
+### Buscar los nombres en bases de datos publicas
+
+Vamos a utilizar la función `get_ids_` para buscar taxones en bases de datos internacionales publicas.
+Miren la ayuda de la función utilizando: `?get_ids_`.
+
+Vamos a utilizar el "backbone" de Gbif, pero pueden mirar la lista de bases de datos que taxize integra utilizando:
+
+```r
+help(package="taxize)
+```
+
+
+Anotar: la función `get_ids` (sin el "_" final hace lo mismo de manera interactiva), pueden intentarlo!
+
+```{r}
+get_ids_("Espeletia grandiflora f. multiflora","gbif")
+```
+
+
+Para mirar lo que pasa cuando enviamos una lista de taxones:
+
+```{r}
+(reconocido<-get_ids_(espeletia_name,"gbif"))
+```
+
+En la mayoría de los casos obtenemos una sola respuesta por especie, pero pueden ser más.
+El resultado es una lista (ver [documentación](doc_R_clases_modos.html#las-listas)) compuesta de 2 niveles:
+
+1. la base de datos utilizada (aquí gbif)
+1. los "match" encontrados en la base de datos: consisten en una tabla por especie, ordenada con los matchs más fuertes primeros
+
+Para extraer los scientificname, sus ids en gbif y si son sinonimos:
+
+```{r}
+result<-Reduce(rbind, # Reduce con la funcion rbind permite hacer una tabla desde una lista que contiene las filas
+       lapply(reconocido$gbif,function(x)x[1,c("usagekey","scientificname","synonym")]) # lapply aplica la funcion de extración a cada elemento de la lista
+)
+rownames(result)<-names(reconocido$gbif)
+result
+```
+
+### Manejar sinonimos
+
+Para extraer los "acceptedusagekey" cuando los nombre de taxones son sinónimos:
+
+```{r}
+(sinoAcc<-sapply(reconocido$gbif[result$synonym],function(x)x$acceptedusagekey[1]))
+```
+
+Obtener los nombres acceptados:
+
+```{r}
+sapply(as.gbifid(sinoAcc),function(x)gbif_name_usage(x)$scientificName)
+```
+
+### Explorar las classificaciones
+
+Ejemplo de uso de `classification`, con los 5 primeros taxones de la tabla de resultados:
+
+```{r}
+result$scientificname[1:5]
+(gbifid_1_5<-as.gbifid(result[1:5,"usagekey"]))
+classification(gbifid_1_5)
+```
+
+## Alternativa: utilizar `taxizedb`
+
+```{r}
+library(taxizedb)
+library(RSQLite)
+```
+
+
+La gran ventaja de `taxizedb` es que descarga la base de datos publica en una base de datos local (usualmente SQLite) que va a servir para las funciones de R, pero que se puede también leer gracias a los comandos que hemos aprendido en SQL. Pueden notar que `taxadb` es otro paquete que funciona igual a taxizedb.
+
+La desventaja de esos paquetes es que no reconocen nombres de taxones que no están escritos exactamente igual...
+Así que mi consejo para los tratamientos clasicos es:
+
+1. buscar los nombres que tienen en `taxizedb`
+1. anotar los nombres que no tienen correspondencias
+1. buscar los nombres que faltan en `taxize`
+1. corregir los nombres con sus correspondancias encontradas en `taxize`
+1. volver a `taxize` para todos los tratamientos taxonomicos.
+
+### Descargar la base de datos publica
+
+Vamos a utilizar gbif, pero `taxizedb` permite descargar las bases de datos taxonómicas de
+
+* NCBI
+* ITIS
+* The PlantList
+* Catologue of Life
+* GBIF
+* Wikidata
+* World Flora Online
+
+La base de datos de Gbif ("backbone") se descarga de la manera siguiente
+
+```{r}
+dbGbif <- db_download_gbif(verbose = T, overwrite = F) # de vez en cuando utilizar overwrite=T para hacer un update de los taxones
+```
+
+### (opcional) Mirar la base de datos en SQL
+
+```{r}
+gbif_taxo <- dbConnect(SQLite(), dbname = dbGbif)
+dbListTables(gbif_taxo)
+```
+
+La base de datos consiste en una tabla taxonomica:
+
+```{r}
+dbGetQuery(gbif_taxo, "SELECT * FROM gbif ORDER BY random() LIMIT 10")
+```
+
+Salir y cerrar la puerta:
+
+```{r}
+dbDisconnect(gbif_taxo)
+```
+
+### Buscar la lista de los taxones de Espeletia
+
+Buscar:
+
+```{r}
+foundTaxizeDb <- name2taxid(espeletia_name, db="gbif",out_type = "summary")
+```
+
+Cuales están encontrados:
+
+```{r}
+foundOk <- espeletia_name %in% foundTaxizeDb$name
+```
+
+Lista de los que no encontramos:
+
+```{r}
+espeletia_name[!foundOk]
+```
+
+Información sobre los taxones que encontramos:
+
+```{r}
+taxid2name(foundTaxizeDb$id, db="gbif")
+```
+
+Parece que la base de datos no integra los taxones más precisos que la especie...
+Si lo necesitan, pueden intentar con el paquete `taxize`, o con otras bases de datos.
+
+
+### Explorar las posibilidades de exploración taxónomica:
+
+```{r}
+foundTaxizeDb[11,]
+(id_elegido <- foundTaxizeDb[11,"id"])
+```
+
+Conocer su clasificación taxonomica:
+
+```{r}
+classification(id_elegido, db="gbif")
+```
+
+Extraer un rango particular:
+
+```{r}
+taxa_at(id_elegido,"family","gbif")
+```
+
+Conocer todos las especies del genero *Espeletia* (muestro solo los 50 primeros)
+
+```{r}
+(espeletia_gn<-as.integer(name2taxid("Espeletia",db="gbif",out_type = "summary")[1,"id"]))
+espeletia_species<-children(espeletia_gn,"gbif")
+as.data.frame(espeletia_species[[1]][1:50,])
+```
+
+
+# Ejercicio 3: Explorar el sistema taxonomico de la base puerto_wilches
+
+La base puerto_wilches contiene un sistema de manejo de taxonomía que consiste en varios elementos:
+
+* Una tabla de taxonomía que referencia (por llave foránea) una tabla de definición de rangos taxonómicos 
+* Una función escrita en lenguaje PL/SQL, `find_higher_id`, que permite buscar, para cada identificador de taxón el identificador de un nivel superior de la classificación
+* Varios indices que permiten acelerar el proceso de buscar taxones superiores
+* Un sistema de pseudo-taxones que permite dar nombres específicos en esos estudios a aquellos taxones que no siguen las reglas de la taxonomía formal, pero tienen un valor local para los biólogos
+
+
+```{r}
+library(RPostgres)
+```
+
+```{r}
+pwilches<-dbConnect(Postgres(), dbname = "fracking")
+```
+
+```{sql connection=pwilches, max.print=NA}
+SELECT *
+FROM main.def_tax_rank
+ORDER BY rank_level
+```
+
+
+```{sql connection=pwilches}
+SELECT * 
+FROM main.taxo
+ORDER BY random()
+LIMIT 10
+```
+
+
+Así, con este sistema, la tabla de registros contiene solamente la referencia al nivel más preciso posible de la tabla de taxonomía.
+
+```{sql connection=pwilches}
+SELECT cd_reg, cd_event, cd_tax, qt_int
+FROM main.registros
+ORDER BY random()
+LIMIT 10
+```
+
+Si queremos obtener el nombre de los taxones, tenemos que pasar por la tabla de taxonomía:
+
+```{sql connection=pwilches}
+SELECT  cd_reg, cd_event, name_tax, qt_int
+FROM main.registros
+LEFT JOIN main.taxo USING (cd_tax)
+```
+
+
+
+
+Si queremos ver, para cada grupo biologico, cuales son los niveles taxonomicos de los registros, podemos hacer:
+
+```{sql connection=pwilches, max.print=NA}
+SELECT biol_gp_spa, cd_rank, count(DISTINCT cd_reg)
+FROM main.registros r
+LEFT JOIN main.taxo USING (cd_tax)
+LEFT JOIN main.def_tax_rank USING (cd_rank)
+LEFT JOIN main.event e USING (cd_event)
+LEFT JOIN main.gp_event USING (cd_gp_event)
+LEFT JOIN main.def_gp_biol USING (cd_gp_biol)
+GROUP BY biol_gp_spa, cd_rank, rank_level
+ORDER BY biol_gp_spa, rank_level
+;
+```
+
+
+
+```{r}
+cat(dbGetQuery(pwilches,"SELECT prosrc
+FROM pg_proc
+WHERE proname='find_higher_id';")$prosrc)
+```
+
+Utilizando la función find_higher_id, podemos por ejemplo, conocer la cantidad de registros en cada clase, para cada grupo biologico:
+
+
+```{sql connection=pwilches, max.print=NA}
+SELECT biol_gp_spa,name_tax AS name_class,count(DISTINCT cd_reg)
+FROM main.registros r
+LEFT JOIN main.taxo t ON find_higher_id(r.cd_tax,'CL')=t.cd_tax
+LEFT JOIN main.def_tax_rank USING (cd_rank)
+LEFT JOIN main.event e USING (cd_event)
+LEFT JOIN main.gp_event USING (cd_gp_event)
+LEFT JOIN main.def_gp_biol USING (cd_gp_biol)
+GROUP BY biol_gp_spa, name_tax
+ORDER BY biol_gp_spa, count(DISTINCT cd_reg)
+;
+```
+
+
+
+
+```{r}
+dbDisconnect(pwilches)
+```
+

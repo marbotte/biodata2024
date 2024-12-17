@@ -1,7 +1,7 @@
 name: "Biodata 2024"
 title: "Talleres Biodata 2024"
-description: |
-  Datos de biodiversidad
+description: "|
+  Datos de biodiversidad"
 output_dir: "docs"
 navbar:
   right:
@@ -67,6 +67,8 @@ navbar:
       menu:
        - text: "Actividad: manejar la taxonomía en los datos de biodiversidad"
          href: act_5_taxonomia.html
+       - text: "Propuesta de solución para los ejercicios de taxonomía"
+         href: prop_act5_taxo.html
     - text: "Datos espaciales"
       menu:
        - text: "Actividad: datos espaciales"
