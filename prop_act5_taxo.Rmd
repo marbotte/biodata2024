@@ -11,6 +11,13 @@ output:
 bibliography: "./biodata2024.bib"
 ---
 
+```{r setup, echo=F, purl=F, results='hide'}
+knitr::opts_chunk$set(cache=T)
+```
+
+
+
+
 # Ejercicio 1: tratamiento de nombres de taxones en SQL, busqueda en taxize
 
 En el taller tuvimos dificultades para instalar el paquete `taxize`.
@@ -327,14 +334,23 @@ La base puerto_wilches contiene un sistema de manejo de taxonomía que consiste 
 * Varios indices que permiten acelerar el proceso de buscar taxones superiores
 * Un sistema de pseudo-taxones que permite dar nombres específicos en esos estudios a aquellos taxones que no siguen las reglas de la taxonomía formal, pero tienen un valor local para los biólogos
 
+## Cargar paquetes y conectarse
 
 ```{r}
 library(RPostgres)
 ```
 
-```{r}
+```{r echo=F, message=F,warning=F,results='hide'}
 pwilches<-dbConnect(Postgres(), dbname = "fracking")
 ```
+
+```{r, purl=T, eval=F}
+pwilches <- dbConnect(Postgres(), dbname="puerto_wilches", host="54.94.221.113", user="*****", password="*****")
+```
+
+## Tables principales del sistema taxonomico
+
+Tabla de rangos taxonomicos:
 
 ```{sql connection=pwilches, max.print=NA}
 SELECT *
@@ -343,6 +359,8 @@ ORDER BY rank_level
 ```
 
 
+Tabla taxonomica (anotar que la columna *cd_rank* corresponde a la columna *cd_rank* de la tabla *def_tax_rank*: es una llave foranea)
+
 ```{sql connection=pwilches}
 SELECT * 
 FROM main.taxo
@@ -350,6 +368,7 @@ ORDER BY random()
 LIMIT 10
 ```
 
+## Uso en la base de datos
 
 Así, con este sistema, la tabla de registros contiene solamente la referencia al nivel más preciso posible de la tabla de taxonomía.
 
@@ -386,7 +405,15 @@ ORDER BY biol_gp_spa, rank_level
 ;
 ```
 
+## Función para obtener los rangos taxonomicos más altos
 
+La función SQL `find_higher_id`, escrita directamente en la base de datos permite buscar los niveles más alto de la taxonomía.
+Toma 2 argumentos:
+
+* el id del taxón (como escrito en la tabla *main.taxo*)
+* el nivel taxonomico (como escrito en la tabla *main.def_tax_rank*)
+
+Acá está el codigo de la función:
 
 ```{r}
 cat(dbGetQuery(pwilches,"SELECT prosrc
@@ -394,7 +421,9 @@ FROM pg_proc
 WHERE proname='find_higher_id';")$prosrc)
 ```
 
-Utilizando la función find_higher_id, podemos por ejemplo, conocer la cantidad de registros en cada clase, para cada grupo biologico:
+
+
+Utilizando la función `find_higher_id`, podemos por ejemplo, conocer la cantidad de registros en cada clase, para cada grupo biológico:
 
 
 ```{sql connection=pwilches, max.print=NA}
@@ -411,9 +440,10 @@ ORDER BY biol_gp_spa, count(DISTINCT cd_reg)
 ```
 
 
-
+# Salir y cerrar la puerta
 
 ```{r}
+dbDisconnect(pg_biodata1)
 dbDisconnect(pwilches)
 ```
 

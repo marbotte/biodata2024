@@ -1,0 +1,12 @@
+knitr
+kableExtra
+downloadthis
+openxlsx
+RSQLite
+DBI
+RPostgreSQL
+sf
+EML
+RPostgres
+taxize
+taxizedb

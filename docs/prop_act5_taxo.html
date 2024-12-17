@@ -2262,9 +2262,19 @@ Instalación de software
 <li><a href="#explorar-las-posibilidades-de-exploración-taxónomica" id="toc-explorar-las-posibilidades-de-exploración-taxónomica"><span class="toc-section-number">1.4.4</span> Explorar las posibilidades de exploración taxónomica:</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#ejercicio-3-explorar-el-sistema-taxonomico-de-la-base-puerto_wilches" id="toc-ejercicio-3-explorar-el-sistema-taxonomico-de-la-base-puerto_wilches"><span class="toc-section-number">2</span> Ejercicio 3: Explorar el sistema taxonomico de la base puerto_wilches</a></li>
+<li><a href="#ejercicio-3-explorar-el-sistema-taxonomico-de-la-base-puerto_wilches" id="toc-ejercicio-3-explorar-el-sistema-taxonomico-de-la-base-puerto_wilches"><span class="toc-section-number">2</span> Ejercicio 3: Explorar el sistema taxonomico de la base puerto_wilches</a>
+<ul>
+<li><a href="#cargar-paquetes-y-conectarse" id="toc-cargar-paquetes-y-conectarse"><span class="toc-section-number">2.1</span> Cargar paquetes y conectarse</a></li>
+<li><a href="#tables-principales-del-sistema-taxonomico" id="toc-tables-principales-del-sistema-taxonomico"><span class="toc-section-number">2.2</span> Tables principales del sistema taxonomico</a></li>
+<li><a href="#uso-en-la-base-de-datos" id="toc-uso-en-la-base-de-datos"><span class="toc-section-number">2.3</span> Uso en la base de datos</a></li>
+<li><a href="#función-para-obtener-los-niveles-más-alto" id="toc-función-para-obtener-los-niveles-más-alto"><span class="toc-section-number">2.4</span> Función para obtener los niveles más alto</a></li>
+<li><a href="#salir-y-cerrar-la-puerta" id="toc-salir-y-cerrar-la-puerta"><span class="toc-section-number">2.5</span> Salir y cerrar la puerta</a></li>
+</ul></li>
 </ul>
 </nav>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
 </div>
 <h1 data-number="1" id="ejercicio-1-tratamiento-de-nombres-de-taxones-en-sql-busqueda-en-taxize"><span class="header-section-number">1</span> Ejercicio 1: tratamiento de nombres de taxones en SQL, busqueda en taxize</h1>
 <p>En el taller tuvimos dificultades para instalar el paquete <code>taxize</code>.
@@ -2506,7 +2516,7 @@ Entonces, lo que voy a hacer es presentarles las soluciones con el paquete <code
 <p>Cuales son los rangos taxonómicos que encontramos en la tabla “espeletia” de la base de datos “biodata1”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'>dbReadTable</span><span class='op'>(</span><span class='va'>pg_biodata1</span>,<span class='st'>"espeletia"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>rank</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>pg_biodata1</span>,<span class='st'>"espeletia"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>rank</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>[1] &quot;FORM&quot; &quot;GN&quot;   &quot;SP&quot;   &quot;SSP&quot;  &quot;VAR&quot; </code></pre>
 </div>
@@ -2571,7 +2581,7 @@ Para hacer eso en SQL y recuperar los nombres completos vamos a utilizar (ver <a
 Anotar que utilizamos <em>"</em> en nuestra función <code>dbGetQuery</code> por qué la consulta entera está entre comillas en la función.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>espeletia_name</span><span class='op'>&lt;-</span><span class='fu'>dbGetQuery</span><span class='op'>(</span><span class='va'>pg_biodata1</span>,</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>espeletia_name</span><span class='op'>&lt;-</span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbGetQuery.html'>dbGetQuery</a></span><span class='op'>(</span><span class='va'>pg_biodata1</span>,</span>
 <span><span class='st'>"SELECT </span></span>
 <span><span class='st'>  CASE</span></span>
 <span><span class='st'>    WHEN \"rank\"='SP' THEN genus || spec_epith</span></span>
@@ -5691,142 +5701,131 @@ Así que mi consejo para los tratamientos clasicos es:</p>
 <h3 data-number="1.4.2" id="opcional-mirar-la-base-de-datos-en-sql"><span class="header-section-number">1.4.2</span> (opcional) Mirar la base de datos en SQL</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gbif_taxo</span> <span class='op'>&lt;-</span> <span class='fu'>dbConnect</span><span class='op'>(</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, dbname <span class='op'>=</span> <span class='va'>dbGbif</span><span class='op'>)</span></span>
-<span><span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>gbif_taxo</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gbif_taxo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, dbname <span class='op'>=</span> <span class='va'>dbGbif</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListTables.html'>dbListTables</a></span><span class='op'>(</span><span class='va'>gbif_taxo</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>[1] &quot;gbif&quot;</code></pre>
 </div>
 <p>La base de datos consiste en una tabla taxonomica:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>dbGetQuery</span><span class='op'>(</span><span class='va'>gbif_taxo</span>, <span class='st'>"SELECT * FROM gbif ORDER BY random() LIMIT 10"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbGetQuery.html'>dbGetQuery</a></span><span class='op'>(</span><span class='va'>gbif_taxo</span>, <span class='st'>"SELECT * FROM gbif ORDER BY random() LIMIT 10"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>    taxonID                            datasetID parentNameUsageID
-1   1745061 7ddf754f-d193-4cc9-b351-99906754a03b           1745055
-2   9746152 61a5f178-b5fb-4484-b6d8-9b129739e59d           8282501
-3   5960632 7ddf754f-d193-4cc9-b351-99906754a03b           2468730
-4   9584475 c33ce2f2-c3cc-43a5-a380-fe4526d63650           2297840
-5  10190120 4cec8fef-f129-4966-89b7-4f8439aba058           2415073
-6   1839803 7ddf754f-d193-4cc9-b351-99906754a03b           1839730
-7   9123797                                                2113863
-8   7588801 7ddf754f-d193-4cc9-b351-99906754a03b           2104974
-9  10461612 7ddf754f-d193-4cc9-b351-99906754a03b           1034345
-10 10898645 c8227bb4-4143-443f-8cb2-51f9576aff14           2012544
+1   3955660 7ddf754f-d193-4cc9-b351-99906754a03b           8645040
+2  10672559 7ddf754f-d193-4cc9-b351-99906754a03b           9388829
+3   9553600 7ddf754f-d193-4cc9-b351-99906754a03b           1335011
+4   9277640 7ddf754f-d193-4cc9-b351-99906754a03b           4988796
+5   3561961 a6c6cead-b5ce-4a4e-8cf5-1542ba708dec           2601179
+6   7728515 7ddf754f-d193-4cc9-b351-99906754a03b           2307356
+7   1532982 7ddf754f-d193-4cc9-b351-99906754a03b           1532919
+8   1532528 7ddf754f-d193-4cc9-b351-99906754a03b           1532044
+9   8392741 7ddf754f-d193-4cc9-b351-99906754a03b           1346028
+10  6137356 7ddf754f-d193-4cc9-b351-99906754a03b           1344814
    acceptedNameUsageID originalNameUsageID
-1                                         
-2             11621310                    
+1              8442127             5622336
+2                                         
 3                                         
-4              9376336             9376336
-5                                         
+4              7456370                    
+5              2601191                    
 6                                         
-7              7009056                    
-8              2105026             2105027
-9                                         
-10                                        
-                                                            scientificName
-1                                       Lopharcha psathyra Diakonoff, 1989
-2                                                            SH468365.07FU
-3                                           Latastia doriai Bedriaga, 1884
-4                                      Helcion acuminata (Grateloup, 1828)
-5                                                             BOLD:AAB4533
-6                                      Pleurota sefrainella Chrétien, 1915
-7                                              ? chelonophilum Leach, 1818
-8                                   Chrysopodes tetrastictus (Navás, 1914)
-9                                         Laccobius okapanus Gentili, 2014
-10 Mitrapsylla clavata Rendón-Mera, Burckhardt, Cavichioli &amp; Queiroz, 2020
-                              scientificNameAuthorship
-1                                      Diakonoff, 1989
-2                                                     
-3                                       Bedriaga, 1884
-4                                    (Grateloup, 1828)
-5                                                     
-6                                       Chrétien, 1915
-7                                          Leach, 1818
-8                                        (Navás, 1914)
-9                                        Gentili, 2014
-10 Rendón-Mera, Burckhardt, Cavichioli &amp; Queiroz, 2020
-              canonicalName genericName specificEpithet
-1        Lopharcha psathyra   Lopharcha        psathyra
-2                                                      
-3           Latastia doriai    Latastia          doriai
-4         Helcion acuminata     Helcion       acuminata
-5                                                      
-6      Pleurota sefrainella    Pleurota     sefrainella
-7           ? chelonophilum           ?   chelonophilum
-8  Chrysopodes tetrastictus Chrysopodes    tetrastictus
-9        Laccobius okapanus   Laccobius        okapanus
-10      Mitrapsylla clavata Mitrapsylla         clavata
-   infraspecificEpithet taxonRank nameAccordingTo
-1                         species                
-2                        unranked                
-3                         species                
-4                         species                
-5                        unranked                
-6                         species                
-7                        unranked                
-8                         species                
-9                         species                
-10                        species                
-                                                                                                                                                                                                                            namePublishedIn
-1                                                                                                                                                                                                        Diakonoff. (1989). Tinea, 12, 202.
-2                                                                                                                                                                                                                                          
-3                                                                                                                                                                  Bedriaga, &amp; Von, J. Die neue Lacertiden-Gattung Latastia und ihre Arten.
-4                                                                                                                                                                                                                                          
-5                                                                                                                                                                                                                                          
-6                                                                                                                                                                                                                                          
-7                                                                                                                                                                                                                                          
-8                                                                                           Navás, L. Les Chrysopides (Ins. Névr.) du Musée de Londres [Ib]. Annales de la Société Scientifique de Bruxelles 38(pt. 2):73-114. (1913-1914).
-9                                                                      Gentili, E. (2014) New or poorly known Laccobius of the subgenus Notoberosus Blackburn, 1895 (Coleoptera, Hydrophilidae). Giornale Italiano di Entomologia, 13 (59).
-10 Rendón-Mera, Diana I., Daniel Burckhardt, Rodney R. Cavichioli &amp; Dalva L. De Queiroz. 2020. Taxonomy and host-plant relationships of the psyllid genus Mitrapsylla (Hemiptera: Psylloidea: Psyllidae) in Brazil. Zootaxa 4887(1): 1–100.
-   taxonomicStatus nomenclaturalStatus
-1         accepted                    
-2          synonym                    
-3         accepted                    
-4          synonym                    
-5         accepted                    
-6         accepted                    
-7          synonym                    
-8          synonym                    
-9         accepted                    
-10        accepted                    
-                                                     taxonRemarks
-1                                                                
-2                                                                
-3                                                                
-4                                                                
-5                                                                
-6                                                                
-7  Originally found in sources as doubtful taxon within Lepadidae
-8                                                                
-9                                                                
-10                                                               
-    kingdom     phylum         clazz       ordder        family
-1  Animalia Arthropoda       Insecta  Lepidoptera   Tortricidae
-2     Fungi Ascomycota Pezizomycetes    Pezizales    Tuberaceae
-3  Animalia   Chordata      Squamata                 Lacertidae
-4  Animalia   Mollusca    Gastropoda                  Lottiidae
-5  Animalia   Chordata               Lophiiformes     Lophiidae
-6  Animalia Arthropoda       Insecta  Lepidoptera  Oecophoridae
-7  Animalia Arthropoda   Maxillopoda  Pedunculata     Lepadidae
-8  Animalia Arthropoda       Insecta   Neuroptera   Chrysopidae
-9  Animalia Arthropoda       Insecta   Coleoptera Hydrophilidae
-10 Animalia Arthropoda       Insecta    Hemiptera     Psyllidae
-          genus
-1     Lopharcha
-2         Tuber
-3      Latastia
-4    Asteracmea
-5       Lophius
-6      Pleurota
-7   Conchoderma
-8  Plesiochrysa
-9     Laccobius
-10  Mitrapsylla</code></pre>
+7                                  1532988
+8                                  1532532
+9              4495113                    
+10             5040525                    
+                                                          scientificName
+1  Pseudozygocactus epiphylloides subsp. bradei (Porto &amp; A.Cast.) Doweld
+2                                             Didymella coffeicola Speg.
+3                                Megachile ypiranguensis Schrottky, 1913
+4                                     Batenus meurguesianus Morvan, 1996
+5                              Nephromium laevigatum var. reagens Norman
+6                                       Siboglinum nonatoi Tommasi, 1970
+7                                     Pipizella viduata (Linnaeus, 1758)
+8                                        Spilogona dispar (Fallén, 1823)
+9                           Tachysphex maracandicus (Radoszkowski, 1877)
+10                                          Crocisa vachali Friese, 1905
+   scientificNameAuthorship                         canonicalName
+1  (Porto &amp; A.Cast.) Doweld Pseudozygocactus epiphylloides bradei
+2                     Speg.                  Didymella coffeicola
+3           Schrottky, 1913               Megachile ypiranguensis
+4              Morvan, 1996                 Batenus meurguesianus
+5                    Norman         Nephromium laevigatum reagens
+6             Tommasi, 1970                    Siboglinum nonatoi
+7          (Linnaeus, 1758)                     Pipizella viduata
+8            (Fallén, 1823)                      Spilogona dispar
+9      (Radoszkowski, 1877)               Tachysphex maracandicus
+10             Friese, 1905                       Crocisa vachali
+        genericName specificEpithet infraspecificEpithet  taxonRank
+1  Pseudozygocactus   epiphylloides               bradei subspecies
+2         Didymella      coffeicola                         species
+3         Megachile   ypiranguensis                         species
+4           Batenus   meurguesianus                         species
+5        Nephromium      laevigatum              reagens    variety
+6        Siboglinum         nonatoi                         species
+7         Pipizella         viduata                         species
+8         Spilogona          dispar                         species
+9        Tachysphex    maracandicus                         species
+10          Crocisa         vachali                         species
+   nameAccordingTo
+1                 
+2                 
+3                 
+4                 
+5                 
+6                 
+7                 
+8                 
+9                 
+10                
+                                                                                                                                                                                                                                                                             namePublishedIn
+1                                                                                                                                                                                                                               Doweld. (n.d.). In: Sukkulenty 4(1-2): 42 (2001 Publ. 2002).
+2                                                                                                                                                                                                                                       (1922). Anal. Mus. Nac. Hist. Nat. B. Aires 31: 411.
+3                                                                                                                                                                                      Schrottky, C. (1913). As especies brazileiras do Genero Megachile. Revista Do Museu Paulista, Vol. 9.
+4                                                               Morvan, P. Le genre Batenus MOTSCHULSKY, 1864: redéfinition; descriptions d&#39;espèces nouvelles d&#39;Asie (Coleoptera, Carabidae, Platynina). -. Bulletin de la Société Entomologique de France, 101 (1): 35-48. (Paris). (1996).
+5                                                                                                                                                                                                                                                                                           
+6                                                                          Tommasi, L. R. (1970). On two new species of Pogonophora from the south western Atlantic Ocean. Papéis Avulsos De Zoologia, 23: 115. https://www.marinespecies.org/polychaeta/aphia.php?p=sourcedetails&amp;id=190203
+7                                                                                                                                                                               Linnaeus, C. 1758. Systema naturae... Ed. 10, Vol. 1. 824 pp. L. Salvii, Holmiae [= Stockholm]. [1758.01.01]
+8  Fallén, C.F. 1820-1825. Monographia Muscidum Sveciae. Pp. 1-12 [1820.06.13], 13-24 [1820.06.13], 25-40 [1820.06.14]; Pp. 41-48 [1821.06.06]; pp. 49-56 [1823.04.26], 57-64 [1823.05.31]; pp. 65-72 [1824.12.09]; pp. 73-80 [1825.04.23], 81-94 [1825.06.18]. Berlingianis, Lundae [=Lund]
+9                                                                                                                                                                                                                                                                                           
+10                                                                                                                                              Friese, H. (1905). Die Crocisa-Arten Afrikas. Verhandlungen Der Kaiserlich-Königlichen Zoologisch-Botanischen Gesellschaft in Wien, Vol. 55.
+   taxonomicStatus nomenclaturalStatus taxonRemarks  kingdom
+1          synonym                                   Plantae
+2         accepted                                     Fungi
+3         accepted                                  Animalia
+4          synonym                                  Animalia
+5          synonym                                     Fungi
+6         accepted                                  Animalia
+7         accepted                                  Animalia
+8         accepted                                  Animalia
+9          synonym                                  Animalia
+10         synonym                                  Animalia
+         phylum           clazz         ordder         family
+1  Tracheophyta   Magnoliopsida Caryophyllales      Cactaceae
+2    Ascomycota Dothideomycetes   Pleosporales  Didymellaceae
+3    Arthropoda         Insecta    Hymenoptera   Megachilidae
+4    Arthropoda         Insecta     Coleoptera      Carabidae
+5    Ascomycota Lecanoromycetes   Peltigerales Nephromataceae
+6      Annelida      Polychaeta      Sabellida   Siboglinidae
+7    Arthropoda         Insecta        Diptera      Syrphidae
+8    Arthropoda         Insecta        Diptera       Muscidae
+9    Arthropoda         Insecta    Hymenoptera    Crabronidae
+10   Arthropoda         Insecta    Hymenoptera         Apidae
+           genus
+1  Schlumbergera
+2      Didymella
+3      Megachile
+4       Platynus
+5       Nephroma
+6     Siboglinum
+7      Pipizella
+8      Spilogona
+9     Tachysphex
+10       Thyreus</code></pre>
 </div>
 <p>Salir y cerrar la puerta:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>dbDisconnect</span><span class='op'>(</span><span class='va'>gbif_taxo</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>gbif_taxo</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <h3 data-number="1.4.3" id="buscar-la-lista-de-los-taxones-de-espeletia"><span class="header-section-number">1.4.3</span> Buscar la lista de los taxones de Espeletia</h3>
@@ -6193,23 +6192,29 @@ attr(,&quot;db&quot;)
 <li>Varios indices que permiten acelerar el proceso de buscar taxones superiores</li>
 <li>Un sistema de pseudo-taxones que permite dar nombres específicos en esos estudios a aquellos taxones que no siguen las reglas de la taxonomía formal, pero tienen un valor local para los biólogos</li>
 </ul>
+<h2 data-number="2.1" id="cargar-paquetes-y-conectarse"><span class="header-section-number">2.1</span> Cargar paquetes y conectarse</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpostgres.r-dbi.org'>RPostgres</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pwilches</span><span class='op'>&lt;-</span><span class='fu'>dbConnect</span><span class='op'>(</span><span class='fu'><a href='https://rpostgres.r-dbi.org/reference/Postgres.html'>Postgres</a></span><span class='op'>(</span><span class='op'>)</span>, dbname <span class='op'>=</span> <span class='st'>"fracking"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pwilches</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'><a href='https://rpostgres.r-dbi.org/reference/Postgres.html'>Postgres</a></span><span class='op'>(</span><span class='op'>)</span>, dbname<span class='op'>=</span><span class='st'>"puerto_wilches"</span>, host<span class='op'>=</span><span class='st'>"54.94.221.113"</span>, user<span class='op'>=</span><span class='st'>"*****"</span>, password<span class='op'>=</span><span class='st'>"*****"</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
+<h2 data-number="2.2" id="tables-principales-del-sistema-taxonomico"><span class="header-section-number">2.2</span> Tables principales del sistema taxonomico</h2>
+<p>Tabla de rangos taxonomicos:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb29"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> main.def_tax_rank</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> rank_level</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-28">Table 3: </span>26 records</caption>
+<caption><span id="tab:unnamed-chunk-29">Table 3: </span>26 records</caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 18%" />
@@ -6441,21 +6446,15 @@ attr(,&quot;db&quot;)
 </table>
 </div>
 </div>
+<p>Tabla taxonomica (anotar que la columna <em>cd_rank</em> corresponde a la columna <em>cd_rank</em> de la tabla <em>def_tax_rank</em>: es una llave foranea)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb30"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> main.taxo</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="kw">random</span>()</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code></pre></div>
 <div class="knitsql-table">
-<table style="width:100%;">
-<caption><span id="tab:unnamed-chunk-29">Table 4: </span>Displaying records 1 - 10</caption>
-<colgroup>
-<col style="width: 9%" />
-<col style="width: 25%" />
-<col style="width: 39%" />
-<col style="width: 11%" />
-<col style="width: 14%" />
-</colgroup>
+<table>
+<caption><span id="tab:unnamed-chunk-30">Table 4: </span>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">cd_tax</th>
@@ -6467,79 +6466,80 @@ attr(,&quot;db&quot;)
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1725</td>
-<td style="text-align: left;">Euterpe</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: left;">Lecanorales</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">GN</td>
-<td style="text-align: right;">269</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: right;">63</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3119</td>
-<td style="text-align: left;">Ocotea guianensis</td>
-<td style="text-align: left;">Aubl.</td>
-<td style="text-align: left;">SP</td>
-<td style="text-align: right;">1200</td>
+<td style="text-align: right;">247</td>
+<td style="text-align: left;">Tabellariales</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: right;">42</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1231</td>
-<td style="text-align: left;">Paronellides</td>
-<td style="text-align: left;">Schött, 1925</td>
-<td style="text-align: left;">GN</td>
-<td style="text-align: right;">624</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3327</td>
-<td style="text-align: left;">Pyrenula nitidula</td>
-<td style="text-align: left;">(Bres.) R.C. Harris</td>
-<td style="text-align: left;">SP</td>
-<td style="text-align: right;">1295</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1145</td>
-<td style="text-align: left;">Mesonoterus</td>
-<td style="text-align: left;">Sharp, 1882</td>
-<td style="text-align: left;">GN</td>
-<td style="text-align: right;">319</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">937</td>
-<td style="text-align: left;">Cyclocephala</td>
+<td style="text-align: right;">1788</td>
+<td style="text-align: left;">Hyalinobatrachium</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">GN</td>
-<td style="text-align: right;">767</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3550</td>
-<td style="text-align: left;">Urochloa mutica</td>
-<td style="text-align: left;">(Forssk.) T.Q. Nguyen, 1966</td>
-<td style="text-align: left;">SP</td>
-<td style="text-align: right;">2192</td>
+<td style="text-align: right;">418</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2358</td>
-<td style="text-align: left;">Bubulcus ibis</td>
-<td style="text-align: left;">Linnaeus, 1758</td>
+<td style="text-align: right;">3007</td>
+<td style="text-align: left;">Miconia bubalina</td>
+<td style="text-align: left;">(D. Don) Naudin</td>
 <td style="text-align: left;">SP</td>
-<td style="text-align: right;">1518</td>
+<td style="text-align: right;">1152</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1916</td>
-<td style="text-align: left;">Neoponera</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: right;">789</td>
+<td style="text-align: left;">Achnanthidium</td>
+<td style="text-align: left;">Kützing, 1844</td>
 <td style="text-align: left;">GN</td>
-<td style="text-align: right;">500</td>
+<td style="text-align: right;">266</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">498</td>
-<td style="text-align: left;">Falconidae</td>
+<td style="text-align: right;">162</td>
+<td style="text-align: left;">Flosculariacea</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">FAM</td>
-<td style="text-align: right;">161</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1357</td>
+<td style="text-align: left;">Sturmius</td>
+<td style="text-align: left;">Bretfeld, 1994</td>
+<td style="text-align: left;">GN</td>
+<td style="text-align: right;">713</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2255</td>
+<td style="text-align: left;">Anartia amathea</td>
+<td style="text-align: left;">(Linnaeus, 1758)</td>
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">1453</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3051</td>
+<td style="text-align: left;">Mouriri completens</td>
+<td style="text-align: left;">(Pittier) Burret</td>
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">1896</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">859</td>
+<td style="text-align: left;">Brachystomella</td>
+<td style="text-align: left;">Ågren, 1903</td>
+<td style="text-align: left;">GN</td>
+<td style="text-align: right;">394</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<h2 data-number="2.3" id="uso-en-la-base-de-datos"><span class="header-section-number">2.3</span> Uso en la base de datos</h2>
 <p>Así, con este sistema, la tabla de registros contiene solamente la referencia al nivel más preciso posible de la tabla de taxonomía.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb31"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> cd_reg, cd_event, cd_tax, qt_int</span>
@@ -6548,7 +6548,7 @@ attr(,&quot;db&quot;)
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-30">Table 5: </span>Displaying records 1 - 10</caption>
+<caption><span id="tab:unnamed-chunk-31">Table 5: </span>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">cd_reg</th>
@@ -6559,63 +6559,63 @@ attr(,&quot;db&quot;)
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">38336</td>
-<td style="text-align: right;">6766</td>
-<td style="text-align: right;">3237</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">127644</td>
+<td style="text-align: right;">10143</td>
+<td style="text-align: right;">2812</td>
+<td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">57755</td>
-<td style="text-align: right;">9481</td>
-<td style="text-align: right;">2703</td>
+<td style="text-align: right;">89699</td>
+<td style="text-align: right;">9393</td>
+<td style="text-align: right;">2611</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">88217</td>
-<td style="text-align: right;">9532</td>
+<td style="text-align: right;">21503</td>
+<td style="text-align: right;">4270</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">67397</td>
+<td style="text-align: right;">9375</td>
+<td style="text-align: right;">2341</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">45552</td>
+<td style="text-align: right;">9040</td>
+<td style="text-align: right;">1397</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">88360</td>
+<td style="text-align: right;">9351</td>
 <td style="text-align: right;">2283</td>
 <td style="text-align: right;">1</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">123639</td>
-<td style="text-align: right;">9676</td>
-<td style="text-align: right;">2712</td>
-<td style="text-align: right;">1</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">1616</td>
-<td style="text-align: right;">306</td>
-<td style="text-align: right;">2623</td>
+<td style="text-align: right;">97041</td>
+<td style="text-align: right;">9421</td>
+<td style="text-align: right;">2377</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">27075</td>
-<td style="text-align: right;">4891</td>
-<td style="text-align: right;">2574</td>
+<td style="text-align: right;">121245</td>
+<td style="text-align: right;">9354</td>
+<td style="text-align: right;">2358</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">87347</td>
-<td style="text-align: right;">9327</td>
+<td style="text-align: right;">121217</td>
+<td style="text-align: right;">9399</td>
 <td style="text-align: right;">2611</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">114499</td>
-<td style="text-align: right;">9317</td>
-<td style="text-align: right;">3477</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">87806</td>
-<td style="text-align: right;">9385</td>
-<td style="text-align: right;">2577</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2254</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">2944</td>
+<td style="text-align: right;">64564</td>
+<td style="text-align: right;">9453</td>
+<td style="text-align: right;">2611</td>
 <td style="text-align: right;">1</td>
 </tr>
 </tbody>
@@ -6629,7 +6629,7 @@ attr(,&quot;db&quot;)
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> main.taxo <span class="kw">USING</span> (cd_tax)</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-31">Table 6: </span>Displaying records 1 - 10</caption>
+<caption><span id="tab:unnamed-chunk-32">Table 6: </span>Displaying records 1 - 10</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">cd_reg</th>
@@ -6717,7 +6717,7 @@ attr(,&quot;db&quot;)
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-32">Table 7: </span>68 records</caption>
+<caption><span id="tab:unnamed-chunk-33">Table 7: </span>68 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">biol_gp_spa</th>
@@ -7070,9 +7070,17 @@ attr(,&quot;db&quot;)
 </table>
 </div>
 </div>
+<h2 data-number="2.4" id="función-para-obtener-los-niveles-más-alto"><span class="header-section-number">2.4</span> Función para obtener los niveles más alto</h2>
+<p>La función SQL <code>find_higher_id</code>, escrita directamente en la base de datos permite buscar los niveles más alto de la taxonomía.
+Toma 2 argumentos:</p>
+<ul>
+<li>el id del taxón (como escrito en la tabla <em>main.taxo</em>)</li>
+<li>el nivel taxonomico (como escrito en la tabla <em>main.def_tax_rank</em>)</li>
+</ul>
+<p>Acá está el codigo de la función:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>dbGetQuery</span><span class='op'>(</span><span class='va'>pwilches</span>,<span class='st'>"SELECT prosrc</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbGetQuery.html'>dbGetQuery</a></span><span class='op'>(</span><span class='va'>pwilches</span>,<span class='st'>"SELECT prosrc</span></span>
 <span><span class='st'>FROM pg_proc</span></span>
 <span><span class='st'>WHERE proname='find_higher_id';"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>prosrc</span><span class='op'>)</span></span></code></pre>
 </div>
@@ -7108,8 +7116,9 @@ END IF;
 
 END;</code></pre>
 </div>
+<p>Utilizando la función <code>find_higher_id</code>, podemos por ejemplo, conocer la cantidad de registros en cada clase, para cada grupo biológico:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> biol_gp_spa,name_tax,<span class="fu">count</span>(<span class="kw">DISTINCT</span> cd_reg)</span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> biol_gp_spa,name_tax <span class="kw">AS</span> name_class,<span class="fu">count</span>(<span class="kw">DISTINCT</span> cd_reg)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> main.registros r</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> main.taxo t <span class="kw">ON</span> find_higher_id(r.cd_tax,<span class="st">&#39;CL&#39;</span>)<span class="op">=</span>t.cd_tax</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> main.def_tax_rank <span class="kw">USING</span> (cd_rank)</span>
@@ -7121,11 +7130,11 @@ END;</code></pre>
 <span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-34">Table 8: </span>Displaying records 1 - 10</caption>
+<caption><span id="tab:unnamed-chunk-35">Table 8: </span>82 records</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">biol_gp_spa</th>
-<th style="text-align: left;">name_tax</th>
+<th style="text-align: left;">name_class</th>
 <th style="text-align: right;">count</th>
 </tr>
 </thead>
@@ -7180,13 +7189,374 @@ END;</code></pre>
 <td style="text-align: left;">Aves</td>
 <td style="text-align: right;">25170</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Cameras trampa</td>
+<td style="text-align: left;">Mammalia</td>
+<td style="text-align: right;">41087</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Colémbolos</td>
+<td style="text-align: left;">Entognatha</td>
+<td style="text-align: right;">5948</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Agaricomycetes</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Bryopsida</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Dothideomycetes</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Eurotiomycetes</td>
+<td style="text-align: right;">83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Jungermanniopsida</td>
+<td style="text-align: right;">293</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">502</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Arthoniomycetes</td>
+<td style="text-align: right;">549</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Epifitas no vasculares</td>
+<td style="text-align: left;">Lecanoromycetes</td>
+<td style="text-align: right;">1525</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Epifitas vasculares</td>
+<td style="text-align: left;">Liliopsida</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Escarabajos</td>
+<td style="text-align: left;">Insecta</td>
+<td style="text-align: right;">3908</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Chrysophyceae</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Ulvophyceae</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Xanthophyceae</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Florideophyceae</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Eustigmatophyceae</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Synurophyceae</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Dinophyceae</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Cryptophyceae</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Coscinodiscophyceae</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Trebouxiophyceae</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Cyanophyceae</td>
+<td style="text-align: right;">223</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Chlorophyceae</td>
+<td style="text-align: right;">290</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Euglenophyceae</td>
+<td style="text-align: right;">354</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Bacillariophyceae</td>
+<td style="text-align: right;">624</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fitoplancton</td>
+<td style="text-align: left;">Zygnematophyceae</td>
+<td style="text-align: right;">699</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Herpetos</td>
+<td style="text-align: left;">Reptilia</td>
+<td style="text-align: right;">914</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Herpetos</td>
+<td style="text-align: left;">Amphibia</td>
+<td style="text-align: right;">2211</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hormigas</td>
+<td style="text-align: left;">Insecta</td>
+<td style="text-align: right;">9245</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Bryopsida</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Jungermanniopsida</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Selaginellopsida</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Pteridopsida</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Polypodiopsida</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Magnoliopsida</td>
+<td style="text-align: right;">117</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macrofitas</td>
+<td style="text-align: left;">Liliopsida</td>
+<td style="text-align: right;">319</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Trepaxonemata</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Entognatha</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Malacostraca</td>
+<td style="text-align: right;">27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Branchiopoda</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Bivalvia</td>
+<td style="text-align: right;">89</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Clitellata</td>
+<td style="text-align: right;">115</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Euchelicerata</td>
+<td style="text-align: right;">129</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Gastropoda</td>
+<td style="text-align: right;">181</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Macroinvertebrados</td>
+<td style="text-align: left;">Insecta</td>
+<td style="text-align: right;">3845</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mamiferos</td>
+<td style="text-align: left;">Insecta</td>
+<td style="text-align: right;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mamiferos</td>
+<td style="text-align: left;">Mammalia</td>
+<td style="text-align: right;">4619</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mariposas</td>
+<td style="text-align: left;">Insecta</td>
+<td style="text-align: right;">3772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Peces</td>
+<td style="text-align: left;">Chondrichthyes</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peces</td>
+<td style="text-align: left;">Actinopterygii</td>
+<td style="text-align: right;">1855</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Synurophyceae</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Dinophyceae</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Xanthophyceae</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Klebsormidiophyceae</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Cryptophyceae</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Ulvophyceae</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Trebouxiophyceae</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Coscinodiscophyceae</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Florideophyceae</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Euglenophyceae</td>
+<td style="text-align: right;">108</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Cyanophyceae</td>
+<td style="text-align: right;">219</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Chlorophyceae</td>
+<td style="text-align: right;">260</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Zygnematophyceae</td>
+<td style="text-align: right;">593</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Perifiton</td>
+<td style="text-align: left;">Bacillariophyceae</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">Ostracoda</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">Branchiopoda</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">Lobosa</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">Maxillopoda</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Zooplancton</td>
+<td style="text-align: left;">Monogonta</td>
+<td style="text-align: right;">388</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
+<h2 data-number="2.5" id="salir-y-cerrar-la-puerta"><span class="header-section-number">2.5</span> Salir y cerrar la puerta</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>dbDisconnect</span><span class='op'>(</span><span class='va'>pwilches</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>pwilches</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
