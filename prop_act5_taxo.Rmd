@@ -334,6 +334,9 @@ La base puerto_wilches contiene un sistema de manejo de taxonomía que consiste 
 * Varios indices que permiten acelerar el proceso de buscar taxones superiores
 * Un sistema de pseudo-taxones que permite dar nombres específicos en esos estudios a aquellos taxones que no siguen las reglas de la taxonomía formal, pero tienen un valor local para los biólogos
 
+![Estructura de las tablas principales de la base de datos de Puerto Wilches](./Figs/tablas_principales_pwilches.png)
+
+
 ## Cargar paquetes y conectarse
 
 ```{r}

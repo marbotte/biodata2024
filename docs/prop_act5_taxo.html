@@ -2267,9 +2267,9 @@ Instalación de software
 <li><a href="#cargar-paquetes-y-conectarse" id="toc-cargar-paquetes-y-conectarse"><span class="toc-section-number">2.1</span> Cargar paquetes y conectarse</a></li>
 <li><a href="#tables-principales-del-sistema-taxonomico" id="toc-tables-principales-del-sistema-taxonomico"><span class="toc-section-number">2.2</span> Tables principales del sistema taxonomico</a></li>
 <li><a href="#uso-en-la-base-de-datos" id="toc-uso-en-la-base-de-datos"><span class="toc-section-number">2.3</span> Uso en la base de datos</a></li>
-<li><a href="#función-para-obtener-los-niveles-más-alto" id="toc-función-para-obtener-los-niveles-más-alto"><span class="toc-section-number">2.4</span> Función para obtener los niveles más alto</a></li>
-<li><a href="#salir-y-cerrar-la-puerta" id="toc-salir-y-cerrar-la-puerta"><span class="toc-section-number">2.5</span> Salir y cerrar la puerta</a></li>
+<li><a href="#función-para-obtener-los-rangos-taxonomicos-más-altos" id="toc-función-para-obtener-los-rangos-taxonomicos-más-altos"><span class="toc-section-number">2.4</span> Función para obtener los rangos taxonomicos más altos</a></li>
 </ul></li>
+<li><a href="#salir-y-cerrar-la-puerta" id="toc-salir-y-cerrar-la-puerta"><span class="toc-section-number">3</span> Salir y cerrar la puerta</a></li>
 </ul>
 </nav>
 </div>
@@ -6192,6 +6192,10 @@ attr(,&quot;db&quot;)
 <li>Varios indices que permiten acelerar el proceso de buscar taxones superiores</li>
 <li>Un sistema de pseudo-taxones que permite dar nombres específicos en esos estudios a aquellos taxones que no siguen las reglas de la taxonomía formal, pero tienen un valor local para los biólogos</li>
 </ul>
+<figure>
+<img src="Figs/tablas_principales_pwilches.png" alt="Estructura de las tablas principales de la base de datos de Puerto Wilches" />
+<figcaption aria-hidden="true">Estructura de las tablas principales de la base de datos de Puerto Wilches</figcaption>
+</figure>
 <h2 data-number="2.1" id="cargar-paquetes-y-conectarse"><span class="header-section-number">2.1</span> Cargar paquetes y conectarse</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -7070,7 +7074,7 @@ attr(,&quot;db&quot;)
 </table>
 </div>
 </div>
-<h2 data-number="2.4" id="función-para-obtener-los-niveles-más-alto"><span class="header-section-number">2.4</span> Función para obtener los niveles más alto</h2>
+<h2 data-number="2.4" id="función-para-obtener-los-rangos-taxonomicos-más-altos"><span class="header-section-number">2.4</span> Función para obtener los rangos taxonomicos más altos</h2>
 <p>La función SQL <code>find_higher_id</code>, escrita directamente en la base de datos permite buscar los niveles más alto de la taxonomía.
 Toma 2 argumentos:</p>
 <ul>
@@ -7553,10 +7557,11 @@ END;</code></pre>
 </table>
 </div>
 </div>
-<h2 data-number="2.5" id="salir-y-cerrar-la-puerta"><span class="header-section-number">2.5</span> Salir y cerrar la puerta</h2>
+<h1 data-number="3" id="salir-y-cerrar-la-puerta"><span class="header-section-number">3</span> Salir y cerrar la puerta</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>pwilches</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>dbDisconnect</span><span class='op'>(</span><span class='va'>pg_biodata1</span><span class='op'>)</span></span>
+<span><span class='fu'>dbDisconnect</span><span class='op'>(</span><span class='va'>pwilches</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
