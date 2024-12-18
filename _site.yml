@@ -73,4 +73,6 @@ navbar:
       menu:
        - text: "Actividad: datos espaciales"
          href: act_6_espacial.html
+       - text: "Propuesta de solución para los ejercicios de datos espaciales"
+         href: prop_act6_espacial.html
 output: distill::distill_article

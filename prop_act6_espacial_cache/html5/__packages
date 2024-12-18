@@ -1,0 +1,5 @@
+sf
+DBI
+RPostgreSQL
+rpostgis
+RSQLite

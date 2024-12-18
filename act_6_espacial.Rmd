@@ -1,7 +1,7 @@
 ---
 title: "Actividad 6: Datos espaciales"
 lang: "es_CL"
-description: "Utilizar nociones basicas de R para tareas clasicas de ciencia de la biodiversidad."
+description: "Utilizar QGIS, R y SQL para manejar datos espaciales."
 output:
   distill::distill_article:
     toc: true
@@ -26,14 +26,14 @@ El archivo "comunas.zip" contiene los poligonos de  las comunas chilenas.
 
 En Puerto Wilches, queremos ver si el muestreo de escarabajos tuvo un sesgo de habitat.
 
-La idea acá es crear una base de datos spatialite para almacenar datos espaciales que corresponden a las localizaciones de escarabajos.
+La idea acá es crear una base de datos postgis para almacenar datos espaciales que corresponden a las localizaciones de escarabajos.
 Los archivos necesarios son:
 
 * landcov.shp contiene los habitat en el municipio de Puerto Wilches
 * esca_event.csv contiene los eventos de muestreo de escarabajos
 
-1. Crear una base de datos spatialite vacía desde qgis
+1. Crear una base de datos postgis vacía desde qgis
 1. Leer los archivos en R para enviarlos en la base de datos, como capas espaciales
-1. Calcular las superficies de ecosistemas utilizando spatialite
-1. Calcular el numero de eventos en cada habitar utilizando spatialite
+1. Calcular las superficies de ecosistemas utilizando postgis
+1. Calcular el numero de eventos en cada habitar utilizando postgis
 1. ¡Comparar!

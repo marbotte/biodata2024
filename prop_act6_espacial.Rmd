@@ -1,0 +1,278 @@
+---
+title: "Datos espaciales: propuesta de solución"
+lang: "es_CL"
+description: "Manejar datos espaciales en R y SQL"
+output:
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    fig_caption: true
+    pandoc_args: ["--number-sections"]
+bibliography: "./biodata2024.bib"
+---
+
+```{r setup, echo=F, purl=F, results='hide'}
+knitr::opts_chunk$set(cache=T)
+```
+
+# Ejercicio 1: Representar los grupos biologicos en QGIS
+
+Conectar Qgis a la base de datos (ver <https://mappinggis.com/2023/01/como-conectar-qgis-a-postgis/>).
+
+
+Abrir la consola en Qgis: 
+
+"Base de datos" > "DB Manager" > Abrir la base de datos en el panel de la Izquierda > ![](./Figs/consoleSQL_Qgis.png){width=5%}
+
+Entrar el código siguiente:
+
+```sql
+SELECT cd_event, cd_gp_biol, pt_geom
+FROM main.event e
+LEFT JOIN main.gp_event ge USING (cd_gp_event);
+```
+
+"Ejecutar"
+
+"Cargar como una nueva capa" > "Columna con valores unicos": cd_event > "Columna de geometría": pt_geom > "Cargar"
+
+En Qgis, ir a la nueva capa que proviene de Qgis y hacer un click derecho > "Propiedades" > "Simbología"
+
+Cambiar "Simbolos unicos" por "Categorizado"
+
+En valores: cd_gp_biol
+
+Hacer click en "Clasificar" y "OK"
+
+# Ejercicio 2: buscar las comunas chilenas en un archivo Darwin Core
+
+## Cargar los paquetes
+
+```{r}
+library(sf)
+library(rpostgis)
+```
+
+## Extraer el archivo de occurrencia
+
+Utilizamos una carpeta temporaria para extraer las occurrencias desde el archivo comprimido (ver [actividad de estándares](prop_act_2_estandares.html))
+
+```{r}
+if(!dir.exists("../Datos/tmp"))
+{dir.create("../Datos/tmp")}
+unzip("../Datos/dwca-fotomonitoreo_conaf_2021-v1.9.zip",files = c("occurrence.txt"), exdir = "../Datos/tmp", overwrite = T)
+```
+
+## Extraer el shapefile de comunas de Chile
+
+El shapefile de las comunas está también en un archivo comprimido, extraemos todos los archivos en la carpeta temporaria
+
+```{r}
+unzip("../Datos/Comunas.zip",exdir = "../Datos/tmp/",overwrite = T)
+```
+
+## Leer el archivo de occurrencia y "espacializarlo"
+
+Cargar el archivo de occurrencia en R:
+
+```{r}
+occuFotoTrampeo<-read.csv("../Datos/tmp/occurrence.txt",sep="\t")
+```
+
+Para este ejercicio, vamos a utilizar solo 50 filas aleatorias del archivo (¡son procesos pesados, con 50 filas es más rapido!).
+Pero no duden en suprimir esta fila si quieren aplicar el tratamiento al archivo entero en sus computadores!
+
+```{r}
+dim(occuFotoTrampeo)
+occuFotoTrampeo<-occuFotoTrampeo[sample(1:nrow(occuFotoTrampeo),50),]
+dim(occuFotoTrampeo)
+```
+
+Para explicar el principio del codigo previo:
+
+```{r}
+sample(1:nrow(occuFotoTrampeo),50)
+```
+
+En R, utilizamos una clase particular de objetos, definida en el paquete `sf`, para manejar los atributos espaciales.
+La función `st_as_sf` permite definir cuales son las columnas de una tabla que contienen las coordenadas de puntos, y así transformar la tabla en un objeto espacial.
+
+
+```{r}
+spat_occuFotoTrampeo<-st_as_sf(occuFotoTrampeo,coords=c("decimalLongitude","decimalLatitude"))
+```
+
+Afectamos el sistema de proyección WGS84, gracias al SRID (Spatial Reference IDentifier).
+Pueden utilizar el sitio web <https://epsg.io/> para encontrar los sistemas de referencia y sus identificadores.
+
+```{r}
+st_crs(spat_occuFotoTrampeo)<-"EPSG:4326"
+```
+
+## Leer el shapefile de comunas
+
+Siendo un shapefile, el archivo se lee directamente como un archivo espacial, gracias a la función `st_read`.
+La función utiliza la noción de "dsn" que es el objeto que contiene las capas (acá la carpeta que contiene el shapefile, pero puede ser una base de datos espacial, una geodatabase de ESRI etc.), y los "layers" que son cada una de las capas:
+
+```{r}
+comunas<-st_read(dsn = "../Datos/tmp/",layer="comunas")
+```
+
+
+Para poder hacer un tratamiento espacial con las occurrencias y las comunas, tenemos que asegurarnos que los objetos están en el mismo sistema de proyección:
+
+```{r}
+spat_occuFotoTrampeo<-st_transform(spat_occuFotoTrampeo,st_crs(comunas))
+```
+
+## Buscar las comunas 
+
+Mirar la estructura de los objetos espaciales
+
+```{r}
+spat_occuFotoTrampeo
+head(comunas)
+```
+
+La función st_join permite buscar las correspondencias espaciales entre 2 objetos y añadir las columnas de un objeto en el otro cuando hay correspondencia espacial:
+
+```{r}
+(A<-st_join(spat_occuFotoTrampeo,comunas))
+```
+## Bonus: mapas en R
+
+En R se pueden hacer mapas utilizando la función `plot`
+
+```{r fig.height=10,fig.width=3}
+par(mar=c(0,0,0,0))
+plot(st_geometry(spat_occuFotoTrampeo),type="n")
+plot(st_geometry(comunas),add=T)
+plot(spat_occuFotoTrampeo,col="red",add=T,pch='+')
+```
+
+Anotar: siendo honesto, hacer mapas en R toma mucho tiempo... Sin embargo, para los casos que necesitan automatizar la producción de muchos mapas, puede ser una solución viable.
+
+# Ejercicio 3: crear una base de datos espacial para determinar los habitats de muestreo 
+
+## Con Postgis
+
+### Crear una base de datos vacía
+La primera etapa de este ejercicio es crear una base de datos PostgreSQL, vacía, y integrar la extensión postgis en esta base de datos.
+
+Se puede hacer desde R, o desde DBeaver, como lo hicimos en Concepción en la ultima sesión.
+
+#### Generalidades
+
+El método general de creación de la base de datos vacía es:
+
+1. conectarse al usuario postgres y la base de datos postgres
+1. crear el usuario local que vamos a utilizar
+1. crear la base de datos vacía con el nuevo usuario como dueño
+1. desde el nuevo usuario, conectarse a la nueva base de datos
+1. llamar a la extension postgis en la nueva base de datos
+
+#### En DBeaver
+
+
+#### Desde R
+
+```r
+contrasena_postgres<-'*******'
+mi_usuario_local<-'marius'
+mi_contrasena<-''
+nombre_baseDatos<-'biodata_postgis'
+
+```
+
+
+
+```{r}
+library(RSQLite)
+esca_event<-read.csv("../Datos/esca_event.csv")
+spat_esca_event<-st_as_sf(esca_event,coords=c("x_srid3116","y_srid3116"))
+st_crs(spat_esca_event)<-"EPSG:3116"
+landcov<-st_read(dsn = "../Datos/esca_landcov/",layer="landcov")
+st_write(spat_esca_event,dsn="../Resultados/spat_esca.sqlite",layer="spat_esca_event",delete_layer = T,driver="SQLite")
+st_write(landcov,dsn="../Resultados/spat_esca.sqlite",layer="landcov",delete_layer =T,driver="SQLite")
+
+spat_esca<-dbConnect(SQLite(),dbname="../Resultados/spat_esca.sqlite")
+dbSendStatement(spat_esca, "SELECT load_extension('mod_spatialite')")
+dbListFields(spat_esca,"landcov")
+area_hab<-dbGetQuery(spat_esca,
+"SELECT landcov,SUM(ST_Area(geometry)) superf
+FROM landcov
+GROUP BY landcov
+ORDER BY SUM(ST_Area(geometry)) DESC
+")
+(dbGetQuery(spat_esca,
+"SELECT cd_event, protocol, landcov
+FROM spat_esca_event e
+LEFT JOIN landcov l ON ST_Intersects(e.geometry,l.geometry)
+LIMIT 10
+"))
+
+nbEvent_hab<-dbGetQuery(spat_esca,
+"SELECT landcov,
+  COUNT(DISTINCT cd_event) FILTER (WHERE protocol='Captura manual de insectos') num_event_cm,
+  COUNT(DISTINCT cd_event) FILTER (WHERE protocol='Trampa de excrementos humanos') num_event_teh
+FROM spat_esca_event e
+RIGHT JOIN landcov l ON ST_Intersects(e.geometry,l.geometry)
+GROUP BY landcov;
+")
+```
+## Con spatialite
+
+En mis fases de prueba para construir este ejercicio y una solución, tuvé dificultades para escribir capas geográficas en una base de datos SQLite + spatialite. 
+El problema que encontré era la imposibilidad de escribir los metadatos geograficos en la base de datos cuando enviamos la conexión (`dbConnect`) en la función `st_write` del paquete `sf`.
+Acabo de encontrar la solución: para que funcione, uno tiene que enviar directamente el archivo sqlite, y no la conexión a la base de datos.
+Por esa razón, cambié spatialite por postgis en el ejercicio, y por esa razón creamos una base de datos postgreSQL vacía en DBeaver en la ultima sesión del viernes.
+Les muestro igual la solución que encontré a través de SQLite y spatialite:
+
+```{r}
+library(RSQLite)
+esca_event<-read.csv("../Datos/esca_event.csv")
+spat_esca_event<-st_as_sf(esca_event,coords=c("x_srid3116","y_srid3116"))
+st_crs(spat_esca_event)<-"EPSG:3116"
+landcov<-st_read(dsn = "../Datos/esca_landcov/",layer="landcov")
+st_write(spat_esca_event,dsn="../Resultados/spat_esca.sqlite",layer="spat_esca_event",delete_layer = T,driver="SQLite")
+st_write(landcov,dsn="../Resultados/spat_esca.sqlite",layer="landcov",delete_layer =T,driver="SQLite")
+
+spat_esca<-dbConnect(SQLite(),dbname="../Resultados/spat_esca.sqlite")
+dbSendStatement(spat_esca, "SELECT load_extension('mod_spatialite')")
+dbListFields(spat_esca,"landcov")
+area_hab<-dbGetQuery(spat_esca,
+"SELECT landcov,SUM(ST_Area(geometry)) superf
+FROM landcov
+GROUP BY landcov
+ORDER BY SUM(ST_Area(geometry)) DESC
+")
+(dbGetQuery(spat_esca,
+"SELECT cd_event, protocol, landcov
+FROM spat_esca_event e
+LEFT JOIN landcov l ON ST_Intersects(e.geometry,l.geometry)
+LIMIT 10
+"))
+
+nbEvent_hab<-dbGetQuery(spat_esca,
+"SELECT landcov,
+  COUNT(DISTINCT cd_event) FILTER (WHERE protocol='Captura manual de insectos') num_event_cm,
+  COUNT(DISTINCT cd_event) FILTER (WHERE protocol='Trampa de excrementos humanos') num_event_teh
+FROM spat_esca_event e
+RIGHT JOIN landcov l ON ST_Intersects(e.geometry,l.geometry)
+GROUP BY landcov;
+")
+```
+
+
+```{r fig.width=10,fig.height=5}
+nbEvent_hab<-nbEvent_hab[match(nbEvent_hab$landcov,area_hab$landcov),]
+par(mfrow=c(1,2),mar=c(10,5,4,1))
+barplot(area_hab$superf,names.arg = area_hab$landcov,las=2,main="Superficie")
+barplot(t(as.matrix(nbEvent_hab[,c("num_event_cm","num_event_teh")])),names.arg = nbEvent_hab$landcov,beside = T,las=2,legend.text = c("Captura","Trampa"),main="Eventos")
+
+
+```
+```{r}
+dbDisconnect(spat_esca)
+```
+

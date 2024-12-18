@@ -2199,6 +2199,7 @@ Datos espaciales
 </button>
 <div class="nav-dropdown-content">
 <a href="act_6_espacial.html">Actividad: datos espaciales</a>
+<a href="prop_act6_espacial.html">Propuesta de solución para los ejercicios de datos espaciales</a>
 </div>
 </div>
 </div>
@@ -2270,7 +2271,8 @@ Instalación de software
  [8] &quot;esca_event.csv&quot;                        
  [9] &quot;esca_landcov&quot;                          
 [10] &quot;esca_simple.sqlite&quot;                    
-[11] &quot;gbif_taxo.sqlite&quot;                      </code></pre>
+[11] &quot;gbif_taxo.sqlite&quot;                      
+[12] &quot;tmp&quot;                                   </code></pre>
 </div>
 <p>Los datos que nos interesan están en el archivo “dwca-fotomonitoreo_conaf_2021-v1.9.zip”.</p>
 <p>Vamos a crear una carpeta temporaria (que vamos a suprimir después de haber leído los datos en el archivo comprimido).
@@ -2302,7 +2304,10 @@ Esto nos permitirá automatizar el proceso más tarde con R.</p>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span><span class='op'>(</span><span class='st'>"../Datos/tmp"</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>[1] &quot;eml.xml&quot;        &quot;occurrence.txt&quot;</code></pre>
+<pre><code> [1] &quot;comunas.CPG&quot;     &quot;comunas.dbf&quot;     &quot;comunas.prj&quot;    
+ [4] &quot;comunas.sbn&quot;     &quot;comunas.sbx&quot;     &quot;comunas.shp&quot;    
+ [7] &quot;comunas.shp.xml&quot; &quot;comunas.shx&quot;     &quot;eml.xml&quot;        
+[10] &quot;occurrence.txt&quot; </code></pre>
 </div>
 <h1 data-number="3" id="leer-el-archivo-de-occurrencia"><span class="header-section-number">3</span> Leer el archivo de occurrencia</h1>
 <p>Leer el archivo occurrence.txt y ponerlo en una tabla de R:</p>
